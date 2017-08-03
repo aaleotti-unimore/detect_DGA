@@ -15,27 +15,25 @@ import enchant
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-
 d = enchant.Dict("en_US")
 
 
 def get_ratio(domain):
-    res = 0
     min_subtr = 3
     maxl = 0
     for i in range(min_subtr, len(domain)):
-        split = split(domain, i)
+        split = __split(domain, i)
         tmpsum = 0
         for s in split:
             if d.check(s):
                 tmpsum += len(s)
-        logger.debug("%s , sum(w_i)=%s" % (split,tmpsum))
+        logger.debug("%s , sum(w_i)=%s" % (split, tmpsum))
         if tmpsum > maxl:
             maxl = tmpsum
     return (maxl / int(len(domain)))
 
 
-def split(s, chunk_size):
+def __split(s, chunk_size):
     """
     splits a string into chunks
     :param s: string
