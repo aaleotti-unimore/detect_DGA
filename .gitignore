@@ -103,3 +103,6 @@ ENV/
 /DGA-master/all_dga.txt
 /master.zip
 /training_set
+/features/stat_ling_filter.py
+/DGA-master/*
+/datas/*
