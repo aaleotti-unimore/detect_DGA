@@ -14,8 +14,8 @@ logger.setLevel(logging.INFO)
 mcr_dict = enchant.Dict("en_US")
 ns_dict = open("features/top10000en.txt").readlines()
 
-good = 'DGA-master/top100k.txt'
-bad = 'DGA-master/bad100k.txt'
+path_good = 'DGA-master/top100k.txt'
+path_bad = 'DGA-master/bad100k.txt'
 
 
 def generate_good(X_len):
@@ -23,7 +23,7 @@ def generate_good(X_len):
     Generates a np.array matrix containing the feature vector for all the good samples and saves it into a good.pkl file
     :return:
     """
-    with open(good, 'rb') as f:
+    with open(path_good, 'rb') as f:
         ar = []
         i = 0
         for line in f:
@@ -33,7 +33,7 @@ def generate_good(X_len):
             logger.debug("added %s %s" % (line.split(",")[2], str(ar[-1:])))
             i += 1
         X = np.array(ar)
-        joblib.dump(X, "datas/good_%s" % int(X_len / 2),compress=3)
+        joblib.dump(X, "datas/good_%s" % int(X_len / 2), compress=3)
 
     logger.info("good dataset saved: %s " % X_len)
 
@@ -43,7 +43,7 @@ def generate_bad(X_len):
     Generates a np.array matrix containing the feature vector for all the DGA samples and saves it into a bad.pkl file
     :return:
     """
-    with open(bad, 'rb') as f:
+    with open(path_bad, 'rb') as f:
         ar = []
         i = 0
         for line in f:
@@ -53,7 +53,7 @@ def generate_bad(X_len):
             logger.debug("added %s %s" % (line.split(" ")[0], str(ar[-1:])))
             i += 1
         X = np.array(ar)
-        joblib.dump(X, "datas/bad_%s" % int(X_len / 2),compress=3)
+        joblib.dump(X, "datas/bad_%s" % int(X_len / 2), compress=3)
 
     logger.info("bad dataset saved: %s " % X_len)
 
