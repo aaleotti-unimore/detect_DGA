@@ -100,6 +100,6 @@ ENV/
 # IntelliJ project files
 ####
 
-training_set/majestic_million.csv
 /DGA-master/all_dga.txt
 /master.zip
+/training_set

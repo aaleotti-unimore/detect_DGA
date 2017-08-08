@@ -1,34 +1,43 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.svm import SVC
-from matplotlib.colors import ListedColormap
 import logging
 
-logging.basicConfig(level=logging.INFO)
+import numpy as np
+from sklearn import svm
+from sklearn.externals import joblib
+from sklearn.model_selection import KFold, cross_val_score
+
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-h = .02  # step size in the mesh
+logger.level = logging.INFO
 
-from features import mcr, ns
 
-string = "pub03str"
-mcr = mcr.get_ratio(string)
-logger.info("Meaningful character ratio = %s" % mcr )
-nscore=[]
-for i in [1,2,3]:
-    nscore.append(ns.get_score(string,i))
-    logger.info("Normality score for %d = %f "%(i,nscore[i-1]))
+def tenfold_SVC():
+    X_g = joblib.load('good.pkl')
+    X_b = joblib.load('bad.pkl')
+    X = np.concatenate((X_g, X_b))
+    y = joblib.load('y.pkl')
+    # X, y = shuffle(X, y, random_state=0)
+    logger.debug("%s" % X)
+    logger.debug("%s" % y)
 
-f_t =  [mcr] + nscore
-logger.info(f_t)
+    cv = KFold(n_splits=10, shuffle=True, random_state=0)
+    clf = svm.SVC(kernel='linear', C=5)
+    scores = cross_val_score(clf, X, y, cv=cv)
+    print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+    joblib.dump(clf, "models/10fold_model.pkl")
 
-#
-# from nltk import ngrams, bigrams
-# sentence = 'facebook'
-# n = 2
-# sixgrams = ngrams(sentence, n)
-# # bigram = bigrams(sentence)
-# # for bi in bigram:
-# #     logger.info(bi)
-# for grams in sixgrams:
-#   logger.info(grams)
+
+def create_target(limit):
+    y_0 = np.zeros(limit)
+    y_1 = np.ones(limit)
+    y = np.concatenate((y_0, y_1))
+    joblib.dump(y, "y.pkl")
+
+def get_metrics(clf):
+    from sklearn.metrics import f1_score
+
+
+# create_target(2001)
+# tenfold_SVC()
+get_metrics(joblib.load(clf, "models/10fold_model.pkl"))
+logger.info("exiting...")
