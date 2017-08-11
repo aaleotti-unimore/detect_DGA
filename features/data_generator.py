@@ -2,11 +2,12 @@
 from __future__ import division
 
 import logging
-
 import enchant
 import numpy as np
+import pandas as pd
 from nltk import ngrams
 from sklearn.externals import joblib
+from sklearn.datasets import load_files
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -14,8 +15,16 @@ logger.setLevel(logging.INFO)
 mcr_dict = enchant.Dict("en_US")
 ns_dict = open("features/top10000en.txt").readlines()
 
-path_good = 'DGA-master/top100k.txt'
-path_bad = 'DGA-master/bad100k.txt'
+path_good = 'DGA-master/benign/majestic_million.csv'
+path_bad = 'DGA-master/DGA/all_dga.txt'
+
+
+def generate_dataset(sample):
+    good_df = pd.read_csv(path_good, usecols=['Domain'])
+    bad_df = pd.read_csv(path_bad, sep=' ', header=None, names=['Domain', 'Type'], usecols=['Domain'])
+    good_df['Target'] = 'Benign'
+    bad_df['Target'] = 'DGA'
+    return pd.DataFrame(pd.concat((good_df, bad_df))).sample(sample)
 
 
 def generate_good(X_len):
@@ -82,8 +91,9 @@ def __get_mcr(domain_name):
     min_subtr = 3
     maxl = 0
     for i in range(min_subtr, len(domain_name)):
-        tuples = ngrams(domain_name, i)
-        # tuples = zip(*[domain_name[j::i] for j in range(i)]) #alternative way to split the string. chunks are not overlapping
+        # tuples = ngrams(domain_name, i) #example: facebook=fa+ac+ce+eb+bo+oo+ok
+        tuples = zip(
+            *[domain_name[j::i] for j in range(i)])  # alternative way to split the string. in this case, text chunks are not overlapping. facebook=fa+ce+bo+ok
         split = [''.join(t) for t in tuples]
         tmpsum = 0
         tmps = []
@@ -100,6 +110,7 @@ def __get_mcr(domain_name):
 
 def __get_ns(domain_name, n):
     """
+    n-gram Normality Score.
     This class of features captures the pronounceability of a domain name. The more permissible the combinations of phonemes, the more pronounceable a word is. Domains with a low number of such combinations are likely DGA-generated.
     We calculate this class of features by extracting the n-grams of p, which are the substrings of p of length n {1, 2, 3}, and counting their occurrences in the (English) language dictionary.
     The features are thus parametric to n: Sn(d) = Sn(p) := ((sum of n-gram t in p) count(t))/(|p|−n+1), where count(t) are the occurrences of the n-gram t in the dictionary

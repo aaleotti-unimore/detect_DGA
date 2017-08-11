@@ -1,16 +1,16 @@
 import logging
+import time
 
 import numpy as np
-from sklearn.utils import shuffle
-from sklearn.svm import SVC
-from sklearn.ensemble import BaggingClassifier, RandomForestClassifier
-from sklearn.multiclass import OneVsRestClassifier
 from sklearn.externals import joblib
-from sklearn.metrics import *
-from sklearn.metrics import precision_score, recall_score, f1_score, auc, roc_curve
-from sklearn.model_selection import KFold, cross_val_score, cross_val_predict, train_test_split
-import time
-import matplotlib.pyplot as plt
+from sklearn.metrics import precision_score, recall_score, f1_score, auc, roc_curve, classification_report
+from sklearn.model_selection import KFold, cross_val_predict, train_test_split
+from sklearn.svm import SVC
+from sklearn.utils import shuffle
+from sklearn.pipeline import Pipeline, FeatureUnion
+from features.features_extractors import MCRExtractor, NormalityScoreExtractor
+
+from features import data_generator
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -38,10 +38,12 @@ def tenfold_SVC(n_splits, X_len):
     f1score = f1_score(y, predict)
     _auc = auc(fpr, tpr)
 
-    logger.info("\tPrecision: %1.3f" % prec)
-    logger.info("\tRecall: %1.3f" % recall)
-    logger.info("\tF1: %1.3f" % f1score)
+    # logger.info("\tPrecision: %1.3f" % prec)
+    # logger.info("\tRecall: %1.3f" % recall)
+    # logger.info("\tF1: %1.3f" % f1score)
     logger.info("\tAUC %1.3f\n" % _auc)
+
+    logger.info("\n" + classification_report(y, predict))
 
 
 def generate_dataset(X_len):
@@ -75,13 +77,36 @@ def train_svc(X_len, kernel, max_iter=-1, C=1):
     return score
 
 
-X_len = 10000
-# generate_dataset(X_len)
-lst = [0]
-# for i in range(1, 1000):
-#     lst.append(train_svc(X_len, "linear", i))
-#
-# print("index best score: %s" % lst.index(max(lst)))
-train_svc(X_len, "linear", 1)
-tenfold_SVC(10, X_len)
+X_len = 100
+ds = data_generator.generate_dataset(sample=X_len)
+print(ds)
+joblib.dump(ds, "datas/ds_by_pandas%s.pkl" % X_len, compress=3)
+
+X, y = ds.filter(regex="Domain"), ds.filter(regex="Target")
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+pipeline = Pipeline([
+    ('feats', FeatureUnion([
+        ('mcr', MCRExtractor()),
+        ('ns_1', NormalityScoreExtractor(1)),
+        ('ns_2', NormalityScoreExtractor(2)),
+        ('ns_3', NormalityScoreExtractor(3))
+    ])),
+    ('clf', SVC(kernel="linear", max_iter=1, verbose=True))  # classifier
+])
+
+model = pipeline.fit(X_train, y=y_train)
+joblib.dump(model, "models/trained_by_pipeline.pkl", compress=3)
+y_pred = model.predict(y_test)
+logger.info("\n" + classification_report(y_test, y_pred))
+
+# print(ds)
+# lst = [0]
+# # for i in range(1, 1000):
+# #     lst.append(train_svc(X_len, "linear", i))
+# #
+# # print("index best score: %s" % lst.index(max(lst)))
+# train_svc(X_len, "linear", 1)
+# tenfold_SVC(10, X_len)
 logger.info("exiting...")
