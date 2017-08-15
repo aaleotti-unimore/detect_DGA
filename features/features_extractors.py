@@ -6,7 +6,7 @@ import logging
 import enchant
 from nltk import ngrams
 from sklearn.base import BaseEstimator, TransformerMixin
-
+import numpy as np
 logger = logging.getLogger(__name__)
 
 mcr_dict = enchant.Dict("en_US")
@@ -47,7 +47,8 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
 
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
-        return df['Domain'].apply(self.__get_mcr)
+        f = np.vectorize(self.__get_mcr)
+        return f(df)
 
     def fit(self, X, y=None):
         return self  # does nothing
@@ -83,7 +84,8 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
 
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
-        return df['Domain'].apply(self.__get_ns)
+        f = np.vectorize(self.__get_ns)
+        return f(df)
 
     def fit(self, X, y=None):
         return self  # does nothing

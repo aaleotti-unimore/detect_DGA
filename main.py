@@ -9,6 +9,14 @@ from sklearn.svm import SVC
 from sklearn.utils import shuffle
 from sklearn.pipeline import Pipeline, FeatureUnion
 from features.features_extractors import MCRExtractor, NormalityScoreExtractor
+from time import time
+from sklearn.pipeline import Pipeline, FeatureUnion
+from sklearn.model_selection import GridSearchCV
+from sklearn.svm import SVC
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+from sklearn.feature_selection import SelectKBest
+from pprint import pprint
 
 from features import data_generator
 
@@ -25,9 +33,7 @@ def tenfold_SVC(n_splits, X_len):
     y = joblib.load('datas/y_%s' % X_len)
     clf = joblib.load('models/linear_SVC_(%s).pkl' % X_len)
 
-    cv = KFold(n_splits=n_splits, shuffle=True, random_state=0)
 
-    predict = cross_val_predict(clf, X, y, cv=cv)
     # logger.debug("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
     # joblib.dump(scores, "models/%sfold_SVC_(%s)_scores.pkl" % (n_splits, X_len))
     joblib.dump(cv, "models/%sfold_SVC_(%s)_cv.pkl" % (n_splits, X_len))
@@ -77,36 +83,46 @@ def train_svc(X_len, kernel, max_iter=-1, C=1):
     return score
 
 
-X_len = 100
-ds = data_generator.generate_dataset(sample=X_len)
-print(ds)
-joblib.dump(ds, "datas/ds_by_pandas%s.pkl" % X_len, compress=3)
+n_samples=5000
+n_splits=10
 
-X, y = ds.filter(regex="Domain"), ds.filter(regex="Target")
+df = data_generator.load_dataset(n_samples)
+if df is None:
+    df = data_generator.generate_dataset(n_samples)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+X, y = df['Domain'].values, df['Target'].values
+X = X.reshape(-1, 1)
+y = np.ravel(y)
 
-pipeline = Pipeline([
-    ('feats', FeatureUnion([
-        ('mcr', MCRExtractor()),
-        ('ns_1', NormalityScoreExtractor(1)),
-        ('ns_2', NormalityScoreExtractor(2)),
-        ('ns_3', NormalityScoreExtractor(3))
-    ])),
-    ('clf', SVC(kernel="linear", max_iter=1, verbose=True))  # classifier
+estimators = [
+    ('mcr', MCRExtractor()),
+    ('ns1', NormalityScoreExtractor(1)),
+    ('ns2', NormalityScoreExtractor(2)),
+    ('ns3', NormalityScoreExtractor(3))
+]
+
+combined = FeatureUnion(estimators,
+                        n_jobs=1)
+
+pipeline = Pipeline(steps=[
+    ('features_extractors', combined),
+    ('clf', SVC(kernel='linear'))
 ])
 
-model = pipeline.fit(X_train, y=y_train)
-joblib.dump(model, "models/trained_by_pipeline.pkl", compress=3)
-y_pred = model.predict(y_test)
-logger.info("\n" + classification_report(y_test, y_pred))
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
 
-# print(ds)
-# lst = [0]
-# # for i in range(1, 1000):
-# #     lst.append(train_svc(X_len, "linear", i))
-# #
-# # print("index best score: %s" % lst.index(max(lst)))
-# train_svc(X_len, "linear", 1)
-# tenfold_SVC(10, X_len)
-logger.info("exiting...")
+if __name__ == "__main__":
+    # multiprocessing requires the fork to happen in a __main__ protected
+    # block
+
+    cv = KFold(n_splits=n_splits, shuffle=True, random_state=0)
+
+    t0 = time()
+    model = pipeline.fit(X_train, y_train)
+    logger.info("fitting done in %0.3fs" % (time() - t0))
+    print()
+    t0 = time()
+    y_pred = model.predict(X_test)
+    logger.info("prediction done in %0.3fs" % (time() - t0))
+    logger.info("\n%s" % classification_report(y_test, y_pred, target_names=['Benign', 'DGA'], ))
