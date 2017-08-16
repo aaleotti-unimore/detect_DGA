@@ -7,6 +7,7 @@ import enchant
 from nltk import ngrams
 from sklearn.base import BaseEstimator, TransformerMixin
 import numpy as np
+
 logger = logging.getLogger(__name__)
 
 mcr_dict = enchant.Dict("en_US")
@@ -14,9 +15,8 @@ ns_dict = open("features/top10000en.txt").readlines()
 
 
 class MCRExtractor(BaseEstimator, TransformerMixin):
-    def __init__(self):
-        self.logger = logger
-        self.logger.setLevel(logging.INFO)
+    def __init__(self, mode=0):
+        self.mode = mode
 
     def __get_mcr(self, domain_name):
         """
@@ -28,10 +28,12 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
         min_subtr = 3
         maxl = 0
         for i in range(min_subtr, len(domain_name)):
-            # tuples = ngrams(domain_name, i) #example: facebook=fa+ac+ce+eb+bo+oo+ok
-            tuples = zip(
-                *[domain_name[j::i] for j in range(
-                    i)])  # alternative way to split the string. in this case, text chunks are not overlapping. facebook=fa+ce+bo+ok
+            if self.mode == 1:
+                tuples = ngrams(domain_name, i)  # overlapping chunks. example: facebook=fa+ac+ce+eb+bo+oo+ok
+            else:
+                tuples = zip(
+                    *[domain_name[j::i] for j in range(
+                        i)])  # alternative way to split the string. in this case, text chunks are not overlapping. facebook=fa+ce+bo+ok
             split = [''.join(t) for t in tuples]
             tmpsum = 0
             tmps = []
@@ -39,8 +41,7 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
                 if mcr_dict.check(s):
                     tmpsum += len(s)
                     tmps.append(s)
-            if tmps:
-                self.logger.debug("      %s , sum(w_i)=%s" % (tmps, tmpsum))
+
             if tmpsum > maxl:
                 maxl = tmpsum
         return maxl / int(len(domain_name))
@@ -53,23 +54,27 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self  # does nothing
 
+    def __getstate__(self):
+        d = dict(self.__dict__)
+        # del d['logger']
+        return d
+
+    def __setstate__(self, d):
+        self.__dict__.update(d)
+
 
 class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
-    def __init__(self, n):
-        self.logger = logger
-        self.logger.setLevel(logging.INFO)
-        self.n = n
-
-    def __get_ns(self, domain_name):
-        """
-        n-gram Normality Score.
+    """
+     n-gram Normality Score.
         This class of features captures the pronounceability of a domain name. The more permissible the combinations of phonemes, the more pronounceable a word is. Domains with a low number of such combinations are likely DGA-generated.
         We calculate this class of features by extracting the n-grams of p, which are the substrings of p of length n {1, 2, 3}, and counting their occurrences in the (English) language dictionary.
         The features are thus parametric to n: Sn(d) = Sn(p) := ((sum of n-gram t in p) count(t))/(|p|−n+1), where count(t) are the occurrences of the n-gram t in the dictionary
-        :param domain_name: string
-        :param self.n: size of the n-grams. int
-        :return: score of the n-grams. float
-        """
+    """
+
+    def __init__(self, n):
+        self.n = n
+
+    def __get_ns(self, domain_name):
         tuples = ngrams(domain_name, self.n)
         myngrams = (''.join(t) for t in tuples)
         scoresum = 0
@@ -78,7 +83,6 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
             for words in ns_dict:
                 if s in words:
                     counter += 1
-            self.logger.debug(" sub:%s count:%s" % (s, counter))
             scoresum += counter
         return scoresum / (len(domain_name) - self.n + 1)
 
@@ -89,3 +93,11 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None):
         return self  # does nothing
+
+    def __getstate__(self):
+        d = dict(self.__dict__)
+        # del d['logger']
+        return d
+
+    def __setstate__(self, d):
+        self.__dict__.update(d)

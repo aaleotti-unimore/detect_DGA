@@ -1,128 +1,111 @@
 import logging
-import time
 
 import numpy as np
-from sklearn.externals import joblib
-from sklearn.metrics import precision_score, recall_score, f1_score, auc, roc_curve, classification_report
-from sklearn.model_selection import KFold, cross_val_predict, train_test_split
-from sklearn.svm import SVC
-from sklearn.utils import shuffle
+from tempfile import mkdtemp
+from shutil import rmtree
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import SGDClassifier
+from sklearn.metrics import auc, roc_curve, classification_report
+from sklearn.model_selection import cross_val_predict
 from sklearn.pipeline import Pipeline, FeatureUnion
-from features.features_extractors import MCRExtractor, NormalityScoreExtractor
+from sklearn.svm import SVC
 from time import time
-from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.model_selection import GridSearchCV
-from sklearn.svm import SVC
-from sklearn.datasets import load_iris
-from sklearn.decomposition import PCA
-from sklearn.feature_selection import SelectKBest
-from pprint import pprint
+from sklearn.externals import joblib
 
+from sklearn.model_selection import train_test_split
 from features import data_generator
+from features.features_extractors import MCRExtractor, NormalityScoreExtractor
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-logger.level = logging.DEBUG
-
-
-def tenfold_SVC(n_splits, X_len):
-    X_g = joblib.load('datas/good_%s' % int(X_len / 2))
-    X_b = joblib.load('datas/bad_%s' % int(X_len / 2))
-    X = np.concatenate((X_g, X_b))
-    y = joblib.load('datas/y_%s' % X_len)
-    clf = joblib.load('models/linear_SVC_(%s).pkl' % X_len)
-
-
-    # logger.debug("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
-    # joblib.dump(scores, "models/%sfold_SVC_(%s)_scores.pkl" % (n_splits, X_len))
-    joblib.dump(cv, "models/%sfold_SVC_(%s)_cv.pkl" % (n_splits, X_len))
-
-    fpr, tpr, thresholds = roc_curve(y, predict)
-    prec = precision_score(y, predict)
-    recall = recall_score(y, predict)
-    f1score = f1_score(y, predict)
-    _auc = auc(fpr, tpr)
-
-    # logger.info("\tPrecision: %1.3f" % prec)
-    # logger.info("\tRecall: %1.3f" % recall)
-    # logger.info("\tF1: %1.3f" % f1score)
-    logger.info("\tAUC %1.3f\n" % _auc)
-
-    logger.info("\n" + classification_report(y, predict))
-
-
-def generate_dataset(X_len):
-    from features import data_generator
-    data_generator.generate_good(X_len=X_len)
-    data_generator.generate_bad(X_len=X_len)
-    data_generator.create_target(X_len=X_len)
-
-
-def train_svc(X_len, kernel, max_iter=-1, C=1):
-    X_g = joblib.load('datas/good_%s' % int(X_len / 2))
-    X_b = joblib.load('datas/bad_%s' % int(X_len / 2))
-    X = np.concatenate((X_g, X_b))
-    y = joblib.load('datas/y_%s' % X_len)
-    X, y = shuffle(X, y, random_state=0)
-    n_estimators = 10
-    start = time.time()
-
-    clf = SVC(kernel='linear', C=C, max_iter=max_iter, verbose=False)
-    # clf = OneVsRestClassifier(
-    #     BaggingClassifier(
-    #         SVC(kernel=kernel, probability=True, class_weight='balanced', max_iter=max_iter, C=C),
-    #         max_samples=1.0 / n_estimators,
-    #         n_estimators=n_estimators))
-    clf.fit(X, y)
-
-    end = time.time()
-    score = clf.score(X, y)
-    # logger.debug("Bagging SVC time:%s score:%s " % (end - start, score))
-    joblib.dump(clf, "models/%s_SVC_(%s).pkl" % (kernel, X_len))
-    return score
-
-
-n_samples=5000
-n_splits=10
-
+## Dataset Loading/Generation
+n_samples = 1000
 df = data_generator.load_dataset(n_samples)
 if df is None:
     df = data_generator.generate_dataset(n_samples)
+    logger.debug("generated dataset %s" % n_samples)
+else:
+    logger.debug("loaded dataset %s" % n_samples)
 
+## X, y defininition
 X, y = df['Domain'].values, df['Target'].values
 X = X.reshape(-1, 1)
 y = np.ravel(y)
 
-estimators = [
-    ('mcr', MCRExtractor()),
-    ('ns1', NormalityScoreExtractor(1)),
-    ('ns2', NormalityScoreExtractor(2)),
-    ('ns3', NormalityScoreExtractor(3))
-]
-
-combined = FeatureUnion(estimators,
-                        n_jobs=1)
-
-pipeline = Pipeline(steps=[
-    ('features_extractors', combined),
-    ('clf', SVC(kernel='linear'))
+## Pipeline Definition
+cachedir = mkdtemp()
+memory = joblib.Memory(cachedir=cachedir, verbose=0)
+pipeline = Pipeline(memory=memory, steps=[
+    ('features_extractors',
+     FeatureUnion([
+         ('mcr', MCRExtractor(mode=1)),
+         ('ns1', NormalityScoreExtractor(1)),
+         ('ns2', NormalityScoreExtractor(2)),
+         ('ns3', NormalityScoreExtractor(3))
+     ],
+         n_jobs=2
+     )
+     ),
+    ('clf', SVC(kernel='linear')
+     )
 ])
 
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.33, random_state=42)
+##### MODEL TRAIN #####
 
-if __name__ == "__main__":
-    # multiprocessing requires the fork to happen in a __main__ protected
-    # block
+clfs = {
+    # "RandomForest": RandomForestClassifier(random_state=True),
+    "SVC": SVC(kernel='linear', C=.9999999999999995e-07, max_iter=50),
+    # "GaussianNB": GaussianNB()
+}
 
-    cv = KFold(n_splits=n_splits, shuffle=True, random_state=0)
-
-    t0 = time()
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
+for clf_name, clf_value in clfs.iteritems():
+    pipeline.set_params(**{'clf': clf_value})
     model = pipeline.fit(X_train, y_train)
-    logger.info("fitting done in %0.3fs" % (time() - t0))
-    print()
-    t0 = time()
+    # joblib.dump(model, "models/%s.pkl" % clf_name)
     y_pred = model.predict(X_test)
-    logger.info("prediction done in %0.3fs" % (time() - t0))
-    logger.info("\n%s" % classification_report(y_test, y_pred, target_names=['Benign', 'DGA'], ))
+    fpr, tpr, thresholds = roc_curve(y_test, y_pred)
+    _auc = auc(fpr, tpr)
+    logger.info("### MODEL %s Performance ###" % clf_name)
+    logger.info("\n\n%s" % classification_report(y_test, y_pred, target_names=['Benign', 'DGA'], ))
+    logger.info("\tAUC %1.3f\n" % _auc)
+
+#### TENFOLD #####
+# for clf_name, clf_value in clfs.iteritems():
+#     pipeline.set_params(**{'clf': clf_value})
+#
+#     y_pred = cross_val_predict(
+#         pipeline, X, y,
+#         cv=10,
+#         verbose=1,
+#         n_jobs=2
+#     )
+#
+#     fpr, tpr, thresholds = roc_curve(y, y_pred)
+#     _auc = auc(fpr, tpr)
+#     logger.info("### %s Performance ###" % clf_name)
+#     logger.info("\n\n%s" % classification_report(y, y_pred, target_names=['Benign', 'DGA'], ))
+#     logger.info("\tAUC %1.3f\n" % _auc)
+
+# ##### GRID SEARCH #####
+# parameters = {
+#     'mcr__mode': (0, 1)
+#     # 'clf__C': np.logspace(-6, -1, 10),
+#     # 'clf__max_iter': (10, 50, 80),
+# }
+# print("Grid Search")
+# t0 = time()
+# grid_search = GridSearchCV(pipeline, parameters, n_jobs=1, verbose=1)
+# grid_search.fit(X, y)
+# logger.info("search done in %0.3fs for %s samples" % ((time() - t0), n_samples))
+# logger.info("Best score: %0.3f" % grid_search.best_score_)
+# logger.info("Best Params:")
+# best_params = grid_search.best_estimator_.get_params()
+# for param_name in sorted(parameters.keys()):
+#     print("\t%s: %r" % (param_name, best_params[param_name]))
+
+logger.info("Exiting...")
+rmtree(cachedir)  # clearing pipeline cache

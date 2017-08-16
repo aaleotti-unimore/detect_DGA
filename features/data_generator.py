@@ -31,7 +31,7 @@ def generate_dataset(sample):
 
 def load_dataset(sample):
     try:
-        return joblib.load("dataframe_%s.pkl" % sample)
+        return joblib.load("datas/dataframe_%s.pkl" % sample)
     except IOError as e:
         logger.error(e)
         return None
