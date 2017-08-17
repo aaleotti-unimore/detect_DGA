@@ -15,25 +15,27 @@ ns_dict = open("features/top10000en.txt").readlines()
 
 
 class MCRExtractor(BaseEstimator, TransformerMixin):
+    """
+    Meaningful Characters Ratio. Models the ratio of characters of the string p that comprise a meaningful word.
+    Low values indicate automatic algorithms. Specifically, we split p into n meaningful subwords wi of at least 3 symbols: |wi| ≥ 3, leaving out as few symbols as possible: R(d) = R(p) = max((sum from i=1 to n) |wi|)/|p|.
+    If p = facebook, R(p) = (|face| + |book|)/8 = 1, the prefix is fully composed of meaningful words, whereas p = pub03str, R(p) = (|pub|)/8 = 0.375.
+    """
+
     def __init__(self, mode=0):
         self.mode = mode
 
     def __get_mcr(self, domain_name):
-        """
-        Meaningful Characters Ratio. Models the ratio of characters of the string p that comprise a meaningful word. Low values indicate automatic algorithms. Specifically, we split p into n meaningful subwords wi of at least 3 symbols: |wi| ≥ 3, leaving out as few symbols as possible: R(d) = R(p) = max((sum from i=1 to n) |wi|)/|p|. If p = facebook, R(p) = (|face| + |book|)/8 = 1, the prefix is fully composed of meaningful words, whereas p = pub03str, R(p) = (|pub|)/8 = 0.375.
 
-        :param domain_name: string
-        :return: ratio. float value
-        """
         min_subtr = 3
         maxl = 0
         for i in range(min_subtr, len(domain_name)):
             if self.mode == 1:
                 tuples = ngrams(domain_name, i)  # overlapping chunks. example: facebook=fa+ac+ce+eb+bo+oo+ok
             else:
+                # alternative way to split the string. in this case, text chunks are not overlapping. eg: facebook=fa+ce+bo+ok
                 tuples = zip(
                     *[domain_name[j::i] for j in range(
-                        i)])  # alternative way to split the string. in this case, text chunks are not overlapping. facebook=fa+ce+bo+ok
+                        i)])
             split = [''.join(t) for t in tuples]
             tmpsum = 0
             tmps = []
@@ -47,7 +49,6 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
         return maxl / int(len(domain_name))
 
     def transform(self, df, y=None):
-        """The workhorse of this feature extractor"""
         f = np.vectorize(self.__get_mcr)
         return f(df)
 
@@ -89,6 +90,30 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
         f = np.vectorize(self.__get_ns)
+        return f(df)
+
+    def fit(self, X, y=None):
+        return self  # does nothing
+
+    def __getstate__(self):
+        d = dict(self.__dict__)
+        # del d['logger']
+        return d
+
+    def __setstate__(self, d):
+        self.__dict__.update(d)
+
+
+class NgramDistrExtractor(BaseEstimator, TransformerMixin):
+    def __init__(self, ngrams=1):
+        self.ngrams = ngrams
+
+    def __get_distr(self, domain_name):
+        pass
+
+    def transform(self, df, y=None):
+        """The workhorse of this feature extractor"""
+        f = np.vectorize(self.__get_distr)
         return f(df)
 
     def fit(self, X, y=None):
