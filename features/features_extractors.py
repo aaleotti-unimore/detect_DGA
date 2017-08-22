@@ -25,16 +25,19 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
         self.mode = mode
 
     def __get_mcr(self, domain_name):
+        logger.debug("domain name: %s" % domain_name )
+        # if len(str(domain_name)) == 0:
+        #     return 0
 
         min_subtr = 3
         maxl = 0
-        for i in range(min_subtr, len(domain_name)):
+        for i in range(min_subtr, len(str(domain_name))):
             if self.mode == 1:
-                tuples = ngrams(domain_name, i)  # overlapping chunks. example: facebook=fa+ac+ce+eb+bo+oo+ok
+                tuples = ngrams(str(domain_name), i)  # overlapping chunks. example: facebook=fa+ac+ce+eb+bo+oo+ok
             else:
                 # alternative way to split the string. in this case, text chunks are not overlapping. eg: facebook=fa+ce+bo+ok
                 tuples = zip(
-                    *[domain_name[j::i] for j in range(
+                    *[str(domain_name)[j::i] for j in range(
                         i)])
             split = [''.join(t) for t in tuples]
             tmpsum = 0
@@ -46,7 +49,7 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
 
             if tmpsum > maxl:
                 maxl = tmpsum
-        return maxl / int(len(domain_name))
+        return maxl / int(len(str(domain_name)))
 
     def transform(self, df, y=None):
         f = np.vectorize(self.__get_mcr)
@@ -76,7 +79,11 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
         self.n = n
 
     def __get_ns(self, domain_name):
-        tuples = ngrams(domain_name, self.n)
+        logger.debug("domain name: %s" % domain_name)
+        # if len(str(domain_name)) == 0:
+        #     return 0
+
+        tuples = ngrams(str(domain_name), self.n)
         myngrams = (''.join(t) for t in tuples)
         scoresum = 0
         for s in myngrams:
@@ -85,7 +92,7 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
                 if s in words:
                     counter += 1
             scoresum += counter
-        return scoresum / (len(domain_name) - self.n + 1)
+        return scoresum / (len(str(domain_name)) - self.n + 1)
 
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
@@ -104,25 +111,44 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
         self.__dict__.update(d)
 
 
-class NgramDistrExtractor(BaseEstimator, TransformerMixin):
-    def __init__(self, ngrams=1):
-        self.ngrams = ngrams
+class ItemSelector(BaseEstimator, TransformerMixin):
+    """For data grouped by feature, select subset of data at a provided key.
 
-    def __get_distr(self, domain_name):
-        pass
+    The data is expected to be stored in a 2D data structure, where the first
+    index is over features and the second is over samples.  i.e.
 
-    def transform(self, df, y=None):
-        """The workhorse of this feature extractor"""
-        f = np.vectorize(self.__get_distr)
-        return f(df)
+    >> len(data[key]) == n_samples
 
-    def fit(self, X, y=None):
-        return self  # does nothing
+    Please note that this is the opposite convention to scikit-learn feature
+    matrixes (where the first index corresponds to sample).
 
-    def __getstate__(self):
-        d = dict(self.__dict__)
-        # del d['logger']
-        return d
+    ItemSelector only requires that the collection implement getitem
+    (data[key]).  Examples include: a dict of lists, 2D numpy array, Pandas
+    DataFrame, numpy record array, etc.
 
-    def __setstate__(self, d):
-        self.__dict__.update(d)
+    >> data = {'a': [1, 5, 2, 5, 2, 8],
+               'b': [9, 4, 1, 4, 1, 3]}
+    >> ds = ItemSelector(key='a')
+    >> data['a'] == ds.transform(data)
+
+    ItemSelector is not designed to handle data grouped by sample.  (e.g. a
+    list of dicts).  If your data is structured this way, consider a
+    transformer along the lines of `sklearn.feature_extraction.DictVectorizer`.
+
+    Parameters
+    ----------
+    key : hashable, required
+        The key corresponding to the desired value in a mappable.
+    """
+
+    def __init__(self, key):
+        self.key = key
+
+    def fit(self, x, y=None):
+        return self
+
+    def transform(self, data_dict):
+        logger.debug("loading data from column %s" % self.key)
+        X = (data_dict[self.key].values).reshape(-1, 1)
+        logger.debug(X)
+        return X

@@ -16,50 +16,82 @@ from sklearn.externals import joblib
 import matplotlib.pyplot as plt
 from sklearn.model_selection import StratifiedKFold, KFold
 from scipy import interp
+from sklearn import tree
 
 from sklearn.model_selection import train_test_split
 from features import data_generator
-from features.features_extractors import MCRExtractor, NormalityScoreExtractor
+from features.features_extractors import MCRExtractor, NormalityScoreExtractor, ItemSelector
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 ## Dataset Loading/Generation
-n_samples = 1000
-df = data_generator.load_dataset(n_samples)
-if df is None:
-    df = data_generator.generate_dataset(n_samples)
-    logger.debug("generated dataset %s" % n_samples)
-else:
-    logger.debug("loaded dataset %s" % n_samples)
+# n_samples = 1000
+# df = data_generator.load_dataset(n_samples)
+# if df is None:
+#     df = data_generator.generate_dataset(n_samples)
+#     logger.debug("generated dataset %s" % n_samples)
+# else:
+#     logger.debug("loaded dataset %s" % n_samples)
+
+df = data_generator.load_json(100)
 
 ## X, y defininition
-X, y = df['Domain'].values, df['Target'].values
-X = X.reshape(-1, 1)
+X, y = df, df['Target'].values
+# X = X.reshape(-1, 1)
 y = np.ravel(y)
 
 ## Pipeline Definition
 cachedir = mkdtemp()
+
 memory = joblib.Memory(cachedir=cachedir, verbose=0)
-pipeline = Pipeline(memory=memory, steps=[
-    ('features_extractors',
-     FeatureUnion([
-         ('mcr', MCRExtractor()),
-         ('ns1', NormalityScoreExtractor(1)),
-         ('ns2', NormalityScoreExtractor(2)),
-         ('ns3', NormalityScoreExtractor(3)),
-     ],
-         n_jobs=2
-     )
-     ),
-    ('clf', SVC(kernel='linear', probability=True)
-     )
-])
+
+pipeline = Pipeline(
+    memory=memory,
+    steps=[
+
+        ('features_extractors',
+         FeatureUnion(
+             transformer_list=[
+
+                 # Pipeline for pulling features from the post's subject line
+                 ('mcr_pip', Pipeline([
+                     ('selector', ItemSelector(key='rrname')),
+                     ('mcr', MCRExtractor()),
+                 ])),
+
+                 # ('subject', Pipeline([
+                 #     ('selector', ItemSelector(key='rrname')),
+                 #     ('ns1', NormalityScoreExtractor(1)),
+                 # ])),
+
+                 ('ns2_pip', Pipeline([
+                     ('selector', ItemSelector(key='rrname')),
+                     ('ns2', NormalityScoreExtractor(2)),
+                 ])),
+
+                 ('ns3_pip', Pipeline([
+                     ('selector', ItemSelector(key='rrname')),
+                     ('ns3', NormalityScoreExtractor(3)),
+                 ])),
+
+                 # ('mcr', MCRExtractor()),
+                 # ('ns1', NormalityScoreExtractor(1)),
+                 # ('ns2', NormalityScoreExtractor(2)),
+                 # ('ns3', NormalityScoreExtractor(3)),
+             ],
+             n_jobs=2
+         )),
+
+        ('clf', SVC(kernel='linear', probability=True))
+
+    ])
 
 clfs = {
     "RandomForest": RandomForestClassifier(random_state=True),
-    "SVC": SVC(kernel='linear', C=.9999999999999995e-07, max_iter=50, probability=True),
+    # "SVC": SVC(kernel='linear', C=.9999999999999995e-07, max_iter=50, probability=True),
     # "GaussianNB": GaussianNB()
+    # "DecisionTree": tree.DecisionTreeClassifier(),
 }
 
 
@@ -147,6 +179,7 @@ def grid_search():
 
 normal_training()
 # roc_comparison()
+# data_generator.load_json(20)
 
 logger.info("Exiting...")
 rmtree(cachedir)  # clearing pipeline cache
