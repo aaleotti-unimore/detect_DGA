@@ -11,8 +11,8 @@ import numpy as np
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-mcr_dict = enchant.Dict("en_US")
-ns_dict = open("features/top10000en.txt").readlines()
+# mcr_dict = enchant.Dict("en_US")
+eng_dict = open("features/top10000en.txt").readlines()
 
 from collections import Counter
 
@@ -46,7 +46,7 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
             tmpsum = 0
             tmps = []
             for s in split:
-                if mcr_dict.check(s):
+                if s in eng_dict:
                     tmpsum += len(s)
                     tmps.append(s)
 
@@ -90,7 +90,7 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
         scoresum = 0
         for s in myngrams:
             counter = 0
-            for words in ns_dict:
+            for words in eng_dict:
                 if s in words:
                     counter += 1
             scoresum += counter
@@ -178,6 +178,8 @@ class CharDistr(BaseEstimator, TransformerMixin):
 
     def __setstate__(self, d):
         self.__dict__.update(d)
+
+
 
 
 class ItemSelector(BaseEstimator, TransformerMixin):

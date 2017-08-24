@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 # Dataset Loading/Generation
-n_samples = 20000
+n_samples = 2000
 logger.info("samples %s" % n_samples)
 df = data_generator.load_dataset(n_samples)
 
@@ -82,7 +82,7 @@ pipeline = Pipeline(
                  ('ns3', NormalityScoreExtractor(3)),
                  ('ncr', NumCharRatio()),
              ],
-             n_jobs=2
+             n_jobs=8
          )),
 
         ('clf', SVC(kernel='linear', probability=True))
@@ -92,19 +92,21 @@ pipeline = Pipeline(
 clfs = {
     "RandomForest": RandomForestClassifier(random_state=True),
     # "SVC": SVC(kernel='linear', C=.9999999999999995e-07, max_iter=50, probability=True),
-    # "GaussianNB": GaussianNB()
-    # "DecisionTree": tree.DecisionTreeClassifier(),
+    # "GaussianNB": GaussianNB(),
+    "DecisionTree": tree.DecisionTreeClassifier(),
 }
 
 
 def normal_training():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
+        logger.info("testing: %s" % clf_name)
         pipeline.set_params(**{'clf': clf_value})
         model = pipeline.fit(X_train, y_train)
         y_pred = model.predict(X_test)
         logger.info("### MODEL %s Performance ###" % clf_name)
         logger.info("\n\n%s" % classification_report(y_test, y_pred, target_names=['Benign', 'DGA'], ))
+        joblib.dump(model, "models/model_%s_%s.pkl" % (clf_name, n_samples), compress=5)
 
 
 def roc_comparison(graphic=True):
@@ -119,7 +121,7 @@ def roc_comparison(graphic=True):
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
         ##for each clf in the pipepline
         pipeline.set_params(**{'clf': clf_value})
-
+        logger.info("testing: %s" % clf_name)
         for train, test in cv.split(X, y):
             probas_ = pipeline.fit(X[train], y[train]).predict_proba(X[test])
             # Compute ROC curve and area the curve
@@ -129,6 +131,8 @@ def roc_comparison(graphic=True):
             roc_auc = auc(fpr, tpr)
             aucs.append(roc_auc)
 
+        joblib.dump(pipeline, "models/model_%s_%s_10Fold.pkl" % (clf_name, n_samples), compress=5)
+        logger.info("models/model_%s_%s_10Fold.pkl saved to disk" % (clf_name, n_samples) )
         # tpr,fpr,auc plot
         mean_tpr = np.mean(tprs, axis=0)
         mean_tpr[-1] = 1.0
@@ -141,34 +145,31 @@ def roc_comparison(graphic=True):
         tprs_upper = np.minimum(mean_tpr + std_tpr, 1)
         tprs_lower = np.maximum(mean_tpr - std_tpr, 0)
 
+        graphic_datas = [mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc]
+
         if graphic:
-            plt.fill_between(mean_fpr, tprs_lower, tprs_upper, color=colors[index], alpha=.2,
-                             label=r'$\pm$ 1 std. dev.')
-            plt.plot(mean_fpr, mean_tpr, color=colors[index],
-                     label=r'%s Mean ROC (AUC = %0.2f $\pm$ %0.2f)' % (clf_name, mean_auc, std_auc),
-                     lw=2, alpha=.8)
+            #show data, save image
+            plot_data(clf_name=clf_name, n=n_samples, from_file=False, graphic_datas=graphic_datas, figure=1)
         else:
-            graphic_datas = [mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc]
-            joblib.dump(graphic_datas, "graphic_datas.pkl")
-
-    if graphic:
-        # plot definition
-        plt.plot([0, 1], [0, 1], linestyle='--', lw=2, color='r',
-                 label='Luck', alpha=.8)
-        plt.xlim([-0.05, 1.05])
-        plt.ylim([-0.05, 1.05])
-        plt.xlabel('False Positive Rate')
-        plt.ylabel('True Positive Rate')
-        # plt.title('Receiver operating characteristic example')
-        plt.legend(loc="lower right")
-        plt.savefig("plot.png")
-        plt.show()
+            #save data
+            joblib.dump(graphic_datas, "models/graph/%s_graphic_datas_%s.pkl" % (clf_name, n_samples))
+            logger.info("models/graph/%s_graphic_datas_%s.pkl saved to disk" % (clf_name, n_samples))
 
 
-def plot_data():
-    plt.figure(1)
+def plot_data(clf_name, n=n_samples, figure=1, from_file=True, graphic_datas=None):
+    plt.figure(figure)
     colors = ['r', 'g', 'b']
-    mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc = joblib.load("graphic_datas.pkl")
+
+    if from_file:
+        mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc = joblib.load(
+            "%s_graphic_datas_%s.pkl" % (clf_name, n))
+    else:
+        try:
+            mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc = graphic_datas
+        except Exception as e:
+            logger.error(e)
+            return False
+
     plt.fill_between(mean_fpr, tprs_lower, tprs_upper, color=colors[0], alpha=.2,
                      label=r'$\pm$ 1 std. dev.')
     plt.plot(mean_fpr, mean_tpr, color=colors[0],
@@ -180,10 +181,10 @@ def plot_data():
     plt.ylim([-0.05, 1.05])
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
-    # plt.title('Receiver operating characteristic example')
     plt.legend(loc="lower right")
-    plt.savefig("plot.png")
-    plt.show()
+    plt.savefig("models/graph/plot_%s_%s.png" % (clf_name, n))
+    # plt.show()
+    return True
 
 
 def grid_search():
@@ -210,8 +211,9 @@ def grid_search():
 
 
 # normal_training()
-roc_comparison(graphic=False)
+roc_comparison(graphic=True)
 # data_generator.load_json(20)
+# plot_data("RandomForest",50000)
 
 logger.info("Exiting...")
 rmtree(cachedir)  # clearing pipeline cache

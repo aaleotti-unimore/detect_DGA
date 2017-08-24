@@ -18,8 +18,8 @@ logger.setLevel(logging.INFO)
 mcr_dict = enchant.Dict("en_US")
 ns_dict = open("features/top10000en.txt").readlines()
 
-path_good = 'DGA-master/majestic_million.csv'
-path_bad = 'DGA-master/all_dga.txt'
+path_good = 'datasets/majestic_million.csv'
+path_bad = 'datasets/all_dga.txt'
 
 path_json = [
     'DGA-master/062000_00.json',
