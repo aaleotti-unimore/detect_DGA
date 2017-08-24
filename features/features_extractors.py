@@ -9,9 +9,12 @@ from sklearn.base import BaseEstimator, TransformerMixin
 import numpy as np
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 mcr_dict = enchant.Dict("en_US")
 ns_dict = open("features/top10000en.txt").readlines()
+
+from collections import Counter
 
 
 class MCRExtractor(BaseEstimator, TransformerMixin):
@@ -25,7 +28,7 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
         self.mode = mode
 
     def __get_mcr(self, domain_name):
-        logger.debug("domain name: %s" % domain_name )
+        logger.debug("domain name: %s" % domain_name)
         # if len(str(domain_name)) == 0:
         #     return 0
 
@@ -80,8 +83,7 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
 
     def __get_ns(self, domain_name):
         logger.debug("domain name: %s" % domain_name)
-        # if len(str(domain_name)) == 0:
-        #     return 0
+
 
         tuples = ngrams(str(domain_name), self.n)
         myngrams = (''.join(t) for t in tuples)
@@ -97,6 +99,73 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
         f = np.vectorize(self.__get_ns)
+        return f(df)
+
+    def fit(self, X, y=None):
+        return self  # does nothing
+
+    def __getstate__(self):
+        d = dict(self.__dict__)
+        # del d['logger']
+        return d
+
+    def __setstate__(self, d):
+        self.__dict__.update(d)
+
+
+class NumCharRatio(BaseEstimator, TransformerMixin):
+    """
+    % of numerical characters feature
+    """
+
+    def __init__(self):
+        pass
+
+    def __get_ncr(self, domain_name):
+        logger.debug("domain name: %s" % domain_name)
+        counter = Counter(domain_name)
+        ncr = 0
+        for key, value in counter.iteritems():
+            if key.isdigit():
+                ncr+=value
+
+        return ncr/len(domain_name)
+
+    def transform(self, df, y=None):
+        """The workhorse of this feature extractor"""
+        f = np.vectorize(self.__get_ncr)
+        return f(df)
+
+    def fit(self, X, y=None):
+        return self  # does nothing
+
+    def __getstate__(self):
+        d = dict(self.__dict__)
+        # del d['logger']
+        return d
+
+    def __setstate__(self, d):
+        self.__dict__.update(d)
+
+
+class CharDistr(BaseEstimator, TransformerMixin):
+    """
+    cher distribution
+    """
+
+    def __init__(self, n):
+        self.n = n
+
+    def __get_ncr(self, domain_name):
+        logger.debug("domain name: %s" % domain_name)
+        ncr = 0
+
+
+        return ncr
+
+    def transform(self, df, y=None):
+        """The workhorse of this feature extractor"""
+        f = np.vectorize(self.__get_ncr)
         return f(df)
 
     def fit(self, X, y=None):

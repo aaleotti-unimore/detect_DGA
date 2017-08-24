@@ -20,25 +20,25 @@ from sklearn import tree
 
 from sklearn.model_selection import train_test_split
 from features import data_generator
-from features.features_extractors import MCRExtractor, NormalityScoreExtractor, ItemSelector
+from features.features_extractors import MCRExtractor, NormalityScoreExtractor, ItemSelector, NumCharRatio
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-## Dataset Loading/Generation
-# n_samples = 1000
-# df = data_generator.load_dataset(n_samples)
-# if df is None:
-#     df = data_generator.generate_dataset(n_samples)
-#     logger.debug("generated dataset %s" % n_samples)
-# else:
-#     logger.debug("loaded dataset %s" % n_samples)
+# Dataset Loading/Generation
+n_samples = 20000
+df = data_generator.load_dataset(n_samples)
+if df is None:
+    df = data_generator.generate_dataset(n_samples)
+    logger.debug("generated dataset %s" % n_samples)
+else:
+    logger.debug("loaded dataset %s" % n_samples)
 
-df = data_generator.load_json(100)
+# df = data_generator.load_json(100)
 
 ## X, y defininition
-X, y = df, df['Target'].values
-# X = X.reshape(-1, 1)
+X, y = df['Domain'].values, df['Target'].values
+X = X.reshape(-1, 1)
 y = np.ravel(y)
 
 ## Pipeline Definition
@@ -49,36 +49,42 @@ memory = joblib.Memory(cachedir=cachedir, verbose=0)
 pipeline = Pipeline(
     memory=memory,
     steps=[
-
+        # ('selector', ItemSelector(key='Domain')),
         ('features_extractors',
          FeatureUnion(
              transformer_list=[
 
-                 # Pipeline for pulling features from the post's subject line
-                 ('mcr_pip', Pipeline([
-                     ('selector', ItemSelector(key='rrname')),
-                     ('mcr', MCRExtractor()),
-                 ])),
+                 #  # Pipeline for pulling features from the post's subject line
+                 #  ('mcr_pip', Pipeline([
+                 #      ('selector', ItemSelector(key='rrname')),
+                 #      ('mcr', MCRExtractor()),
+                 #  ])),
+                 #
+                 #  ('subject', Pipeline([
+                 #      ('selector', ItemSelector(key='rrname')),
+                 #      ('ns1', NormalityScoreExtractor(1)),
+                 #  ])),
+                 #
+                 #  ('ns2_pip', Pipeline([
+                 #      ('selector', ItemSelector(key='rrname')),
+                 #      ('ns2', NormalityScoreExtractor(2)),
+                 #  ])),
+                 #
+                 #  ('ns3_pip', Pipeline([
+                 #      ('selector', ItemSelector(key='rrname')),
+                 #      ('ns3', NormalityScoreExtractor(3)),
+                 #  ])),
+                 #
+                 # ('ncr_pip', Pipeline([
+                 #      ('selector', ItemSelector(key='rrname')),
+                 #      ('ncr', NumCharRatio()),
+                 #  ])),
 
-                 # ('subject', Pipeline([
-                 #     ('selector', ItemSelector(key='rrname')),
-                 #     ('ns1', NormalityScoreExtractor(1)),
-                 # ])),
-
-                 ('ns2_pip', Pipeline([
-                     ('selector', ItemSelector(key='rrname')),
-                     ('ns2', NormalityScoreExtractor(2)),
-                 ])),
-
-                 ('ns3_pip', Pipeline([
-                     ('selector', ItemSelector(key='rrname')),
-                     ('ns3', NormalityScoreExtractor(3)),
-                 ])),
-
-                 # ('mcr', MCRExtractor()),
-                 # ('ns1', NormalityScoreExtractor(1)),
-                 # ('ns2', NormalityScoreExtractor(2)),
-                 # ('ns3', NormalityScoreExtractor(3)),
+                 ('mcr', MCRExtractor()),
+                 ('ns1', NormalityScoreExtractor(1)),
+                 ('ns2', NormalityScoreExtractor(2)),
+                 ('ns3', NormalityScoreExtractor(3)),
+                 ('ncr', NumCharRatio()),
              ],
              n_jobs=2
          )),
@@ -177,8 +183,8 @@ def grid_search():
         print("\t%s: %r" % (param_name, best_params[param_name]))
 
 
-normal_training()
-# roc_comparison()
+# normal_training()
+roc_comparison()
 # data_generator.load_json(20)
 
 logger.info("Exiting...")
