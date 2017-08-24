@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 # Dataset Loading/Generation
-n_samples = 2000
+n_samples = 20000
 df = data_generator.load_dataset(n_samples)
 
 
@@ -153,7 +153,8 @@ def roc_comparison():
     plt.ylabel('True Positive Rate')
     # plt.title('Receiver operating characteristic example')
     plt.legend(loc="lower right")
-    plt.show()
+    plt.savefig("plot.png")
+    # plt.show()
 
 
 def grid_search():
