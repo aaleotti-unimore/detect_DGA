@@ -28,11 +28,7 @@ logger = logging.getLogger(__name__)
 # Dataset Loading/Generation
 n_samples = 2000
 df = data_generator.load_dataset(n_samples)
-if df is None:
-    df = data_generator.generate_dataset(n_samples)
-    logger.debug("generated dataset %s" % n_samples)
-else:
-    logger.debug("loaded dataset %s" % n_samples)
+
 
 # df = data_generator.load_json(100)
 

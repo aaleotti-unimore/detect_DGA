@@ -47,7 +47,7 @@ def load_dataset(sample):
         return joblib.load("datas/dataframe_%s.pkl" % sample)
     except IOError as e:
         logger.error(e)
-        return None
+        generate_dataset(sample)
 
 def check_dga(domain):
     matched = [c for c in bad_df if domain in c]
