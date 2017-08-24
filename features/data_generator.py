@@ -39,15 +39,19 @@ def generate_dataset(sample):
     bad_df['Target'] = 1
     df = pd.DataFrame(pd.concat((good_df, bad_df))).sample(sample)
     joblib.dump(df, "datas/dataframe_%s.pkl" % sample, compress=5)
+    logger.info("dataframe saved to datas/dataframe_%s.pkl" % sample)
     return df
 
 
 def load_dataset(sample):
     try:
-        return joblib.load("datas/dataframe_%s.pkl" % sample)
+        ld = joblib.load("datas/dataframe_%s.pkl" % sample)
+        logger.info("dataframe dataframe_%s.pkl loaded" % sample)
+        return ld
     except IOError as e:
         logger.error(e)
         generate_dataset(sample)
+
 
 def check_dga(domain):
     matched = [c for c in bad_df if domain in c]
@@ -63,12 +67,11 @@ def load_json(sample=1):
         tmp = read_json(file, lines=True, orient='record')
         df = pd.concat([df, tmp], axis=0)
 
-
     df = df.sample(n=sample, random_state=42, replace=True)
     df = pd.concat([df.drop(['dns'], axis=1), df['dns'].apply(pd.Series)], axis=1)
     df = df[(df.rrname != u'') & (df.rrname > 3) & (df.rrname != u'?')]
 
-    #stampa tutti i nomi di dominio con risposta NXDOMAIN su un file
+    # stampa tutti i nomi di dominio con risposta NXDOMAIN su un file
     # df = df[(df.rcode == u'NXDOMAIN') & (u'unimo' not in df.rrname) & (df.rrname != u'') & (u'sophos' not in df.rrname) ]
     # df['rrname'].to_csv("DGA-master/NX.txt")
     ############

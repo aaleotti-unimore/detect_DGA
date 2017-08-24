@@ -27,8 +27,8 @@ logger = logging.getLogger(__name__)
 
 # Dataset Loading/Generation
 n_samples = 20000
+logger.info("samples %s" % n_samples)
 df = data_generator.load_dataset(n_samples)
-
 
 # df = data_generator.load_json(100)
 
