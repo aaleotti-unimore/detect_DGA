@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 # Dataset Loading/Generation
-n_samples = 20000
+n_samples = 2000
 df = data_generator.load_dataset(n_samples)
 if df is None:
     df = data_generator.generate_dataset(n_samples)
