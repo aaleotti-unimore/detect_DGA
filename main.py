@@ -208,7 +208,7 @@ def grid_search():
 
 
 # normal_training()
-roc_comparison()
+roc_comparison(graphic=False)
 # data_generator.load_json(20)
 
 logger.info("Exiting...")
