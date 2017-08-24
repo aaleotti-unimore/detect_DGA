@@ -112,7 +112,8 @@ def roc_comparison(graphic=True):
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)
 
-    plt.figure(1)
+    if graphic:
+        plt.figure(1)
     cv = KFold(n_splits=10)
 
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
@@ -165,6 +166,7 @@ def roc_comparison(graphic=True):
 
 
 def plot_data():
+    plt.figure(1)
     colors = ['r', 'g', 'b']
     mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc = joblib.load("graphic_datas.pkl")
     plt.fill_between(mean_fpr, tprs_lower, tprs_upper, color=colors[0], alpha=.2,
