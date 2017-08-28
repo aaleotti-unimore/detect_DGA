@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 lb = preprocessing.LabelBinarizer()
 
 #### Dataset Loading/Generation
-n_samples = 200
+n_samples = 50000
 logger.info("samples %s" % n_samples)
 df = data_generator.load_dataset(n_samples, mode=0)
 
@@ -60,7 +60,7 @@ pipeline = Pipeline(
                  ('ns3', NormalityScoreExtractor(3)),
                  ('ncr', NumCharRatio()),
              ],
-             n_jobs=2
+             n_jobs=8
          )),
         ('clf', SVC(kernel='linear', probability=True))
     ])
