@@ -20,7 +20,7 @@ path_json = [
     # 'DGA-master/062003_00.json',
 ]
 
-legitdga_domains = "datasets/legit-dga_domains.csv"
+legitdga_domains = "datasets/legit-dga_domains.csv"  # max lines = 133929
 
 
 def generate_dataset(n_samples, mode=1):
@@ -30,15 +30,16 @@ def generate_dataset(n_samples, mode=1):
         bad_df = pd.read_csv(path_bad, sep=' ', header=None, names=['Domain', 'Type'], usecols=['Domain'])
         good_df['Target'] = 0
         bad_df['Target'] = 1
-        df = pd.DataFrame(pd.concat((good_df, bad_df))).sample(n_samples)
+        df = pd.DataFrame(pd.concat((good_df, bad_df)))
     else:
         ## dataset data legit-dga_domains
         df = pd.DataFrame(
             pd.read_csv(legitdga_domains, sep=",", usecols=['domain', 'class'])
-        ).sample(n_samples, random_state=42)
+        )
     joblib.dump(df, "datas/dataframe_%s.pkl" % n_samples, compress=5)
     logger.info("dataframe saved to datas/dataframe_%s.pkl" % n_samples)
-    return df
+
+    return df.sample(n_samples, random_state=42)
 
 
 def load_dataset(sample, mode=1):
