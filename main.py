@@ -1,41 +1,47 @@
 import logging
-
-import numpy as np
-from tempfile import mkdtemp
 from shutil import rmtree
+from tempfile import mkdtemp
+from time import time
+
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import interp
+from sklearn import preprocessing
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.linear_model import SGDClassifier
+from sklearn.externals import joblib
 from sklearn.metrics import auc, roc_curve, classification_report
-from sklearn.model_selection import cross_val_predict
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import KFold
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.svm import SVC
-from time import time
-from sklearn.model_selection import GridSearchCV
-from sklearn.externals import joblib
-import matplotlib.pyplot as plt
-from sklearn.model_selection import StratifiedKFold, KFold
-from scipy import interp
-from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
 
-from sklearn.model_selection import train_test_split
 from features import data_generator
-from features.features_extractors import MCRExtractor, NormalityScoreExtractor, ItemSelector, NumCharRatio
+from features.features_extractors import MCRExtractor, NormalityScoreExtractor, NumCharRatio
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-# Dataset Loading/Generation
-n_samples = 2000
+lb = preprocessing.LabelBinarizer()
+
+#### Dataset Loading/Generation
+n_samples = 200
 logger.info("samples %s" % n_samples)
-df = data_generator.load_dataset(n_samples)
+df = data_generator.load_dataset(n_samples, mode=0)
 
-# df = data_generator.load_json(100)
+# ## OLD X, y defininition
+# X, y = df['Domain'].values, df['Target'].values
+# X = X.reshape(-1, 1)
+# y = np.ravel(y)
 
-## X, y defininition
-X, y = df['Domain'].values, df['Target'].values
-X = X.reshape(-1, 1)
-y = np.ravel(y)
+
+X = df['domain'].values.reshape(-1, 1)
+y = np.ravel(lb.fit_transform(df['class'].values))
+
+logger.debug(X)
+logger.debug(y)
 
 ## Pipeline Definition
 cachedir = mkdtemp()
@@ -45,55 +51,25 @@ memory = joblib.Memory(cachedir=cachedir, verbose=0)
 pipeline = Pipeline(
     memory=memory,
     steps=[
-        # ('selector', ItemSelector(key='Domain')),
         ('features_extractors',
          FeatureUnion(
              transformer_list=[
-
-                 #  # Pipeline for pulling features from the post's subject line
-                 #  ('mcr_pip', Pipeline([
-                 #      ('selector', ItemSelector(key='rrname')),
-                 #      ('mcr', MCRExtractor()),
-                 #  ])),
-                 #
-                 #  ('subject', Pipeline([
-                 #      ('selector', ItemSelector(key='rrname')),
-                 #      ('ns1', NormalityScoreExtractor(1)),
-                 #  ])),
-                 #
-                 #  ('ns2_pip', Pipeline([
-                 #      ('selector', ItemSelector(key='rrname')),
-                 #      ('ns2', NormalityScoreExtractor(2)),
-                 #  ])),
-                 #
-                 #  ('ns3_pip', Pipeline([
-                 #      ('selector', ItemSelector(key='rrname')),
-                 #      ('ns3', NormalityScoreExtractor(3)),
-                 #  ])),
-                 #
-                 # ('ncr_pip', Pipeline([
-                 #      ('selector', ItemSelector(key='rrname')),
-                 #      ('ncr', NumCharRatio()),
-                 #  ])),
-
                  ('mcr', MCRExtractor()),
                  ('ns1', NormalityScoreExtractor(1)),
                  ('ns2', NormalityScoreExtractor(2)),
                  ('ns3', NormalityScoreExtractor(3)),
                  ('ncr', NumCharRatio()),
              ],
-             n_jobs=8
+             n_jobs=2
          )),
-
         ('clf', SVC(kernel='linear', probability=True))
-
     ])
 
 clfs = {
     "RandomForest": RandomForestClassifier(random_state=True),
-    # "SVC": SVC(kernel='linear', C=.9999999999999995e-07, max_iter=50, probability=True),
-    # "GaussianNB": GaussianNB(),
-    "DecisionTree": tree.DecisionTreeClassifier(),
+    "SVC": SVC(kernel='linear', C=.9999999999999995e-07, max_iter=50, probability=True),
+    "GaussianNB": GaussianNB(),
+    "DecisionTree": DecisionTreeClassifier(),
 }
 
 
@@ -114,9 +90,8 @@ def roc_comparison(graphic=True):
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)
 
-    if graphic:
-        plt.figure(1)
     cv = KFold(n_splits=10)
+    graphic_datas = {}
 
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
         ##for each clf in the pipepline
@@ -131,60 +106,58 @@ def roc_comparison(graphic=True):
             roc_auc = auc(fpr, tpr)
             aucs.append(roc_auc)
 
-        joblib.dump(pipeline, "models/model_%s_%s_10Fold.pkl" % (clf_name, n_samples), compress=5)
-        logger.info("models/model_%s_%s_10Fold.pkl saved to disk" % (clf_name, n_samples) )
         # tpr,fpr,auc plot
         mean_tpr = np.mean(tprs, axis=0)
         mean_tpr[-1] = 1.0
         mean_auc = auc(mean_fpr, mean_tpr)
         std_auc = np.std(aucs)
-        colors = ['r', 'g', 'b']
 
         # std dev plot
         std_tpr = np.std(tprs, axis=0)
         tprs_upper = np.minimum(mean_tpr + std_tpr, 1)
         tprs_lower = np.maximum(mean_tpr - std_tpr, 0)
 
-        graphic_datas = [mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc]
+        graphic_datas[clf_name] = [mean_tpr, mean_fpr, tprs_lower, tprs_upper, mean_auc, std_auc]
+        joblib.dump(pipeline, "models/10Fold/model_%s_%s.pkl" % (clf_name, n_samples), compress=5)
+        logger.info("models/10Fold/model_%s_%s.pkl saved to disk" % (clf_name, n_samples))
 
-        if graphic:
-            #show data, save image
-            plot_data(clf_name=clf_name, n=n_samples, from_file=False, graphic_datas=graphic_datas, figure=1)
-        else:
-            #save data
-            joblib.dump(graphic_datas, "models/graph/%s_graphic_datas_%s.pkl" % (clf_name, n_samples))
-            logger.info("models/graph/%s_graphic_datas_%s.pkl saved to disk" % (clf_name, n_samples))
-
-
-def plot_data(clf_name, n=n_samples, figure=1, from_file=True, graphic_datas=None):
-    plt.figure(figure)
-    colors = ['r', 'g', 'b']
-
-    if from_file:
-        mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc = joblib.load(
-            "%s_graphic_datas_%s.pkl" % (clf_name, n))
+    if graphic:
+        # show data, save image
+        plot_data(graphic_datas=graphic_datas, n=n_samples)
     else:
-        try:
-            mean_tpr, mean_fpr, tprs_lower, tprs_upper, clf_name, mean_auc, std_auc = graphic_datas
-        except Exception as e:
-            logger.error(e)
-            return False
+        # save data
+        joblib.dump(graphic_datas, "models/graph/graphic_datas_%s.pkl" % (n_samples))
+        logger.info("models/graph/graphic_datas_%s.pkl saved to disk" % (n_samples))
 
-    plt.fill_between(mean_fpr, tprs_lower, tprs_upper, color=colors[0], alpha=.2,
-                     label=r'$\pm$ 1 std. dev.')
-    plt.plot(mean_fpr, mean_tpr, color=colors[0],
-             label=r'%s Mean ROC (AUC = %0.2f $\pm$ %0.2f)' % (clf_name, mean_auc, std_auc),
-             lw=2, alpha=.8)
-    plt.plot([0, 1], [0, 1], linestyle='--', lw=2, color='r',
+    if graphic:
+        plt.show()
+
+
+def plot_data(graphic_datas, n):
+    plt.figure(1)
+    colors = ['r', 'g', 'b', 'c', 'm', 'b']
+
+    for index, (clf_name, clf_graph) in enumerate(graphic_datas.iteritems()):
+        [mean_tpr, mean_fpr, tprs_lower, tprs_upper, mean_auc, std_auc] = clf_graph
+        plt.fill_between(mean_fpr, tprs_lower, tprs_upper,
+                         color=colors[index],
+                         alpha=.2,
+                         label=r'$\pm$ 1 std. dev.')
+        plt.plot(mean_fpr, mean_tpr,
+                 color=colors[index],
+                 label=r'%s Mean ROC (AUC = %0.2f $\pm$ %0.2f)' % (clf_name, mean_auc, std_auc),
+                 lw=1,
+                 alpha=.8)
+
+    plt.plot([0, 1], [0, 1], linestyle='--', lw=1, color='r',
              label='Luck', alpha=.8)
     plt.xlim([-0.05, 1.05])
     plt.ylim([-0.05, 1.05])
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.legend(loc="lower right")
-    plt.savefig("models/graph/plot_%s_%s.png" % (clf_name, n))
-    # plt.show()
-    return True
+    plt.savefig("models/graph/plot_comparison_%s.png" % n)
+    plt.show()
 
 
 def grid_search():
@@ -211,9 +184,9 @@ def grid_search():
 
 
 # normal_training()
-roc_comparison(graphic=True)
+roc_comparison(graphic=False)
 # data_generator.load_json(20)
-# plot_data("RandomForest",50000)
+# plot_data(joblib.load("models/graph/graphic_datas_%s.pkl" % n_samples), n_samples)
 
 logger.info("Exiting...")
 rmtree(cachedir)  # clearing pipeline cache

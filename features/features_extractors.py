@@ -3,10 +3,9 @@ from __future__ import division
 
 import logging
 
-import enchant
+import numpy as np
 from nltk import ngrams
 from sklearn.base import BaseEstimator, TransformerMixin
-import numpy as np
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -84,7 +83,6 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
     def __get_ns(self, domain_name):
         logger.debug("domain name: %s" % domain_name)
 
-
         tuples = ngrams(str(domain_name), self.n)
         myngrams = (''.join(t) for t in tuples)
         scoresum = 0
@@ -127,41 +125,9 @@ class NumCharRatio(BaseEstimator, TransformerMixin):
         ncr = 0
         for key, value in counter.iteritems():
             if key.isdigit():
-                ncr+=value
+                ncr += value
 
-        return ncr/len(domain_name)
-
-    def transform(self, df, y=None):
-        """The workhorse of this feature extractor"""
-        f = np.vectorize(self.__get_ncr)
-        return f(df)
-
-    def fit(self, X, y=None):
-        return self  # does nothing
-
-    def __getstate__(self):
-        d = dict(self.__dict__)
-        # del d['logger']
-        return d
-
-    def __setstate__(self, d):
-        self.__dict__.update(d)
-
-
-class CharDistr(BaseEstimator, TransformerMixin):
-    """
-    cher distribution
-    """
-
-    def __init__(self, n):
-        self.n = n
-
-    def __get_ncr(self, domain_name):
-        logger.debug("domain name: %s" % domain_name)
-        ncr = 0
-
-
-        return ncr
+        return ncr / len(domain_name)
 
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
@@ -178,8 +144,6 @@ class CharDistr(BaseEstimator, TransformerMixin):
 
     def __setstate__(self, d):
         self.__dict__.update(d)
-
-
 
 
 class ItemSelector(BaseEstimator, TransformerMixin):
