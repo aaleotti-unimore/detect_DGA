@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 lb = preprocessing.LabelBinarizer()
 
 #### Dataset Loading/Generation
-n_samples = 50000
+n_samples = 2000
 logger.info("samples %s" % n_samples)
 df = data_generator.load_dataset(n_samples, mode=0)
 
@@ -94,11 +94,12 @@ def roc_comparison(graphic=True):
     graphic_datas = {}
 
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
-        ##for each clf in the pipepline
+        # for each clf in the pipepline
         pipeline.set_params(**{'clf': clf_value})
         logger.info("testing: %s" % clf_name)
         for train, test in cv.split(X, y):
-            probas_ = pipeline.fit(X[train], y[train]).predict_proba(X[test])
+            model = pipeline.fit(X[train], y[train])
+            probas_ = model.predict_proba(X[test])
             # Compute ROC curve and area the curve
             fpr, tpr, thresholds = roc_curve(y[test], probas_[:, 1])
             tprs.append(interp(mean_fpr, fpr, tpr))
@@ -182,11 +183,65 @@ def grid_search():
     for param_name in sorted(parameters.keys()):
         print("\t%s: %r" % (param_name, best_params[param_name]))
 
+
+def plot_trained_model(clfs):
+    tprs = []
+    aucs = []
+    mean_fpr = np.linspace(0, 1, 100)
+
+    cv = KFold(n_splits=10)
+    graphic_datas = {}
+
+    for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
+        for train, test in cv.split(X, y):
+            probas_ = clf_value.predict_proba(X[test])
+            # Compute ROC curve and area the curve
+            fpr, tpr, thresholds = roc_curve(y[test], probas_[:, 1])
+            tprs.append(interp(mean_fpr, fpr, tpr))
+            tprs[-1][0] = 0.0
+            roc_auc = auc(fpr, tpr)
+            aucs.append(roc_auc)
+
+        # tpr,fpr,auc plot
+        mean_tpr = np.mean(tprs, axis=0)
+        mean_tpr[-1] = 1.0
+        mean_auc = auc(mean_fpr, mean_tpr)
+        std_auc = np.std(aucs)
+
+        # std dev plot
+        std_tpr = np.std(tprs, axis=0)
+        tprs_upper = np.minimum(mean_tpr + std_tpr, 1)
+        tprs_lower = np.maximum(mean_tpr - std_tpr, 0)
+
+        graphic_datas[clf_name] = [mean_tpr, mean_fpr, tprs_lower, tprs_upper, mean_auc, std_auc]
+    plot_data(graphic_datas, n_samples)
+
+
 ##
 # normal_training()
-roc_comparison(graphic=False)
+# roc_comparison(graphic=False)
 # data_generator.load_json(20)
-# plot_data(joblib.load("models/graph/graphic_datas_%s.pkl" % n_samples), n_samples)
+# plot_data(joblib.load("graphic_datas.pkl"), n_samples)
+
+
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
+# y_pred = model.predict(X_test)
+# logger.info("\n\n%s" % classification_report(y_test, y_pred, target_names=['DGA', 'Legit'], ))
+# trained_clfs = {
+#     "RandomForest" : joblib.load("models/10Fold/model_RandomForest_50000.pkl"),
+#     "SVC" : joblib.load("models/10Fold/model_SVC_50000.pkl"),
+#     "GaussianNB" : joblib.load("models/10Fold/model_GaussianNB_50000.pkl")
+# }
+#
+# plot_trained_model(trained_clfs)
+from features.features_extractors import ItemSelector, DomainExtractor
+
+df = ItemSelector(key="rrname").transform(data_generator.load_json(20))
+X = DomainExtractor().transform(df)
+
+model = joblib.load("models/10Fold/model_RandomForest_50000.pkl")
+y = model.predict(X)
+print(y)
 
 logger.info("Exiting...")
 rmtree(cachedir)  # clearing pipeline cache

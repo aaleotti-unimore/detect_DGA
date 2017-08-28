@@ -14,10 +14,10 @@ path_good = 'datasets/majestic_million.csv'
 path_bad = 'datasets/all_dga.txt'
 
 path_json = [
-    'DGA-master/062000_00.json',
-    # 'DGA-master/062001_00.json',
-    # 'DGA-master/062002_00.json',
-    # 'DGA-master/062003_00.json',
+    'datasets/062000_00.json',
+    # 'datasets/062001_00.json',
+    # 'datasets/062002_00.json',
+    # 'datasets/062003_00.json',
 ]
 
 legitdga_domains = "datasets/legit-dga_domains.csv"  # max lines = 133929
@@ -59,9 +59,11 @@ def load_json(sample=1):
     :return:
     """
     # pd.concat([df.drop(['b'], axis=1), df['b'].apply(pd.Series)], axis=1)
+
     df = pd.DataFrame()
     for file in path_json:
         tmp = read_json(file, lines=True, orient='record')
+        logger.debug("json %s opened" % file)
         df = pd.concat([df, tmp], axis=0)
 
     df = df.sample(n=sample, random_state=42, replace=True)
