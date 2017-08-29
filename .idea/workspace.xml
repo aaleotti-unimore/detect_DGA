@@ -4,6 +4,7 @@
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_module.py" afterPath="$PROJECT_DIR$/plot_module.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,43 +29,40 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+            <state relative-caret-position="-270">
+              <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#2200#2880#0" expanded="false" />
-                <element signature="e#2909#4469#0" expanded="false" />
+                <element signature="e#3022#4745#0" expanded="false" />
+                <element signature="e#4771#6636#0" expanded="false" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_search.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python2.7/site-packages/sklearn/model_selection/_search.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="1043" column="8" lean-forward="false" selection-start-line="1043" selection-start-column="8" selection-end-line="1043" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="report_RandomForest.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/graph/report_RandomForest.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="plot_module.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plot_module.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="102" column="109" lean-forward="false" selection-start-line="102" selection-start-column="109" selection-end-line="102" selection-end-column="109" />
+            <state relative-caret-position="87">
+              <caret line="148" column="63" lean-forward="true" selection-start-line="148" selection-start-column="63" selection-end-line="148" selection-end-column="63" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
                 <element signature="e#346#900#0" expanded="false" />
+                <element signature="e#346#485#1" expanded="false" />
+                <element signature="e#665#900#0" expanded="false" />
                 <element signature="e#929#1213#0" expanded="false" />
+                <element signature="e#929#1063#1" expanded="false" />
+                <element signature="e#1378#2954#0" expanded="false" />
+                <element signature="e#1378#1506#1" expanded="false" />
+                <element signature="e#1935#1952#0" expanded="false" />
+                <element signature="e#2379#2422#0" expanded="false" />
+                <element signature="e#2472#2515#0" expanded="false" />
+                <element signature="e#2717#2780#0" expanded="false" />
+                <element signature="e#2805#2843#0" expanded="false" />
+                <element signature="e#3073#4299#0" expanded="false" />
+                <element signature="e#3073#3196#1" expanded="false" />
+                <element signature="e#3368#3620#0" expanded="false" />
+                <element signature="e#4342#4439#0" expanded="false" />
+                <element signature="e#4961#5451#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -798,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504046241505</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="set n_jobs">
+      <created>1504046375584</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1504046375584</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -814,10 +819,10 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54460096" sideWeight="0.5088235" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59902596" sideWeight="0.5121396" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59902596" sideWeight="0.49117646" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59902596" sideWeight="0.48786038" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24734446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -888,11 +893,12 @@
     <MESSAGE value="modifiche ai metodi in main" />
     <MESSAGE value="modifiche  metodi in main" />
     <MESSAGE value="added logger to file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added logger to file" />
+    <MESSAGE value="set n_jobs" />
+    <option name="LAST_COMMIT_MESSAGE" value="set n_jobs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1138,23 +1144,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="102" column="109" lean-forward="false" selection-start-line="102" selection-start-column="109" selection-end-line="102" selection-end-column="109" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#346#900#0" expanded="false" />
-            <element signature="e#929#1213#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/graph/report_RandomForest.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/graph/report_SVC.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1176,14 +1165,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_RandomForest.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="148" column="63" lean-forward="true" selection-start-line="148" selection-start-column="63" selection-end-line="148" selection-end-column="63" />
+          <folding>
+            <element signature="e#346#900#0" expanded="false" />
+            <element signature="e#346#485#1" expanded="false" />
+            <element signature="e#665#900#0" expanded="false" />
+            <element signature="e#929#1213#0" expanded="false" />
+            <element signature="e#929#1063#1" expanded="false" />
+            <element signature="e#1378#2954#0" expanded="false" />
+            <element signature="e#1378#1506#1" expanded="false" />
+            <element signature="e#1935#1952#0" expanded="false" />
+            <element signature="e#2379#2422#0" expanded="false" />
+            <element signature="e#2472#2515#0" expanded="false" />
+            <element signature="e#2717#2780#0" expanded="false" />
+            <element signature="e#2805#2843#0" expanded="false" />
+            <element signature="e#3073#4299#0" expanded="false" />
+            <element signature="e#3073#3196#1" expanded="false" />
+            <element signature="e#3368#3620#0" expanded="false" />
+            <element signature="e#4342#4439#0" expanded="false" />
+            <element signature="e#4961#5451#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+        <state relative-caret-position="-270">
+          <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#2200#2880#0" expanded="false" />
-            <element signature="e#2909#4469#0" expanded="false" />
+            <element signature="e#3022#4745#0" expanded="false" />
+            <element signature="e#4771#6636#0" expanded="false" />
           </folding>
         </state>
       </provider>

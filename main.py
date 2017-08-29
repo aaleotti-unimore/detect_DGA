@@ -60,8 +60,8 @@ pipeline = Pipeline(
 clfs = {
     "RandomForest": RandomForestClassifier(random_state=True),
     "SVC": SVC(kernel='linear', C=.9999999999999995e-07, max_iter=50, probability=True),
-    "GaussianNB": GaussianNB(),
-    "DecisionTree": DecisionTreeClassifier(),
+    # "GaussianNB": GaussianNB(),
+    # "DecisionTree": DecisionTreeClassifier(),
 }
 
 ##already trained CLFS
@@ -73,6 +73,10 @@ trained_clfs = {
 
 
 def normal_training():
+    """
+    performs training on the classifiers of the pipeline in the clfs dictionary
+    :return:
+    """
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
     reports = {}
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
@@ -89,12 +93,16 @@ def normal_training():
 
 
 def roc_comparison():
+    """
+    train and calculates the mean ROC curve of all the classifier in the clfs dictionary
+    :return: dictionary of plot datas needed by plot_module.plot_AUC()
+    """
     tprs = []
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)
 
     cv = KFold(n_splits=10)
-    graphic_datas = {}
+    plot_datas = {}
 
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
         # for each clf in the pipepline
@@ -121,14 +129,14 @@ def roc_comparison():
         tprs_upper = np.minimum(mean_tpr + std_tpr, 1)
         tprs_lower = np.maximum(mean_tpr - std_tpr, 0)
 
-        graphic_datas[clf_name] = [mean_tpr, mean_fpr, tprs_lower, tprs_upper, mean_auc, std_auc]
+        plot_datas[clf_name] = [mean_tpr, mean_fpr, tprs_lower, tprs_upper, mean_auc, std_auc]
         joblib.dump(pipeline, "models/10Fold/model_%s_%s.pkl" % (clf_name, n_samples), compress=5)
         logger.info("models/10Fold/model_%s_%s.pkl saved to disk" % (clf_name, n_samples))
 
-    joblib.dump(graphic_datas, "models/graph/graphic_datas_%s.pkl" % (n_samples))
+    joblib.dump(plot_datas, "models/graph/graphic_datas_%s.pkl" % (n_samples))
     logger.info("models/graph/graphic_datas_%s.pkl saved to disk" % (n_samples))
 
-    return graphic_datas,
+    return plot_datas
 
 
 def grid_search():
