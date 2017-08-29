@@ -54,7 +54,7 @@ pipeline = Pipeline(
              ],
              n_jobs=n_jobs
          )),
-        ('clf', SVC(kernel='linear', probability=True))
+        ('clf', SVC())
     ])
 
 clfs = {
@@ -132,38 +132,50 @@ def roc_comparison():
 
 
 def grid_search():
-    """
-    performing grid search based on parameters
-    :return:
-    """
+    # Split the dataset in two equal parts
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.5, random_state=0)
 
-    parameters = {
-        'mcr__mode': (0, 1)
-        # 'clf__C': np.logspace(-6, -1, 10),
-        # 'clf__max_iter': (10, 50, 80),
-    }
-    print("Grid Search")
-    t0 = time()
-    grid_search = GridSearchCV(pipeline, parameters, n_jobs=1, verbose=1)
-    grid_search.fit(X, y)
-    logger.info("search done in %0.3fs for %s samples" % ((time() - t0), n_samples))
-    logger.info("Best score: %0.3f" % grid_search.best_score_)
-    logger.info("Best Params:")
-    best_params = grid_search.best_estimator_.get_params()
-    for param_name in sorted(parameters.keys()):
-        print("\t%s: %r" % (param_name, best_params[param_name]))
+    # Set the parameters by cross-validation
+    tuned_parameters = [{'clf__kernel': ['rbf'], 'clf__gamma': [1e-3, 1e-4],
+                         'clf__C': [1, 10, 100, 1000]},
+                        {'clf__kernel': ['linear'], 'clf__C': [1, 10, 100, 1000]}]
+
+    scores = ['precision', 'recall']
+
+    for score in scores:
+        logger.debug("# Tuning hyper-parameters for %s" % score)
+        logger.debug("")
+
+        clf = GridSearchCV(pipeline, tuned_parameters, cv=5,
+                           scoring='%s_macro' % score)
+        clf.fit(X_train, y_train)
+
+        logger.debug("Best parameters set found on development set:")
+        logger.debug("")
+        logger.debug(clf.best_params_)
+        logger.debug("")
+        logger.debug("Grid scores on development set:")
+        logger.debug("")
+        means = clf.cv_results_['mean_test_score']
+        stds = clf.cv_results_['std_test_score']
+        for mean, std, params in zip(means, stds, clf.cv_results_['params']):
+            logger.debug("%0.3f (+/-%0.03f) for %r"
+                  % (mean, std * 2, params))
+        logger.debug("")
+
+        logger.debug("Detailed classification report:")
+        logger.debug("")
+        logger.debug("The model is trained on the full development set.")
+        logger.debug("The scores are computed on the full evaluation set.")
+        logger.debug("")
+        y_true, y_pred = y_test, clf.predict(X_test)
+        logger.debug(classification_report(y_true, y_pred,target_names=['DGA','Legit']))
+        logger.debug("")
 
 
 def main():
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.90, random_state=42)
-    model = trained_clfs['RandomForest']
-    logger.debug(model)
-    logger.debug(X_test)
-    y_pred = model.predict(X_test)
-
-    report = classification_report(y_test, y_pred, target_names=['DGA', 'Legit'])
-    print report
-    plot_classification_report(report, 'RandomForest', n_samples=n_samples)
+    grid_search()
     pass
 
 
