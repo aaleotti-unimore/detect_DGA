@@ -132,6 +132,11 @@ def roc_comparison():
 
 
 def grid_search():
+    hdlr = logging.FileHandler('results.log')
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
+
     # Split the dataset in two equal parts
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.5, random_state=0)
