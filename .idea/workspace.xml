@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/graphic_datas.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/plot_comparison_200.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/graph/plot_comparison_2000.png" afterPath="$PROJECT_DIR$/models/graph/plot_comparison_2000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/graph/report_DecisionTree.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/graph/report_GaussianNB.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/graph/report_RandomForest.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/graph/report_SVC.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/model_DecisionTree_2000.pkl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/model_GaussianNB_2000.pkl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/model_RandomForest_2000.pkl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/model_SVC_2000.pkl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plot_module.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/all_dga.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datasets/majestic_million.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/get_dga_sets.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_DecisionTree_200.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_GaussianNB_200.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_RandomForest_200.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_SVC_200.pkl" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/graph/graphic_datas_200.pkl" afterPath="$PROJECT_DIR$/models/graph/auc_plot_datas_200.pkl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/data_generator.py" afterPath="$PROJECT_DIR$/features/data_generator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/features_extractors.py" afterPath="$PROJECT_DIR$/features/features_extractors.py" />
@@ -22,9 +36,10 @@
     <SUITE FILE_PATH="coverage/detect_DGA$test_model.coverage" NAME="test_model Coverage Results" MODIFIED="1502117729782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1501257964002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DGA-master/dga_wordlists" />
     <SUITE FILE_PATH="coverage/detect_DGA$mcr.coverage" NAME="mcr Coverage Results" MODIFIED="1501753818147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
+    <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1503951060513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504044372071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
   </component>
   <component name="FileEditorManager">
@@ -32,68 +47,31 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="243" column="7" lean-forward="false" selection-start-line="243" selection-start-column="7" selection-end-line="243" selection-end-column="7" />
+            <state relative-caret-position="1168">
+              <caret line="124" column="23" lean-forward="false" selection-start-line="124" selection-start-column="23" selection-end-line="124" selection-end-column="23" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#1453#1900#0" expanded="false" />
-                <marker date="1503951060480" expanded="false" signature="5561:6272" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="features_extractors.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="186" column="25" lean-forward="true" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
-              <folding>
-                <element signature="e#15#46#0" expanded="true" />
-                <element signature="e#432#2327#0" expanded="false" />
-                <element signature="e#432#930#1" expanded="false" />
-                <element signature="e#972#988#0" expanded="false" />
-                <element signature="e#1036#1992#0" expanded="false" />
-                <element signature="e#1090#1122#0" expanded="false" />
-                <element signature="e#1256#1943#0" expanded="false" />
-                <element signature="e#1424#1654#0" expanded="false" />
-                <element signature="e#1586#1653#0" expanded="false" />
-                <element signature="e#1793#1882#0" expanded="false" />
-                <element signature="e#1831#1882#0" expanded="false" />
-                <element signature="e#2039#2092#0" expanded="false" />
-                <element signature="e#2132#2159#0" expanded="false" />
-                <element signature="e#2197#2263#0" expanded="false" />
-                <element signature="e#2304#2327#0" expanded="false" />
-                <element signature="e#2398#3943#0" expanded="false" />
-                <element signature="e#2398#3051#1" expanded="false" />
-                <element signature="e#3088#3098#0" expanded="false" />
-                <element signature="e#3145#3555#0" expanded="false" />
-                <element signature="e#3350#3492#0" expanded="false" />
-                <element signature="e#3413#3460#0" expanded="false" />
-                <element signature="e#3602#3708#0" expanded="false" />
-                <element signature="e#3748#3775#0" expanded="false" />
-                <element signature="e#3813#3879#0" expanded="false" />
-                <element signature="e#3920#3943#0" expanded="false" />
-                <element signature="e#4003#4052#1" expanded="false" />
-                <element signature="e#4086#4090#0" expanded="false" />
-                <element signature="e#4298#4344#0" expanded="false" />
-                <element signature="e#4577#4604#0" expanded="false" />
-                <element signature="e#4642#4708#0" expanded="false" />
-                <element signature="e#4749#4772#0" expanded="false" />
-                <element signature="e#4832#5922#1" expanded="false" />
-                <element signature="e#6288#7378#1" expanded="false" />
-              </folding>
-            </state>
+      <file leaf-file-name="report_RandomForest.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/graph/report_RandomForest.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_generator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/data_generator.py">
+      <file leaf-file-name="plot_module.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plot_module.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-542">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="155">
+              <caret line="102" column="109" lean-forward="false" selection-start-line="102" selection-start-column="109" selection-end-line="102" selection-end-column="109" />
               <folding>
-                <element signature="e#15#46#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#346#900#0" expanded="false" />
+                <element signature="e#929#1213#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -113,7 +91,6 @@
       <find>splt</find>
       <find>debug</find>
       <find>info</find>
-      <find>print</find>
       <find>y_pred</find>
       <find>.mean()</find>
       <find>scores</find>
@@ -125,9 +102,13 @@
       <find>ifor</find>
       <find>&quot;&quot;</find>
       <find>DGA-master</find>
+      <find>domain name</find>
+      <find>print</find>
+      <find>dump</find>
+      <find>get_ax</find>
+      <find>__show_value</find>
     </findStrings>
     <replaceStrings>
-      <replace>logger.debug</replace>
       <replace>info</replace>
       <replace>debug</replace>
       <replace>logger.info</replace>
@@ -141,6 +122,7 @@
       <replace>str(domain_name)</replace>
       <replace>target</replace>
       <replace>datasets</replace>
+      <replace>logger.debug</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/DGA-master</dir>
@@ -179,8 +161,12 @@
         <option value="$PROJECT_DIR$/get_top_million.sh" />
         <option value="$PROJECT_DIR$/get_dga_sets.sh" />
         <option value="$PROJECT_DIR$/datasets/convert_rda.py" />
-        <option value="$PROJECT_DIR$/features/data_generator.py" />
         <option value="$PROJECT_DIR$/features/features_extractors.py" />
+        <option value="$PROJECT_DIR$/features/data_generator.py" />
+        <option value="$PROJECT_DIR$/training.py" />
+        <option value="$PROJECT_DIR$/evaluation.py" />
+        <option value="$PROJECT_DIR$/plots2.py" />
+        <option value="$PROJECT_DIR$/plot_module.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -225,12 +211,34 @@
             <path>
               <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
               <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
+              <item name="datas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
               <item name="datasets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
               <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
               <item name="features" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="10Fold" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -568,60 +576,6 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration name="came" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/features" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="detect_DGA" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/features/came.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="convert_rda" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python3.6" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/datasets" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="detect_DGA" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/datasets/convert_rda.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="detect_DGA" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -640,39 +594,14 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="test_model" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="detect_DGA" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_model.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Python.convert_rda" />
-      <item index="1" class="java.lang.String" itemvalue="Python.main" />
-      <item index="2" class="java.lang.String" itemvalue="Python.came" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test_model" />
-      <item index="4" class="java.lang.String" itemvalue="Python.example" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Doctests in metrics_example" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.main" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Doctests in metrics_example" />
     </list>
     <recent_temporary>
-      <list size="5">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.example" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Doctests in metrics_example" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test_model" />
-        <item index="4" class="java.lang.String" itemvalue="Python.came" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Doctests in metrics_example" />
       </list>
     </recent_temporary>
   </component>
@@ -848,7 +777,14 @@
       <option name="project" value="LOCAL" />
       <updated>1503940349507</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="modifiche ai metodi in main">
+      <created>1503951132146</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1503951132146</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -863,50 +799,27 @@
     <frame x="-1" y="1" width="1362" height="740" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54460096" sideWeight="0.5088235" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7224026" sideWeight="0.49117646" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22534142" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54460096" sideWeight="0.5088235" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31493506" sideWeight="0.49117646" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24734446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3983051" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31838235" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31838235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4779661" sideWeight="0.5030349" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4779661" sideWeight="0.4969651" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1585736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3983051" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -963,34 +876,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DGA_set/wget-log" />
-    <entry file="file://$PROJECT_DIR$/DGA_set/DGA-master/dga_wordlists/pushdo.txt" />
-    <entry file="file://$PROJECT_DIR$/DGA_set/DGA-master/all_dga.txt" />
-    <entry file="file://$PROJECT_DIR$/DGA_set/DGA-master/dga_wordlists/main.py" />
-    <entry file="file://$PROJECT_DIR$/DGA-master/dga_wordlists/main.py" />
-    <entry file="file://$PROJECT_DIR$/features/came.py" />
-    <entry file="file://$PROJECT_DIR$/features/hyphen_test.log" />
-    <entry file="file://$PROJECT_DIR$/training_set/test.csv" />
-    <entry file="file://$PROJECT_DIR$/features/top10000en.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="2389" column="2" lean-forward="false" selection-start-line="2389" selection-start-column="2" selection-end-line="2389" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/good.pkl" />
-    <entry file="file://$PROJECT_DIR$/training_set/top100000aa.txt" />
-    <entry file="file://$PROJECT_DIR$/features/stat_ling_filter.py" />
-    <entry file="file://$PROJECT_DIR$/features/ns.py" />
-    <entry file="file://$PROJECT_DIR$/features/mcr.py" />
-    <entry file="file://$PROJECT_DIR$/test_model.py" />
-    <entry file="file://$PROJECT_DIR$/DGA-master/test.txt" />
-    <entry file="file://$PROJECT_DIR$/DGA-master/bad10kaa.txt" />
     <entry file="file://$PROJECT_DIR$/DGA-master/top100k.txt" />
     <entry file="file://$PROJECT_DIR$/datas/y_10000" />
     <entry file="file://$PROJECT_DIR$/metrics_example.py" />
@@ -1102,33 +992,60 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test_plot_classif_report.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/classif_report.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/SVC_classif_report.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/RandomForest_classif_report.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/GaussianNB_classif_report.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/DecisionTree_classif_report.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/features/data_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-542">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="136">
+          <caret line="26" column="17" lean-forward="false" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#15#46#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="186" column="25" lean-forward="true" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+        <state relative-caret-position="19">
+          <caret line="200" column="41" lean-forward="false" selection-start-line="200" selection-start-column="41" selection-end-line="200" selection-end-column="41" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
             <element signature="e#432#2327#0" expanded="false" />
             <element signature="e#432#930#1" expanded="false" />
             <element signature="e#972#988#0" expanded="false" />
-            <element signature="e#1036#1992#0" expanded="false" />
             <element signature="e#1090#1122#0" expanded="false" />
             <element signature="e#1256#1943#0" expanded="false" />
             <element signature="e#1424#1654#0" expanded="false" />
             <element signature="e#1586#1653#0" expanded="false" />
             <element signature="e#1793#1882#0" expanded="false" />
             <element signature="e#1831#1882#0" expanded="false" />
-            <element signature="e#2039#2092#0" expanded="false" />
             <element signature="e#2132#2159#0" expanded="false" />
             <element signature="e#2197#2263#0" expanded="false" />
             <element signature="e#2304#2327#0" expanded="false" />
@@ -1142,26 +1059,105 @@
             <element signature="e#3748#3775#0" expanded="false" />
             <element signature="e#3813#3879#0" expanded="false" />
             <element signature="e#3920#3943#0" expanded="false" />
+            <element signature="e#4003#4772#0" expanded="false" />
             <element signature="e#4003#4052#1" expanded="false" />
             <element signature="e#4086#4090#0" expanded="false" />
+            <element signature="e#4138#4383#0" expanded="false" />
             <element signature="e#4298#4344#0" expanded="false" />
+            <element signature="e#4430#4537#0" expanded="false" />
             <element signature="e#4577#4604#0" expanded="false" />
             <element signature="e#4642#4708#0" expanded="false" />
             <element signature="e#4749#4772#0" expanded="false" />
+            <element signature="e#4832#6328#0" expanded="false" />
             <element signature="e#4832#5922#1" expanded="false" />
-            <element signature="e#6288#7378#1" expanded="false" />
+            <element signature="e#5961#5975#0" expanded="false" />
+            <element signature="e#6198#6264#0" expanded="false" />
+            <element signature="e#6305#6328#0" expanded="false" />
+            <element signature="e#6478#6482#0" expanded="false" />
+            <element signature="e#6522#6533#0" expanded="false" />
+            <element signature="e#7052#7118#0" expanded="false" />
+            <element signature="e#7159#7182#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1569">
+          <caret line="135" column="80" lean-forward="false" selection-start-line="135" selection-start-column="80" selection-end-line="135" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_GaussianNB.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_DecisionTree.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_RandomForest_20.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_RandomForest_200.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_RandomForest_2000.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="102" column="109" lean-forward="false" selection-start-line="102" selection-start-column="109" selection-end-line="102" selection-end-column="109" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#346#900#0" expanded="false" />
+            <element signature="e#929#1213#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_RandomForest.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_SVC.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="243" column="7" lean-forward="false" selection-start-line="243" selection-start-column="7" selection-end-line="243" selection-end-column="7" />
+        <state relative-caret-position="1168">
+          <caret line="124" column="23" lean-forward="false" selection-start-line="124" selection-start-column="23" selection-end-line="124" selection-end-column="23" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#1453#1900#0" expanded="false" />
-            <marker date="1503951060480" expanded="false" signature="5561:6272" ph="..." />
           </folding>
         </state>
       </provider>

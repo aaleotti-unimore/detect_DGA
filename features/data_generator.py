@@ -23,17 +23,9 @@ path_json = [
 legitdga_domains = "datasets/legit-dga_domains.csv"  # max lines = 133929
 
 
-def generate_dataset(n_samples, mode=1):
-    if mode == 1:
-        ## dataset dai file all_dga e majestic million
-        good_df = pd.read_csv(path_good, usecols=['Domain'])
-        bad_df = pd.read_csv(path_bad, sep=' ', header=None, names=['Domain', 'Type'], usecols=['Domain'])
-        good_df['Target'] = 0
-        bad_df['Target'] = 1
-        df = pd.DataFrame(pd.concat((good_df, bad_df)))
-    else:
-        ## dataset data legit-dga_domains
-        df = pd.DataFrame(
+def generate_dataset(n_samples):
+    logger.info("Generating new dataset with %s samples" % n_samples )
+    df = pd.DataFrame(
             pd.read_csv(legitdga_domains, sep=",", usecols=['domain', 'class'])
         )
     joblib.dump(df, "datas/dataframe_%s.pkl" % n_samples, compress=5)
@@ -42,14 +34,14 @@ def generate_dataset(n_samples, mode=1):
     return df.sample(n_samples, random_state=42)
 
 
-def load_dataset(sample, mode=1):
+def load_dataset(samples):
     try:
-        ld = joblib.load("datas/dataframe_%s.pkl" % sample)
-        logger.info("dataframe dataframe_%s.pkl loaded" % sample)
+        ld = joblib.load("datas/dataframe_%s.pkl" % samples)
+        logger.info("dataframe dataframe_%s.pkl loaded" % samples)
         return ld
     except IOError as e:
-        logger.error(e)
-        return generate_dataset(sample, mode)
+        logger.warning(e)
+        return generate_dataset(samples)
 
 
 def load_json(sample=1):
@@ -68,7 +60,7 @@ def load_json(sample=1):
 
     df = df.sample(n=sample, random_state=42, replace=True)
     df = pd.concat([df.drop(['dns'], axis=1), df['dns'].apply(pd.Series)], axis=1)
-    df = df[(df.rrname != u'') & (df.rrname > 3) & (df.rrname != u'?')]
+    df = df[df['rrname'] > 0]
 
     # stampa tutti i nomi di dominio con risposta NXDOMAIN su un file
     # df = df[(df.rcode == u'NXDOMAIN') & (u'unimo' not in df.rrname) & (df.rrname != u'') & (u'sophos' not in df.rrname) ]
@@ -84,5 +76,5 @@ def load_json(sample=1):
     #     if check_dga(domain):
     #         target_val = 1
     #     df.set_value(i, 'Target', target_val)
-
+    logger.debug(df)
     return df
