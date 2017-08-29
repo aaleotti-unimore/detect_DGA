@@ -28,13 +28,23 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="134" column="39" lean-forward="false" selection-start-line="134" selection-start-column="39" selection-end-line="134" selection-end-column="39" />
+            <state relative-caret-position="36">
+              <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
                 <element signature="e#2200#2880#0" expanded="false" />
                 <element signature="e#2909#4469#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_search.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python2.7/site-packages/sklearn/model_selection/_search.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="1043" column="8" lean-forward="false" selection-start-line="1043" selection-start-column="8" selection-end-line="1043" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -781,7 +791,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504045212028</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="added logger to file">
+      <created>1504046241505</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1504046241505</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -870,7 +887,8 @@
     <MESSAGE value="plot" />
     <MESSAGE value="modifiche ai metodi in main" />
     <MESSAGE value="modifiche  metodi in main" />
-    <option name="LAST_COMMIT_MESSAGE" value="modifiche  metodi in main" />
+    <MESSAGE value="added logger to file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added logger to file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -879,7 +897,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DGA-master/top100k.txt" />
     <entry file="file://$PROJECT_DIR$/datas/y_10000" />
     <entry file="file://$PROJECT_DIR$/metrics_example.py" />
     <entry file="file://$PROJECT_DIR$/DGA-master/majestic_million.csv" />
@@ -916,13 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="1888" column="0" lean-forward="false" selection-start-line="1888" selection-start-column="0" selection-end-line="1888" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/sklearn/model_selection/_search.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="590" column="0" lean-forward="false" selection-start-line="590" selection-start-column="0" selection-end-line="590" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1150,10 +1160,26 @@
         <state />
       </provider>
     </entry>
+    <entry file="file:///usr/lib/python2.7/site-packages/sklearn/svm/classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="572" column="8" lean-forward="false" selection-start-line="572" selection-start-column="8" selection-end-line="572" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/site-packages/sklearn/model_selection/_search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="1043" column="8" lean-forward="false" selection-start-line="1043" selection-start-column="8" selection-end-line="1043" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="134" column="39" lean-forward="false" selection-start-line="134" selection-start-column="39" selection-end-line="134" selection-end-column="39" />
+        <state relative-caret-position="36">
+          <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <element signature="e#2200#2880#0" expanded="false" />

@@ -153,7 +153,7 @@ def grid_search():
         logger.debug("")
 
         clf = GridSearchCV(pipeline, tuned_parameters, cv=5,
-                           scoring='%s_macro' % score)
+                           scoring='%s_macro' % score, n_jobs=8)
         clf.fit(X_train, y_train)
 
         logger.debug("Best parameters set found on development set:")
