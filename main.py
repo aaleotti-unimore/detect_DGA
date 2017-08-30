@@ -28,12 +28,12 @@ logger = logging.getLogger(__name__)
 
 lb = preprocessing.LabelBinarizer()
 
-n_samples = 200
+n_samples = 1000
 n_jobs_pipeline = 2
 
 #### Dataset Loading/Generation
 logger.info("samples %s" % n_samples)
-df = data_generator.load_dataset(n_samples)
+df = data_generator.generate_dataset(n_samples)
 X = df['domain'].values.reshape(-1, 1)
 y = np.ravel(lb.fit_transform(df['class'].values))
 
@@ -202,15 +202,14 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
     model.set_params(features_extractors__n_jobs=2)
     logger.info(model)
-    np.set_printoptions(threshold='nan')
     y_pred = model.predict(X_test)
 
     print(classification_report(y_true=y_test, y_pred=y_pred, target_names=['DGA', 'Legit']))
 
     y_pred = lb.inverse_transform(y_pred)
     y_test = lb.inverse_transform(y_test)
-    logger.info("DOMAIN TEST PREDICTION")
-    logger.info(np.c_[X_test, y_test, y_pred])
+    pd.options.display.max_rows = 99999999
+    logger.info(pd.DataFrame(np.c_[X_test, y_test, y_pred], columns=['DOMAIN', 'TEST', 'PREDICTION']))
     ########
 
     # print(data_generator.load_balboni(20))

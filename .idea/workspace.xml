@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/data_generator.py" afterPath="$PROJECT_DIR$/features/data_generator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,30 +21,40 @@
     <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504057218989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504059580046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="209" column="4" lean-forward="false" selection-start-line="209" selection-start-column="4" selection-end-line="209" selection-end-column="4" />
+            <state relative-caret-position="427">
+              <caret line="55" column="15" lean-forward="true" selection-start-line="55" selection-start-column="15" selection-end-line="55" selection-end-column="15" />
               <folding>
                 <element signature="e#15#29#0" expanded="true" />
-                <element signature="e#3164#4887#0" expanded="false" />
-                <element signature="e#4913#6787#0" expanded="false" />
+                <element signature="e#3169#4892#0" expanded="false" />
+                <element signature="e#4918#6792#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_generator.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="legit-dga_domains.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/datasets/legit-dga_domains.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="19" lean-forward="true" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_generator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/features/data_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="61" column="88" lean-forward="false" selection-start-line="61" selection-start-column="88" selection-end-line="61" selection-end-column="88" />
+            <state relative-caret-position="-153">
+              <caret line="24" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -198,7 +209,7 @@
             <path>
               <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
               <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
-              <item name="datas" type="462c0819:PsiDirectoryNode" />
+              <item name="datasets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
@@ -700,7 +711,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504057745641</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="testing main">
+      <created>1504057953467</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1504057953467</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -727,7 +745,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59902596" sideWeight="0.5121396" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5551948" sideWeight="0.48786038" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08279221" sideWeight="0.48786038" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23899849" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -811,7 +829,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/datas/y_10000" />
     <entry file="file://$PROJECT_DIR$/metrics_example.py" />
     <entry file="file://$PROJECT_DIR$/DGA-master/majestic_million.csv" />
     <entry file="file:///usr/lib/python2.7/site-packages/sklearn/datasets/__init__.py">
@@ -970,14 +987,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/legit-dga_domains.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="131" column="50" lean-forward="true" selection-start-line="131" selection-start-column="50" selection-end-line="131" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -990,23 +999,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/data_generator.py">
+    <entry file="file://$PROJECT_DIR$/datas/dataframe_1000.pkl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="61" column="88" lean-forward="false" selection-start-line="61" selection-start-column="88" selection-end-line="61" selection-end-column="88" />
+        <state relative-caret-position="-4573">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="209" column="4" lean-forward="false" selection-start-line="209" selection-start-column="4" selection-end-line="209" selection-end-column="4" />
+        <state relative-caret-position="427">
+          <caret line="55" column="15" lean-forward="true" selection-start-line="55" selection-start-column="15" selection-end-line="55" selection-end-column="15" />
           <folding>
             <element signature="e#15#29#0" expanded="true" />
-            <element signature="e#3164#4887#0" expanded="false" />
-            <element signature="e#4913#6787#0" expanded="false" />
+            <element signature="e#3169#4892#0" expanded="false" />
+            <element signature="e#4918#6792#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/legit-dga_domains.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="19" lean-forward="true" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="24" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>

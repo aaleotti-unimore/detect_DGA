@@ -21,8 +21,8 @@ def generate_dataset(n_samples):
     df = pd.DataFrame(
         pd.read_csv(legitdga_domains, sep=",", usecols=['domain', 'class'])
     )
-    joblib.dump(df, "datas/dataframe_%s.pkl" % n_samples, compress=5)
-    logger.info("dataframe saved to datas/dataframe_%s.pkl" % n_samples)
+    # joblib.dump(df, "datas/dataframe_%s.pkl" % n_samples)
+    # logger.info("dataframe saved to datas/dataframe_%s.pkl" % n_samples)
 
     return df.sample(n_samples, random_state=42)
 
