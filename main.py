@@ -204,13 +204,14 @@ def main():
     logger.info(model)
     np.set_printoptions(threshold='nan')
     y_pred = model.predict(X_test)
-    yy = lb.inverse_transform(y_pred)
-    yy_t = lb.inverse_transform(y_test)
+    y_pred = lb.inverse_transform(y_pred)
+    y_test = lb.inverse_transform(y_test)
     print(classification_report(y_true=y_test, y_pred=y_pred, target_names=['DGA', 'Legit']))
-    logger.info(np.c_[X_test, yy, yy_t])
+    logger.info("DOMAIN TEST PREDICTION")
+    logger.info(np.c_[X_test, y_test, y_pred])
     ########
 
-    print(data_generator.load_balboni(20))
+    # print(data_generator.load_balboni(20))
 
     pass
 

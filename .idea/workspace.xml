@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/data_generator.py" afterPath="$PROJECT_DIR$/features/data_generator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/features_extractors.py" afterPath="$PROJECT_DIR$/features/features_extractors.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="206" column="37" lean-forward="true" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
+              <caret line="209" column="41" lean-forward="true" selection-start-line="209" selection-start-column="41" selection-end-line="209" selection-end-column="41" />
               <folding>
                 <element signature="e#15#29#0" expanded="true" />
                 <element signature="e#3164#4887#0" expanded="false" />
@@ -688,7 +686,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504047483003</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="testing main">
+      <created>1504057450707</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1504057450707</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -789,7 +794,8 @@
     <MESSAGE value="added logger to file" />
     <MESSAGE value="set n_jobs" />
     <MESSAGE value="aggiunti commenti" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiunti commenti" />
+    <MESSAGE value="testing main" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -988,7 +994,7 @@
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="206" column="37" lean-forward="true" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
+          <caret line="209" column="41" lean-forward="true" selection-start-line="209" selection-start-column="41" selection-end-line="209" selection-end-column="41" />
           <folding>
             <element signature="e#15#29#0" expanded="true" />
             <element signature="e#3164#4887#0" expanded="false" />
