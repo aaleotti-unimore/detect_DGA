@@ -204,9 +204,11 @@ def main():
     logger.info(model)
     np.set_printoptions(threshold='nan')
     y_pred = model.predict(X_test)
+
+    print(classification_report(y_true=y_test, y_pred=y_pred, target_names=['DGA', 'Legit']))
+
     y_pred = lb.inverse_transform(y_pred)
     y_test = lb.inverse_transform(y_test)
-    print(classification_report(y_true=y_test, y_pred=y_pred, target_names=['DGA', 'Legit']))
     logger.info("DOMAIN TEST PREDICTION")
     logger.info(np.c_[X_test, y_test, y_pred])
     ########
