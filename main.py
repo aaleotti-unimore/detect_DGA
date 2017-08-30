@@ -1,4 +1,6 @@
+# coding=utf-8
 import logging
+import pandas as pd
 from shutil import rmtree
 from tempfile import mkdtemp
 from time import time
@@ -26,8 +28,8 @@ logger = logging.getLogger(__name__)
 
 lb = preprocessing.LabelBinarizer()
 
-n_samples = 2000
-n_jobs = 2
+n_samples = 200
+n_jobs_pipeline = 2
 
 #### Dataset Loading/Generation
 logger.info("samples %s" % n_samples)
@@ -52,7 +54,7 @@ pipeline = Pipeline(
                  ('ns3', NormalityScoreExtractor(3)),
                  ('ncr', NumCharRatio()),
              ],
-             n_jobs=n_jobs
+             n_jobs=n_jobs_pipeline
          )),
         ('clf', SVC())
     ])
@@ -85,8 +87,9 @@ def normal_training():
         model = pipeline.fit(X_train, y_train)
         y_pred = model.predict(X_test)
         logger.info("### MODEL %s Performance ###" % clf_name)
-        reports[clf_name] = classification_report(y_test, y_pred, target_names=['Benign', 'DGA'], )
+        reports[clf_name] = classification_report(y_test, y_pred, target_names=['Benign', 'DGA'])
         logger.info("\n\n%s" % reports[clf_name])
+        joblib.dump(reports, "models/report_%s_%s.pkl" % (clf_name, n_samples), compress=5)
         joblib.dump(model, "models/model_%s_%s.pkl" % (clf_name, n_samples), compress=5)
 
     return reports
@@ -174,7 +177,7 @@ def grid_search():
         stds = clf.cv_results_['std_test_score']
         for mean, std, params in zip(means, stds, clf.cv_results_['params']):
             logger.debug("%0.3f (+/-%0.03f) for %r"
-                  % (mean, std * 2, params))
+                         % (mean, std * 2, params))
         logger.debug("")
 
         logger.debug("Detailed classification report:")
@@ -183,12 +186,32 @@ def grid_search():
         logger.debug("The scores are computed on the full evaluation set.")
         logger.debug("")
         y_true, y_pred = y_test, clf.predict(X_test)
-        logger.debug(classification_report(y_true, y_pred,target_names=['DGA','Legit']))
+        logger.debug(classification_report(y_true, y_pred, target_names=['DGA', 'Legit']))
         logger.debug("")
 
 
 def main():
-    grid_search()
+    # TODO unificare i database per il training: sia legit-dga_domains.csv che i due all_legit.txt e all_dga.txt presenti su https://github.com/andrewaeva/DGA . questi due file txt vanno prima pre-processati con features_extractor.DomainExtractor in modo da ottenre solo il dominio di secondo livello.
+
+    # TODO testare i classificatori con i json di balboni, prendendo dalla colonna rrname solo quelli ripuliti. fare riferimento alla funzione data_generator.load_balboni già implementata a metà.
+
+    # TODO NB: la pipeline prende in pasto un vettore di stringhe. i vari features_extractors generano le features a partire da questo dataset.
+
+    #### test
+    model = trained_clfs['RandomForest']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
+    model.set_params(features_extractors__n_jobs=2)
+    logger.info(model)
+    np.set_printoptions(threshold='nan')
+    y_pred = model.predict(X_test)
+    yy = lb.inverse_transform(y_pred)
+    yy_t = lb.inverse_transform(y_test)
+    print(classification_report(y_true=y_test, y_pred=y_pred, target_names=['DGA', 'Legit']))
+    logger.info(np.c_[X_test, yy, yy_t])
+    ########
+
+    print(data_generator.load_balboni(20))
+
     pass
 
 

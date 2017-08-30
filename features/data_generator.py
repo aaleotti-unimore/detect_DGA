@@ -13,21 +13,14 @@ logger.setLevel(logging.INFO)
 path_good = 'datasets/majestic_million.csv'
 path_bad = 'datasets/all_dga.txt'
 
-path_json = [
-    'datasets/062000_00.json',
-    # 'datasets/062001_00.json',
-    # 'datasets/062002_00.json',
-    # 'datasets/062003_00.json',
-]
-
 legitdga_domains = "datasets/legit-dga_domains.csv"  # max lines = 133929
 
 
 def generate_dataset(n_samples):
-    logger.info("Generating new dataset with %s samples" % n_samples )
+    logger.info("Generating new dataset with %s samples" % n_samples)
     df = pd.DataFrame(
-            pd.read_csv(legitdga_domains, sep=",", usecols=['domain', 'class'])
-        )
+        pd.read_csv(legitdga_domains, sep=",", usecols=['domain', 'class'])
+    )
     joblib.dump(df, "datas/dataframe_%s.pkl" % n_samples, compress=5)
     logger.info("dataframe saved to datas/dataframe_%s.pkl" % n_samples)
 
@@ -44,13 +37,18 @@ def load_dataset(samples):
         return generate_dataset(samples)
 
 
-def load_json(sample=1):
+def load_balboni(sample):
     """
     unlabeled data from balbonee
-    :param sample:
+    :param sample: size of sample
     :return:
     """
-    # pd.concat([df.drop(['b'], axis=1), df['b'].apply(pd.Series)], axis=1)
+    path_json = [
+        'datasets/062000_00.json',
+        # 'datasets/062001_00.json',
+        # 'datasets/062002_00.json',
+        # 'datasets/062003_00.json',
+    ]
 
     df = pd.DataFrame()
     for file in path_json:
@@ -60,21 +58,14 @@ def load_json(sample=1):
 
     df = df.sample(n=sample, random_state=42, replace=True)
     df = pd.concat([df.drop(['dns'], axis=1), df['dns'].apply(pd.Series)], axis=1)
-    df = df[df['rrname'] > 0]
 
+    #TODO ripulire le righe del dataset che hanno rrname vuoto o con un numero o con '?'
+
+    ###########
     # stampa tutti i nomi di dominio con risposta NXDOMAIN su un file
     # df = df[(df.rcode == u'NXDOMAIN') & (u'unimo' not in df.rrname) & (df.rrname != u'') & (u'sophos' not in df.rrname) ]
     # df['rrname'].to_csv("DGA-master/NX.txt")
     ############
 
-
-    # ##labeling
-    # for i, row in df.iterrows():
-    #     target_val = 0
-    #     domain = df.get_value(index=i, col='rrname')
-    #     logger.debug("domain %s" % domain)
-    #     if check_dga(domain):
-    #         target_val = 1
-    #     df.set_value(i, 'Target', target_val)
     logger.debug(df)
     return df

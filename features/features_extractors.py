@@ -219,9 +219,9 @@ class DomainExtractor(BaseEstimator, TransformerMixin):
             else:
                 return "string"
 
-    def transform(self, df):
+    def transform(self, X):
         f = np.vectorize(self.__get_domain)
-        return f(df)
+        return f(X)
 
     def __getstate__(self):
         d = dict(self.__dict__)
