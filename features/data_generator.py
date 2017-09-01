@@ -1,23 +1,25 @@
 # coding=utf-8
 from __future__ import division
-from time import time
+
 import logging
-from numpy.random import RandomState
+import os
+
 import pandas as pd
+from numpy.random import RandomState
 from pandas import read_json
 from sklearn.externals import joblib
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-import os
-
 basedir = os.path.dirname(__file__)
 
-path_good = os.path.join(basedir, 'datasets/majestic_million.csv')
-path_bad = os.path.join(basedir, 'datasets/all_dga.txt')
+# vecchio dataset
+path_good = os.path.join(basedir, '../datasets/majestic_million.csv')
+path_bad = os.path.join(basedir, '../datasets/all_dga.txt')
 
-legitdga_domains = os.path.join(basedir, "datasets/legit-dga_domains.csv")  # max lines = 133929
+# nuovo dataset
+legitdga_domains = os.path.join(basedir, "../datasets/legit-dga_domains.csv")  # max lines = 133929
 
 
 def generate_dataset(n_samples):
@@ -47,6 +49,7 @@ def load_balboni(sample):
     :param sample: size of sample
     :return:
     """
+
     path_json = [
         'datasets/062000_00.json',
         # 'datasets/062001_00.json',
@@ -63,7 +66,7 @@ def load_balboni(sample):
     df = df.sample(n=sample, random_state=42, replace=True)
     df = pd.concat([df.drop(['dns'], axis=1), df['dns'].apply(pd.Series)], axis=1)
 
-    #TODO ripulire le righe del dataset che hanno rrname vuoto o con un numero o con '?'
+    # TODO ripulire le righe del dataset che hanno rrname vuoto o con un numero o con '?'
 
     ###########
     # stampa tutti i nomi di dominio con risposta NXDOMAIN su un file

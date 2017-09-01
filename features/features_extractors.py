@@ -53,9 +53,10 @@ class MCRExtractor(BaseEstimator, TransformerMixin):
             tmpsum = 0
             tmps = []
             for s in split:
-                if s in eng_dict:
-                    tmpsum += len(s)
-                    tmps.append(s)
+                for words in eng_dict:
+                    if s in words:
+                        tmpsum += len(s)
+                        tmps.append(s)
 
             if tmpsum > maxl:
                 maxl = tmpsum

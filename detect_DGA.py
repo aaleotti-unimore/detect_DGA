@@ -31,8 +31,17 @@ logger = logging.getLogger(__name__)
 
 lb = preprocessing.LabelBinarizer()
 
-n_samples = 1000
-n_jobs_pipeline = 8
+n_samples = 3000
+kula = False
+
+if kula:
+    n_jobs_pipeline = 8
+    hdlr = logging.FileHandler('results.log')
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
+else:
+    n_jobs_pipeline = 2
 
 ## Pipeline Definition
 cachedir = mkdtemp()
@@ -46,14 +55,16 @@ pipeline = Pipeline(
          FeatureUnion(
              transformer_list=[
                  ('mcr', MCRExtractor()),
-                 ('ns1', NormalityScoreExtractor(3)),
-                 ('ns2', NormalityScoreExtractor(4)),
-                 ('ns3', NormalityScoreExtractor(5)),
+                 ('ns1', NormalityScoreExtractor(1)),
+                 ('ns2', NormalityScoreExtractor(2)),
+                 ('ns3', NormalityScoreExtractor(3)),
+                 ('ns4', NormalityScoreExtractor(4)),
+                 ('ns5', NormalityScoreExtractor(5)),
                  ('ncr', NumCharRatio()),
              ],
              n_jobs=n_jobs_pipeline
          )),
-        ('clf', SVC())
+        ('clf', RandomForestClassifier(random_state=True))
     ])
 
 clfs = {
@@ -66,8 +77,8 @@ clfs = {
 ##already trained CLFS
 trained_clfs = {
     "RandomForest": joblib.load(os.path.join(basedir, "models/10Fold/model_RandomForest_50000.pkl")),
-    "SVC": joblib.load(os.path.join(dir, "models/10Fold/model_SVC_50000.pkl")),
-    # "GaussianNB": joblib.load(os.path.join(dir, "models/10Fold/model_GaussianNB_50000.pkl"))
+    "SVC": joblib.load(os.path.join(basedir, "models/10Fold/model_SVC_50000.pkl")),
+    "GaussianNB": joblib.load(os.path.join(basedir, "models/10Fold/model_GaussianNB_50000.pkl"))
 }
 
 
@@ -153,10 +164,6 @@ def roc_comparison():
 
 def grid_search():
     X, y = load_dataset()
-    hdlr = logging.FileHandler('results.log')
-    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-    hdlr.setFormatter(formatter)
-    logger.addHandler(hdlr)
 
     # Split the dataset in two equal parts
     X_train, X_test, y_train, y_test = train_test_split(
@@ -224,7 +231,7 @@ def test_model():
 
 
 def detect(domain):
-    model = trained_clfs['RandomForest']
+    model = joblib.load(os.path.join(basedir, "models/model_RandomForest_3000.pkl"))
     return model.predict(pd.DataFrame(domain).values.reshape(-1, 1))
 
 
@@ -239,7 +246,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+    normal_training()
     # grid_search()
-    plot_AUC(roc_comparison(), n_samples, show=True)
+    # plot_AUC(roc_comparison(), n_samples, show=True)
     logger.info("Exiting...")
     rmtree(cachedir)  # clearing pipeline cache
