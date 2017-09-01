@@ -1,8 +1,8 @@
 # coding=utf-8
 from __future__ import division
-
+from time import time
 import logging
-
+from numpy.random import RandomState
 import pandas as pd
 from pandas import read_json
 from sklearn.externals import joblib
@@ -10,10 +10,14 @@ from sklearn.externals import joblib
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-path_good = 'datasets/majestic_million.csv'
-path_bad = 'datasets/all_dga.txt'
+import os
 
-legitdga_domains = "datasets/legit-dga_domains.csv"  # max lines = 133929
+basedir = os.path.dirname(__file__)
+
+path_good = os.path.join(basedir, 'datasets/majestic_million.csv')
+path_bad = os.path.join(basedir, 'datasets/all_dga.txt')
+
+legitdga_domains = os.path.join(basedir, "datasets/legit-dga_domains.csv")  # max lines = 133929
 
 
 def generate_dataset(n_samples):
@@ -24,7 +28,7 @@ def generate_dataset(n_samples):
     # joblib.dump(df, "datas/dataframe_%s.pkl" % n_samples)
     # logger.info("dataframe saved to datas/dataframe_%s.pkl" % n_samples)
 
-    return df.sample(n_samples, random_state=42)
+    return df.sample(n=n_samples, random_state=RandomState())
 
 
 def load_dataset(samples):

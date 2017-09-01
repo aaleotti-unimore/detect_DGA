@@ -1,4 +1,7 @@
 # coding=utf-8
+"""
+Module for feature extraction. used in a pipeline.
+"""
 from __future__ import division
 
 import logging
@@ -10,11 +13,16 @@ from sklearn.base import BaseEstimator, TransformerMixin
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-# mcr_dict = enchant.Dict("en_US")
-eng_dict = open("features/top10000en.txt").readlines()
+import os
+
+dir = os.path.dirname(__file__)
+dictfile = os.path.join(dir, "top10000en.txt")
+eng_dict = open(dictfile).readlines()
 
 from collections import Counter
 
+
+# TODO possibili features trovate sul paper di DeepDGA di Anderson Woodbridge Filar: lunghezza del nome di dominio, entropia della distrubuzione dei caratteri, rapporto vocali/consonanti, contare la frequenza degli n-grammi 3,4,5 all'interno del dataset Alexa 1Million. Inoltre cambiare i valori del Normality Score Extractor da 1,2,3 a 3,4,5
 
 class MCRExtractor(BaseEstimator, TransformerMixin):
     """
