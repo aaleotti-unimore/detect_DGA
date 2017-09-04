@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 lb = preprocessing.LabelBinarizer()
 
-n_samples = 3000
+n_samples = 1000
 kula = False
 
 if kula:
@@ -60,6 +60,8 @@ pipeline = Pipeline(
                  ('ns3', NormalityScoreExtractor(3)),
                  ('ns4', NormalityScoreExtractor(4)),
                  ('ns5', NormalityScoreExtractor(5)),
+                 ('len', DomainNameLength()),
+                 ('vcr', VowelConsonantRatio()),
                  ('ncr', NumCharRatio()),
              ],
              n_jobs=n_jobs_pipeline
@@ -231,7 +233,8 @@ def test_model():
 
 
 def detect(domain):
-    model = joblib.load(os.path.join(basedir, "models/model_RandomForest_3000.pkl"))
+    model = joblib.load(os.path.join(basedir, "models/model_RandomForest_1000.pkl"))
+    # model = trained_clfs['RandomForest']
     return model.predict(pd.DataFrame(domain).values.reshape(-1, 1))
 
 

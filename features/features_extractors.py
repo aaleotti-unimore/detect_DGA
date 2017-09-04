@@ -91,7 +91,8 @@ class NormalityScoreExtractor(BaseEstimator, TransformerMixin):
 
     def __get_ns(self, domain_name):
         logger.debug("domain name: %s" % domain_name)
-
+        if len(str(domain_name)) < self.n:
+            return 0
         tuples = ngrams(str(domain_name), self.n)
         myngrams = (''.join(t) for t in tuples)
         scoresum = 0
@@ -141,6 +142,59 @@ class NumCharRatio(BaseEstimator, TransformerMixin):
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
         f = np.vectorize(self.__get_ncr)
+        return f(df)
+
+    def fit(self, X, y=None):
+        return self  # does nothing
+
+    def __getstate__(self):
+        d = dict(self.__dict__)
+        # del d['logger']
+        return d
+
+    def __setstate__(self, d):
+        self.__dict__.update(d)
+
+
+class DomainNameLength(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        pass
+
+    def __get_length(self, domain_name):
+        return (len(domain_name))
+
+    def transform(self, df, y=None):
+        """The workhorse of this feature extractor"""
+        f = np.vectorize(self.__get_length)
+        return f(df)
+
+    def fit(self, X, y=None):
+        return self  # does nothing
+
+    def __getstate__(self):
+        d = dict(self.__dict__)
+        # del d['logger']
+        return d
+
+    def __setstate__(self, d):
+        self.__dict__.update(d)
+
+
+class VowelConsonantRatio(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        pass
+
+    def __get_ratio(self, domain_name):
+        count = 0
+        vowels = set("aeiou")
+        for letter in domain_name:
+            if letter in vowels:
+                count += 1
+        return count / (len(domain_name) - count)
+
+    def transform(self, df, y=None):
+        """The workhorse of this feature extractor"""
+        f = np.vectorize(self.__get_ratio)
         return f(df)
 
     def fit(self, X, y=None):
