@@ -31,16 +31,18 @@ logger = logging.getLogger(__name__)
 
 lb = preprocessing.LabelBinarizer()
 
-n_samples = 1000
-kula = False
+n_samples = 50000
+kula = True
 
 if kula:
     n_jobs_pipeline = 8
+    clf_n_jobs = -1
     hdlr = logging.FileHandler('results.log')
     formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
     hdlr.setFormatter(formatter)
     logger.addHandler(hdlr)
 else:
+    clf_n_jobs = 1
     n_jobs_pipeline = 2
 
 ## Pipeline Definition
@@ -70,7 +72,8 @@ pipeline = Pipeline(
     ])
 
 clfs = {
-    "RandomForest": RandomForestClassifier(random_state=True),
+    "RandomForest": RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
+                                           min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True),
     # "SVC": SVC(kernel='linear', C=.9999999999999995e-07, max_iter=50, probability=True),
     # "GaussianNB": GaussianNB(),
     # "DecisionTree": DecisionTreeClassifier(),
@@ -109,7 +112,8 @@ def normal_training():
         logger.info("### MODEL %s Performance ###" % clf_name)
         reports[clf_name] = classification_report(y_test, y_pred, target_names=['Benign', 'DGA'])
         logger.info("\n\n%s" % reports[clf_name])
-        joblib.dump(reports, os.path.join(basedir, "models/report_%s_%s.pkl" % (clf_name, n_samples)), compress=5)
+        joblib.dump(reports, os.path.join(basedir, "models/reports/report_%s_%s.pkl" % (clf_name, n_samples)),
+                    compress=5)
         joblib.dump(model, os.path.join(basedir, "models/model_%s_%s.pkl" % (clf_name, n_samples)), compress=5)
 
     return reports

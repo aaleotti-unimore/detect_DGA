@@ -22,7 +22,7 @@ eng_dict = open(dictfile).readlines()
 from collections import Counter
 
 
-# TODO possibili features trovate sul paper di DeepDGA di Anderson Woodbridge Filar: lunghezza del nome di dominio, entropia della distrubuzione dei caratteri, rapporto vocali/consonanti, contare la frequenza degli n-grammi 3,4,5 all'interno del dataset Alexa 1Million. Inoltre cambiare i valori del Normality Score Extractor da 1,2,3 a 3,4,5
+# TODO possibili features trovate sul paper di DeepDGA di Anderson Woodbridge Filar: entropia della distrubuzione dei caratteri, contare la frequenza degli n-grammi 3,4,5 all'interno del dataset Alexa 1Million.
 
 class MCRExtractor(BaseEstimator, TransformerMixin):
     """

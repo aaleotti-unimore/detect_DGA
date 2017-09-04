@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/model_DecisionTree_2000.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/model_GaussianNB_2000.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/model_RandomForest_2000.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/model_SVC_2000.pkl" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/detect_DGA.py" afterPath="$PROJECT_DIR$/detect_DGA.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/features_extractors.py" afterPath="$PROJECT_DIR$/features/features_extractors.py" />
@@ -21,7 +25,7 @@
     <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504289913502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504530302376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
   </component>
   <component name="FileEditorManager">
@@ -29,87 +33,22 @@
       <file leaf-file-name="detect_DGA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/detect_DGA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2652">
-              <caret line="234" column="6" lean-forward="true" selection-start-line="234" selection-start-column="6" selection-end-line="234" selection-end-column="6" />
+            <state relative-caret-position="178">
+              <caret line="33" column="17" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
               <folding>
                 <element signature="e#15#29#0" expanded="true" />
+                <element signature="e#4138#5953#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="features_extractors.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
+      <file leaf-file-name="results.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="182" column="59" lean-forward="false" selection-start-line="182" selection-start-column="59" selection-end-line="182" selection-end-column="59" />
-              <folding>
-                <element signature="e#15#73#1" expanded="false" />
-                <element signature="e#873#2816#0" expanded="false" />
-                <element signature="e#873#1371#1" expanded="false" />
-                <element signature="e#1413#1429#0" expanded="false" />
-                <element signature="e#1477#2481#0" expanded="false" />
-                <element signature="e#1531#1563#0" expanded="false" />
-                <element signature="e#1697#2432#0" expanded="false" />
-                <element signature="e#1865#2095#0" expanded="false" />
-                <element signature="e#2027#2094#0" expanded="false" />
-                <element signature="e#2234#2371#0" expanded="false" />
-                <element signature="e#2277#2371#0" expanded="false" />
-                <element signature="e#2316#2371#0" expanded="false" />
-                <element signature="e#2528#2581#0" expanded="false" />
-                <element signature="e#2621#2648#0" expanded="false" />
-                <element signature="e#2686#2752#0" expanded="false" />
-                <element signature="e#2793#2816#0" expanded="false" />
-                <element signature="e#2887#4495#0" expanded="false" />
-                <element signature="e#2887#3540#1" expanded="false" />
-                <element signature="e#3577#3587#0" expanded="false" />
-                <element signature="e#3634#4107#0" expanded="false" />
-                <element signature="e#3902#4044#0" expanded="false" />
-                <element signature="e#3965#4012#0" expanded="false" />
-                <element signature="e#4154#4260#0" expanded="false" />
-                <element signature="e#4300#4327#0" expanded="false" />
-                <element signature="e#4365#4431#0" expanded="false" />
-                <element signature="e#4472#4495#0" expanded="false" />
-                <element signature="e#4555#5324#0" expanded="false" />
-                <element signature="e#4555#4604#1" expanded="false" />
-                <element signature="e#4638#4642#0" expanded="false" />
-                <element signature="e#4690#4935#0" expanded="false" />
-                <element signature="e#4850#4896#0" expanded="false" />
-                <element signature="e#4982#5089#0" expanded="false" />
-                <element signature="e#5129#5156#0" expanded="false" />
-                <element signature="e#5194#5260#0" expanded="false" />
-                <element signature="e#5301#5324#0" expanded="false" />
-                <element signature="e#5388#5888#0" expanded="false" />
-                <element signature="e#5955#6612#0" expanded="false" />
-                <element signature="e#6672#8168#0" expanded="false" />
-                <element signature="e#6672#7762#1" expanded="false" />
-                <element signature="e#7801#7815#0" expanded="false" />
-                <element signature="e#7855#7866#0" expanded="false" />
-                <element signature="e#7912#8000#0" expanded="false" />
-                <element signature="e#8038#8104#0" expanded="false" />
-                <element signature="e#8145#8168#0" expanded="false" />
-                <element signature="e#8231#9020#0" expanded="false" />
-                <element signature="e#8231#8284#1" expanded="false" />
-                <element signature="e#8318#8322#0" expanded="false" />
-                <element signature="e#8362#8373#0" expanded="false" />
-                <element signature="e#8419#8759#0" expanded="false" />
-                <element signature="e#8491#8759#0" expanded="false" />
-                <element signature="e#8797#8852#0" expanded="false" />
-                <element signature="e#8890#8956#0" expanded="false" />
-                <element signature="e#8997#9020#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_generator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/data_generator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
-              <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-              <folding>
-                <element signature="e#15#46#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="289">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -252,6 +191,11 @@
             <path>
               <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
               <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
+              <item name="datasets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
               <item name="features" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -284,11 +228,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models/reports" />
       <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/models/graph" />
       <recent name="$PROJECT_DIR$/DGA-master" />
       <recent name="$PROJECT_DIR$/DGA-master/DGA" />
-      <recent name="$PROJECT_DIR$/DGA-master/benign" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -759,7 +703,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504258583937</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="aggiunte features">
+      <created>1504529159632</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1504529159632</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -863,30 +814,16 @@
     <MESSAGE value="testing main" />
     <MESSAGE value="tuning ngrams" />
     <MESSAGE value="aggiunti 2 features con ngrams 4 e 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiunti 2 features con ngrams 4 e 5" />
+    <MESSAGE value="aggiunte features" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunte features" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/example.py" />
-    <entry file="file:///usr/lib/python2.7/site-packages/sklearn/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="562" column="0" lean-forward="false" selection-start-line="562" selection-start-column="0" selection-end-line="562" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/abc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python2.7/site-packages/sklearn/model_selection/_split.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -956,11 +893,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/graph/report_DecisionTree.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_20000.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -986,6 +918,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,14 +976,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/features/data_generator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255">
@@ -1063,72 +988,110 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="182" column="59" lean-forward="false" selection-start-line="182" selection-start-column="59" selection-end-line="182" selection-end-column="59" />
+        <state relative-caret-position="306">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
             <element signature="e#15#73#1" expanded="false" />
-            <element signature="e#873#2816#0" expanded="false" />
-            <element signature="e#873#1371#1" expanded="false" />
-            <element signature="e#1413#1429#0" expanded="false" />
-            <element signature="e#1477#2481#0" expanded="false" />
-            <element signature="e#1531#1563#0" expanded="false" />
-            <element signature="e#1697#2432#0" expanded="false" />
-            <element signature="e#1865#2095#0" expanded="false" />
-            <element signature="e#2027#2094#0" expanded="false" />
-            <element signature="e#2234#2371#0" expanded="false" />
-            <element signature="e#2277#2371#0" expanded="false" />
-            <element signature="e#2316#2371#0" expanded="false" />
-            <element signature="e#2528#2581#0" expanded="false" />
-            <element signature="e#2621#2648#0" expanded="false" />
-            <element signature="e#2686#2752#0" expanded="false" />
-            <element signature="e#2793#2816#0" expanded="false" />
-            <element signature="e#2887#4495#0" expanded="false" />
-            <element signature="e#2887#3540#1" expanded="false" />
-            <element signature="e#3577#3587#0" expanded="false" />
-            <element signature="e#3634#4107#0" expanded="false" />
-            <element signature="e#3902#4044#0" expanded="false" />
-            <element signature="e#3965#4012#0" expanded="false" />
-            <element signature="e#4154#4260#0" expanded="false" />
-            <element signature="e#4300#4327#0" expanded="false" />
-            <element signature="e#4365#4431#0" expanded="false" />
-            <element signature="e#4472#4495#0" expanded="false" />
-            <element signature="e#4555#5324#0" expanded="false" />
-            <element signature="e#4555#4604#1" expanded="false" />
-            <element signature="e#4638#4642#0" expanded="false" />
-            <element signature="e#4690#4935#0" expanded="false" />
-            <element signature="e#4850#4896#0" expanded="false" />
-            <element signature="e#4982#5089#0" expanded="false" />
-            <element signature="e#5129#5156#0" expanded="false" />
-            <element signature="e#5194#5260#0" expanded="false" />
-            <element signature="e#5301#5324#0" expanded="false" />
-            <element signature="e#5388#5888#0" expanded="false" />
-            <element signature="e#5955#6612#0" expanded="false" />
-            <element signature="e#6672#8168#0" expanded="false" />
-            <element signature="e#6672#7762#1" expanded="false" />
-            <element signature="e#7801#7815#0" expanded="false" />
-            <element signature="e#7855#7866#0" expanded="false" />
-            <element signature="e#7912#8000#0" expanded="false" />
-            <element signature="e#8038#8104#0" expanded="false" />
-            <element signature="e#8145#8168#0" expanded="false" />
-            <element signature="e#8231#9020#0" expanded="false" />
-            <element signature="e#8231#8284#1" expanded="false" />
-            <element signature="e#8318#8322#0" expanded="false" />
-            <element signature="e#8362#8373#0" expanded="false" />
-            <element signature="e#8419#8759#0" expanded="false" />
-            <element signature="e#8491#8759#0" expanded="false" />
-            <element signature="e#8797#8852#0" expanded="false" />
-            <element signature="e#8890#8956#0" expanded="false" />
-            <element signature="e#8997#9020#0" expanded="false" />
+            <element signature="e#741#2684#0" expanded="false" />
+            <element signature="e#741#1239#1" expanded="false" />
+            <element signature="e#1281#1297#0" expanded="false" />
+            <element signature="e#1345#2349#0" expanded="false" />
+            <element signature="e#1399#1431#0" expanded="false" />
+            <element signature="e#1565#2300#0" expanded="false" />
+            <element signature="e#1733#1963#0" expanded="false" />
+            <element signature="e#1895#1962#0" expanded="false" />
+            <element signature="e#2102#2239#0" expanded="false" />
+            <element signature="e#2145#2239#0" expanded="false" />
+            <element signature="e#2184#2239#0" expanded="false" />
+            <element signature="e#2396#2449#0" expanded="false" />
+            <element signature="e#2489#2516#0" expanded="false" />
+            <element signature="e#2554#2620#0" expanded="false" />
+            <element signature="e#2661#2684#0" expanded="false" />
+            <element signature="e#2755#4363#0" expanded="false" />
+            <element signature="e#2755#3408#1" expanded="false" />
+            <element signature="e#3445#3455#0" expanded="false" />
+            <element signature="e#3502#3975#0" expanded="false" />
+            <element signature="e#3770#3912#0" expanded="false" />
+            <element signature="e#3833#3880#0" expanded="false" />
+            <element signature="e#4022#4128#0" expanded="false" />
+            <element signature="e#4168#4195#0" expanded="false" />
+            <element signature="e#4233#4299#0" expanded="false" />
+            <element signature="e#4340#4363#0" expanded="false" />
+            <element signature="e#4423#5192#0" expanded="false" />
+            <element signature="e#4423#4472#1" expanded="false" />
+            <element signature="e#4506#4510#0" expanded="false" />
+            <element signature="e#4558#4803#0" expanded="false" />
+            <element signature="e#4718#4764#0" expanded="false" />
+            <element signature="e#4850#4957#0" expanded="false" />
+            <element signature="e#4997#5024#0" expanded="false" />
+            <element signature="e#5062#5128#0" expanded="false" />
+            <element signature="e#5169#5192#0" expanded="false" />
+            <element signature="e#5256#5756#0" expanded="false" />
+            <element signature="e#5823#6480#0" expanded="false" />
+            <element signature="e#6540#8036#0" expanded="false" />
+            <element signature="e#6540#7630#1" expanded="false" />
+            <element signature="e#7669#7683#0" expanded="false" />
+            <element signature="e#7723#7734#0" expanded="false" />
+            <element signature="e#7780#7868#0" expanded="false" />
+            <element signature="e#7906#7972#0" expanded="false" />
+            <element signature="e#8013#8036#0" expanded="false" />
+            <element signature="e#8099#8888#0" expanded="false" />
+            <element signature="e#8099#8152#1" expanded="false" />
+            <element signature="e#8186#8190#0" expanded="false" />
+            <element signature="e#8230#8241#0" expanded="false" />
+            <element signature="e#8287#8627#0" expanded="false" />
+            <element signature="e#8359#8627#0" expanded="false" />
+            <element signature="e#8665#8720#0" expanded="false" />
+            <element signature="e#8758#8824#0" expanded="false" />
+            <element signature="e#8865#8888#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/reports/report_RandomForest_500.pkl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/reports/report_RandomForest_3000.pkl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/report_DecisionTree.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/reports/report_RandomForest_1000.pkl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/detect_DGA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2652">
-          <caret line="234" column="6" lean-forward="true" selection-start-line="234" selection-start-column="6" selection-end-line="234" selection-end-column="6" />
+        <state relative-caret-position="178">
+          <caret line="33" column="17" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
           <folding>
             <element signature="e#15#29#0" expanded="true" />
+            <element signature="e#4138#5953#0" expanded="false" />
           </folding>
         </state>
       </provider>
