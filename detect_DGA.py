@@ -1,35 +1,25 @@
 # coding=utf-8
-import logging
-import pandas as pd
+import os
+from pprint import pprint
 from shutil import rmtree
 from tempfile import mkdtemp
-from time import time
-from numpy.random import RandomState
-import numpy as np
-from scipy import interp
-from sklearn import preprocessing
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.externals import joblib
-from sklearn.metrics import auc, roc_curve, classification_report
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import KFold
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
-from sklearn.pipeline import Pipeline, FeatureUnion
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
 
-from features import data_generator
+from scipy import interp
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import auc, roc_curve, classification_report
+from sklearn.model_selection import GridSearchCV, ShuffleSplit, KFold, cross_validate, train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import LabelBinarizer
+from features.data_generator import *
 from features.features_extractors import *
 from plot_module import *
-import os
 
 basedir = os.path.dirname(__file__)
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-lb = preprocessing.LabelBinarizer()
+lb = LabelBinarizer()
 
 n_samples = 50000
 kula = True
@@ -90,13 +80,13 @@ trained_clfs = {
 #### Dataset Loading/Generation
 def load_dataset():
     logger.info("samples %s" % n_samples)
-    df = data_generator.generate_dataset(n_samples)
+    df = generate_dataset(n_samples)
     X = df['domain'].values.reshape(-1, 1)
     y = np.ravel(lb.fit_transform(df['class'].values))
     return X, y
 
 
-def normal_training():
+def pipeline_training():
     """
     performs training on the classifiers of the pipeline in the clfs dictionary
     :return:
@@ -119,7 +109,7 @@ def normal_training():
     return reports
 
 
-def roc_comparison():
+def pipeline_roc_comparison():
     """
     train and calculates the mean ROC curve of all the classifier in the clfs dictionary
     :return: dictionary of plot datas needed by plot_module.plot_AUC()
@@ -168,7 +158,7 @@ def roc_comparison():
     return plot_datas
 
 
-def grid_search():
+def pipeline_grid_search():
     X, y = load_dataset()
 
     # Split the dataset in two equal parts
@@ -242,6 +232,29 @@ def detect(domain):
     return model.predict(pd.DataFrame(domain).values.reshape(-1, 1))
 
 
+def model_training():
+    logger.info("Training")
+    cv = KFold(n_splits=10)
+    X, y = load_features()
+    scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
+    clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
+                                 min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
+    scores = cross_validate(clf, X, y, scoring=scoring,
+                            cv=10, return_train_score=False, n_jobs=-1, verbose=1)
+    logger.info("scores")
+    pprint(scores)
+
+    title = "Learning Curves Random Forest"
+    # Cross validation with 100 iterations to get smoother mean test and train
+    # score curves, each time with 20% data randomly selected as a validation set.
+    cv = ShuffleSplit(n_splits=20, test_size=0.2, random_state=0)
+    plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
+    if kula:
+        plt.savefig(os.path.join(basedir, "models/graph/learning_curve.png"), format="png")
+    else:
+        plt.show()
+
+
 def main():
     # TODO unificare i database per il training: sia legit-dga_domains.csv che i due all_legit.txt e all_dga.txt presenti su https://github.com/andrewaeva/DGA . questi due file txt vanno prima pre-processati con features_extractor.DomainExtractor in modo da ottenre solo il dominio di secondo livello.
 
@@ -252,8 +265,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-    normal_training()
+    save_features(n_samples)
+    model_training()
+    # main()
+    # normal_training()
     # grid_search()
     # plot_AUC(roc_comparison(), n_samples, show=True)
     logger.info("Exiting...")

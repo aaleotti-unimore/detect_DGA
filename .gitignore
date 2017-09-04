@@ -103,6 +103,5 @@ ENV/
 /master.zip
 /training_set
 /features/stat_ling_filter.py
-/datas/*
 *.json.gz
 *.json

@@ -8,9 +8,19 @@ import pandas as pd
 from numpy.random import RandomState
 from pandas import read_json
 from sklearn.externals import joblib
+from sklearn.pipeline import FeatureUnion
+from features_extractors import *
+import detect_DGA
+from sklearn import preprocessing
+
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', None)
+pd.options.display.float_format = '{:.2f}'.format
+np.set_printoptions(precision=3, suppress=True)
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 basedir = os.path.dirname(__file__)
 
@@ -76,3 +86,66 @@ def load_balboni(sample):
 
     logger.debug(df)
     return df
+
+
+def save_features(sample):
+    n_jobs = 1
+    if detect_DGA.kula:
+        logger.debug("detected kula settings")
+        logger.setLevel(logging.INFO)
+        n_jobs = 9
+
+    ft = FeatureUnion(
+        transformer_list=[
+            ('mcr', MCRExtractor()),
+            ('ns1', NormalityScoreExtractor(1)),
+            ('ns2', NormalityScoreExtractor(2)),
+            ('ns3', NormalityScoreExtractor(3)),
+            ('ns4', NormalityScoreExtractor(4)),
+            ('ns5', NormalityScoreExtractor(5)),
+            ('len', DomainNameLength()),
+            ('vcr', VowelConsonantRatio()),
+            ('ncr', NumCharRatio()),
+        ],
+        n_jobs=n_jobs
+    )
+
+    logger.debug("\n%s" % ft.get_params())
+
+    xy = pd.DataFrame(
+        pd.read_csv(legitdga_domains, sep=",", usecols=['domain', 'class'])
+    )
+
+    if sample != -1:
+        logger.info("sample size: %s" % sample)
+        xy = xy.sample(n=sample, random_state=RandomState())
+    else:
+        logger.warning("Converting all domains")
+
+    logger.debug("\n%s" % xy)
+
+    X = xy['domain'].values.reshape(-1, 1)
+    features = ft.transform(X)
+
+    df = pd.DataFrame(np.c_[xy, features],
+                      columns=['domain', 'class', 'mcr', 'ns1', 'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
+
+    logger.debug("\n%s" % df)
+    df.to_csv(os.path.join(basedir, "../datas/features_dataset.csv"), index=False)
+    logger.setLevel(logging.DEBUG)
+    return True
+
+
+def load_features():
+    logger.setLevel(logging.INFO)
+    lb = preprocessing.LabelBinarizer()
+    features_dataset = os.path.join(basedir, "../datas/features_dataset.csv")
+
+    df = pd.DataFrame(pd.read_csv(features_dataset, sep=","))
+    logger.debug("DF")
+    logger.debug("\n%s" % df)
+    X = df[['mcr', 'ns1', 'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr']].values
+    y = np.ravel(lb.fit_transform(df['class'].values))
+    logger.debug(X)
+    logger.debug(y)
+    return X, y
