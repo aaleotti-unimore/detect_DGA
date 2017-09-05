@@ -21,8 +21,8 @@ logger = logging.getLogger(__name__)
 
 lb = LabelBinarizer()
 
-n_samples = 1000
-kula = False
+n_samples = 10000
+kula = True
 
 if kula:
     n_jobs_pipeline = 8
