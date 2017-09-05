@@ -21,8 +21,8 @@ logger = logging.getLogger(__name__)
 
 lb = LabelBinarizer()
 
-n_samples = -1
-kula = True
+n_samples = 1000
+kula = False
 
 if kula:
     n_jobs_pipeline = 8
@@ -71,7 +71,7 @@ clfs = {
 
 ##already trained CLFS
 trained_clfs = {
-    "RandomForest": joblib.load(os.path.join(basedir, "models/10Fold/model_RandomForest_50000.pkl")),
+    "RandomForest": joblib.load(os.path.join(basedir, "models/model_RandomForest.pkl")),
     "SVC": joblib.load(os.path.join(basedir, "models/10Fold/model_SVC_50000.pkl")),
     "GaussianNB": joblib.load(os.path.join(basedir, "models/10Fold/model_GaussianNB_50000.pkl"))
 }
@@ -211,7 +211,7 @@ def test_model():
     #### test del dataset
     model = trained_clfs['RandomForest']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=RandomState())
-    model.set_params(features_extractors__n_jobs=2)
+    # model.set_params(features_extractors__n_jobs=2)
     logger.debug(model)
     y_pred = model.predict(X_test)
 
@@ -239,6 +239,8 @@ def model_training():
     scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
     clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
                                  min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
+    clf.fit(X, y)
+    logger.info("clf fitted")
     scores = cross_validate(clf, X, y, scoring=scoring,
                             cv=10, return_train_score=False, n_jobs=-1, verbose=1)
     joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest.pkl"), compress=3)
@@ -268,6 +270,7 @@ def main():
 if __name__ == "__main__":
     # save_features(n_samples)
     model_training()
+    # test_model()
     # main()
     # normal_training()
     # grid_search()

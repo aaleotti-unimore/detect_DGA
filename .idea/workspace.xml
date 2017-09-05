@@ -20,7 +20,7 @@
     <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504538354606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504617172872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
   </component>
   <component name="FileEditorManager">
@@ -28,13 +28,12 @@
       <file leaf-file-name="detect_DGA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/detect_DGA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="255" column="20" lean-forward="true" selection-start-line="255" selection-start-column="20" selection-end-line="255" selection-end-column="20" />
+            <state relative-caret-position="382">
+              <caret line="273" column="12" lean-forward="true" selection-start-line="273" selection-start-column="12" selection-end-line="273" selection-end-column="12" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
-                <marker date="1504616908947" expanded="false" signature="5682:7607" ph="..." />
-                <marker date="1504616908947" expanded="false" signature="7627:8337" ph="..." />
-                <marker date="1504616908947" expanded="false" signature="8359:8556" ph="..." />
+                <marker date="1504617251152" expanded="false" signature="5672:7597" ph="..." />
+                <marker date="1504617251152" expanded="false" signature="8351:8548" ph="..." />
               </folding>
             </state>
           </provider>
@@ -267,8 +266,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/datas/features_dataset.csv</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/detect_DGA.py</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -276,9 +273,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/datas/dataframe_1000.pkl</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/datas/dataframe_200.pkl</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/graph/learning_curve.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/model_RandomForest.pkl</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -863,7 +858,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504538550955</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="aggiunte features">
+      <created>1504616914831</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1504616914831</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1240,13 +1242,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/detect_DGA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="255" column="20" lean-forward="true" selection-start-line="255" selection-start-column="20" selection-end-line="255" selection-end-column="20" />
+        <state relative-caret-position="382">
+          <caret line="273" column="12" lean-forward="true" selection-start-line="273" selection-start-column="12" selection-end-line="273" selection-end-column="12" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
-            <marker date="1504616908947" expanded="false" signature="5682:7607" ph="..." />
-            <marker date="1504616908947" expanded="false" signature="7627:8337" ph="..." />
-            <marker date="1504616908947" expanded="false" signature="8359:8556" ph="..." />
+            <marker date="1504617251152" expanded="false" signature="5672:7597" ph="..." />
+            <marker date="1504617251152" expanded="false" signature="8351:8548" ph="..." />
           </folding>
         </state>
       </provider>
