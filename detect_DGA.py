@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 lb = LabelBinarizer()
 
-n_samples = 50000
+n_samples = -1
 kula = True
 
 if kula:
@@ -265,7 +265,7 @@ def main():
 
 
 if __name__ == "__main__":
-    save_features(n_samples)
+    # save_features(n_samples)
     model_training()
     # main()
     # normal_training()
