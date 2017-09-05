@@ -241,18 +241,19 @@ def model_training():
                                  min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
     scores = cross_validate(clf, X, y, scoring=scoring,
                             cv=10, return_train_score=False, n_jobs=-1, verbose=1)
+    joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest.pkl"), compress=3)
     logger.info("scores")
     pprint(scores)
 
-    title = "Learning Curves Random Forest"
-    # Cross validation with 100 iterations to get smoother mean test and train
-    # score curves, each time with 20% data randomly selected as a validation set.
-    cv = ShuffleSplit(n_splits=20, test_size=0.2, random_state=0)
-    plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
-    if kula:
-        plt.savefig(os.path.join(basedir, "models/graph/learning_curve.png"), format="png")
-    else:
-        plt.show()
+    # title = "Learning Curves Random Forest"
+    # # Cross validation with 100 iterations to get smoother mean test and train
+    # # score curves, each time with 20% data randomly selected as a validation set.
+    # cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
+    # plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
+    # if kula:
+    #     plt.savefig(os.path.join(basedir, "models/graph/learning_curve.png"), format="png")
+    # else:
+    #     plt.show()
 
 
 def main():
