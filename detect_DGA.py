@@ -224,12 +224,12 @@ def model_training():
 
     X1, y1 = load_features_dataset()
     X2, y2 = load_features_dataset(
-        dataset="/home/archeffect/PycharmProjects/detect_DGA/datas/suppobox_dataset.csv")
+        dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
     X = np.concatenate((X1, X2), axis=0)
     y = np.concatenate((y1, y2), axis=0)
 
-    logger.debug(X)
-    logger.debug(y)
+    logger.debug("X: %s" % str(X.shape))
+    logger.debug("y: %s" % str(y.shape))
 
     scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
     clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
