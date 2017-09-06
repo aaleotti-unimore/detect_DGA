@@ -101,18 +101,25 @@ def roc_comparison(clfs=clfs, n_samples=n_samples):
     train and calculates the mean ROC curve of all the classifier in the clfs dictionary
     :return: dictionary of plot datas needed by plot_module.plot_AUC()
     """
-    X, y = load_features_dataset()
-    # X2, y2 = load_features_dataset(
-    #     dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
-    # X = np.concatenate((X1, X2), axis=0)
-    # y = np.concatenate((y1, y2), axis=0)
+    X1, y1 = load_features_dataset(n_samples=int(n_samples * 0.8))
+    X2, y2 = load_features_dataset(
+        dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"),
+        n_samples=int(n_samples * 0.2))
 
+    X = np.concatenate((X1, X2), axis=0)
+    y = np.concatenate((y1, y2), axis=0)
+
+    from sklearn.utils import shuffle
+    X, y = shuffle(X, y, random_state=RandomState())
+
+    logger.debug("X: %s" % str(X.shape))
+    logger.debug("y: %s" % str(y.shape))
     tprs = []
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)
 
     cv = KFold(n_splits=10)
-    plot_datas={}
+    plot_datas = {}
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
         # for each clf in the pipepline
         # pipeline.set_params(**{'clf': clf_value})
@@ -147,6 +154,7 @@ def roc_comparison(clfs=clfs, n_samples=n_samples):
 
     plot_AUC(plot_datas,
              n_samples=n_samples)
+
 
 def pipeline_grid_search():
     X, y = generate_domain_dataset(n_samples)
@@ -281,6 +289,6 @@ if __name__ == "__main__":
         "RandomForest": joblib.load(os.path.join(basedir, "models/model_RandomForest.pkl")),
         "RandomForest_suppo": joblib.load(os.path.join(basedir, "models/model_RandomForest_suppo.pkl")),
     }
-    roc_comparison(clfs=trained_clfs)
+    roc_comparison(clfs=trained_clfs, n_samples=50000)
     logger.info("Exiting...")
     rmtree(cachedir)  # clearing pipeline cache

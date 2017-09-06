@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/graph/plot_comparison_1000.png" afterPath="$PROJECT_DIR$/models/graph/plot_comparison_1000.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/detect_DGA.py" afterPath="$PROJECT_DIR$/detect_DGA.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/10Fold/model_RandomForest_1000.pkl" afterPath="$PROJECT_DIR$/models/10Fold/model_RandomForest_1000.pkl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/10Fold/model_RandomForest_suppo_1000.pkl" afterPath="$PROJECT_DIR$/models/10Fold/model_RandomForest_suppo_1000.pkl" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,7 +23,7 @@
     <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504713857850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504715828781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
   </component>
   <component name="FileEditorManager">
@@ -28,17 +31,23 @@
       <file leaf-file-name="detect_DGA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/detect_DGA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-391">
-              <caret line="105" column="44" lean-forward="false" selection-start-line="105" selection-start-column="44" selection-end-line="105" selection-end-column="44" />
+            <state relative-caret-position="459">
+              <caret line="291" column="50" lean-forward="false" selection-start-line="291" selection-start-column="50" selection-end-line="291" selection-end-column="50" />
               <folding>
                 <element signature="e#15#40#0" expanded="true" />
                 <element signature="e#2355#3398#0" expanded="false" />
-                <element signature="e#5416#7356#0" expanded="false" />
-                <element signature="e#7391#8125#0" expanded="false" />
-                <element signature="e#8152#8410#0" expanded="false" />
-                <element signature="e#8439#10125#0" expanded="false" />
+                <element signature="e#5658#7598#0" expanded="false" />
+                <element signature="e#7633#8367#0" expanded="false" />
+                <element signature="e#8394#8652#0" expanded="false" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plot_comparison_50000.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_50000.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -325,7 +334,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/graph/learning_curve.png</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -333,7 +341,9 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/model_RandomForest_2.pkl</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/10Fold/model_RandomForest_50000.pkl</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/10Fold/model_RandomForest_suppo_50000.pkl</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/graph/plot_comparison_50000.png</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -988,7 +998,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504714413944</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="AUC comparison">
+      <created>1504714820758</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1504714820758</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1106,8 +1123,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plot.png" />
-    <entry file="file://$PROJECT_DIR$/datasets/convert_rda.py" />
     <entry file="file://$PROJECT_DIR$/models/graph/plot_RandomForest_50000.png" />
     <entry file="file://$PROJECT_DIR$/models/graph/plot_RandomForest_2000.png" />
     <entry file="file://$PROJECT_DIR$/models/graph/plot_GaussianNB_2000.png" />
@@ -1423,6 +1438,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_50000.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_100.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_1000.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1430,15 +1455,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/detect_DGA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="105" column="44" lean-forward="false" selection-start-line="105" selection-start-column="44" selection-end-line="105" selection-end-column="44" />
+        <state relative-caret-position="459">
+          <caret line="291" column="50" lean-forward="false" selection-start-line="291" selection-start-column="50" selection-end-line="291" selection-end-column="50" />
           <folding>
             <element signature="e#15#40#0" expanded="true" />
             <element signature="e#2355#3398#0" expanded="false" />
-            <element signature="e#5416#7356#0" expanded="false" />
-            <element signature="e#7391#8125#0" expanded="false" />
-            <element signature="e#8152#8410#0" expanded="false" />
-            <element signature="e#8439#10125#0" expanded="false" />
+            <element signature="e#5658#7598#0" expanded="false" />
+            <element signature="e#7633#8367#0" expanded="false" />
+            <element signature="e#8394#8652#0" expanded="false" />
           </folding>
         </state>
       </provider>
