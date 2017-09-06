@@ -19,23 +19,26 @@ pd.set_option('display.width', None)
 pd.options.display.float_format = '{:.2f}'.format
 np.set_printoptions(precision=3, suppress=True)
 
+basedir = os.path.dirname(__file__)
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-basedir = os.path.dirname(__file__)
+lb = preprocessing.LabelBinarizer()
 
 # vecchio dataset
 path_good = os.path.join(basedir, '../datasets/majestic_million.csv')
 path_bad = os.path.join(basedir, '../datasets/all_dga.txt')
 
 # nuovo dataset
-legitdga_domains = os.path.join(basedir, "../datasets/legit-dga_domains.csv")  # max lines = 133929
+domains_dataset = os.path.join(basedir, "../datasets/legit-dga_domains.csv")  # max lines = 133929
+features_dataset = os.path.join(basedir, "../datas/features_dataset.csv")
 
 
 def generate_dataset(n_samples):
     logger.info("Generating new dataset with %s samples" % n_samples)
     df = pd.DataFrame(
-        pd.read_csv(legitdga_domains, sep=",", usecols=['domain', 'class'])
+        pd.read_csv(domains_dataset, sep=",", usecols=['domain', 'class'])
     )
     # joblib.dump(df, "datas/dataframe_%s.pkl" % n_samples)
     # logger.info("dataframe saved to datas/dataframe_%s.pkl" % n_samples)
@@ -88,7 +91,7 @@ def load_balboni(sample):
     return df
 
 
-def save_features(sample):
+def save_features_dataset(n_samples=None):
     n_jobs = 1
     if detect_DGA.kula:
         logger.debug("detected kula settings")
@@ -113,39 +116,28 @@ def save_features(sample):
     logger.debug("\n%s" % ft.get_params())
 
     xy = pd.DataFrame(
-        pd.read_csv(legitdga_domains, sep=",", usecols=['domain', 'class'])
+        pd.read_csv(domains_dataset, sep=",", usecols=['domain', 'class'])
     )
 
-    if sample != -1:
-        logger.info("sample size: %s" % sample)
-        xy = xy.sample(n=sample, random_state=RandomState())
+    if n_samples:
+        logger.info("sample size: %s" % n_samples)
+        xy = xy.sample(n=n_samples, random_state=RandomState())
     else:
-        logger.warning("Converting all domains")
-
-    logger.debug("\n%s" % xy)
+        logger.info("Converting all domains")
 
     X = xy['domain'].values.reshape(-1, 1)
-    features = ft.transform(X)
 
-    df = pd.DataFrame(np.c_[xy, features],
+    df = pd.DataFrame(np.c_[xy, ft.transform(X)],
                       columns=['domain', 'class', 'mcr', 'ns1', 'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
 
-    logger.debug("\n%s" % df)
     df.to_csv(os.path.join(basedir, "../datas/features_dataset.csv"), index=False)
     logger.setLevel(logging.DEBUG)
     return True
 
 
-def load_features():
+def load_features_dataset():
     logger.setLevel(logging.INFO)
-    lb = preprocessing.LabelBinarizer()
-    features_dataset = os.path.join(basedir, "../datas/features_dataset.csv")
-
     df = pd.DataFrame(pd.read_csv(features_dataset, sep=","))
-    logger.debug("DF")
-    logger.debug("\n%s" % df)
     X = df[['mcr', 'ns1', 'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr']].values
     y = np.ravel(lb.fit_transform(df['class'].values))
-    logger.debug(X)
-    logger.debug(y)
     return X, y
