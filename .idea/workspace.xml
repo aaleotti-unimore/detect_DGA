@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/datas/suppobox_dataset.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/datasets/suppobox/suppodict.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datas/dataframe_1000.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/datas/dataframe_200.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_GaussianNB_50000.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_RandomForest_50000.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_SVC_50000.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/auc_plot_datas_200.pkl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/plot_comparison_2000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/plot_comparison_20000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/report_DecisionTree.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/report_GaussianNB.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/report_RandomForest.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/report_SVC.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/detect_DGA.py" afterPath="$PROJECT_DIR$/detect_DGA.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/data_generator.py" afterPath="$PROJECT_DIR$/features/data_generator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_module.py" afterPath="$PROJECT_DIR$/plot_module.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,7 +36,7 @@
     <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504617172872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504708369090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
   </component>
   <component name="FileEditorManager">
@@ -28,30 +44,28 @@
       <file leaf-file-name="detect_DGA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/detect_DGA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="48" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+            <state relative-caret-position="116">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
-                <marker date="1504617274174" expanded="false" signature="5672:7597" ph="..." />
-                <marker date="1504617274174" expanded="false" signature="8351:8548" ph="..." />
+                <element signature="e#15#40#0" expanded="true" />
+                <element signature="e#2461#3504#0" expanded="false" />
+                <element signature="e#3542#5261#0" expanded="false" />
+                <element signature="e#5296#7236#0" expanded="false" />
+                <element signature="e#7271#8005#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="results.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results.log">
+      <file leaf-file-name="data_generator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/features/data_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="550">
+              <caret line="182" column="0" lean-forward="false" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+              <folding>
+                <element signature="e#15#46#0" expanded="true" />
+              </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="learning_curve.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -88,6 +102,7 @@
       <find>random</find>
       <find>'DOMAIN', 'class','MCR', 'NS1', 'NS2', 'NS3', 'NS4', 'NS5', 'LEN', 'VCR', 'NCR'</find>
       <find>plt</find>
+      <find>os.path.join(basedir,</find>
     </findStrings>
     <replaceStrings>
       <replace>info</replace>
@@ -104,6 +119,7 @@
       <replace>target</replace>
       <replace>datasets</replace>
       <replace>logger.debug</replace>
+      <replace>(</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/DGA-master</dir>
@@ -150,8 +166,9 @@
         <option value="$PROJECT_DIR$/results.log" />
         <option value="$PROJECT_DIR$/features/features_extractors.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/features/data_generator.py" />
+        <option value="$PROJECT_DIR$/datasets/suppobox/suppodict.txt" />
         <option value="$PROJECT_DIR$/plot_module.py" />
+        <option value="$PROJECT_DIR$/features/data_generator.py" />
         <option value="$PROJECT_DIR$/detect_DGA.py" />
       </list>
     </option>
@@ -265,6 +282,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/model_RandomForest.pkl</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -272,7 +290,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/model_RandomForest.pkl</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -871,7 +888,21 @@
       <option name="project" value="LOCAL" />
       <updated>1504617254680</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="test model">
+      <created>1504617301179</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1504617301179</updated>
+    </task>
+    <task id="LOCAL-00042" summary="corrette functions dataset">
+      <created>1504702135429</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1504702135430</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -895,12 +926,13 @@
     <frame x="-1" y="1" width="1362" height="740" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5978091" sideWeight="0.5147059" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9374022" sideWeight="0.4852941" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53521127" sideWeight="0.4852941" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20588236" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20588236" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32707354" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -909,7 +941,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3983051" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31838235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -976,26 +1007,17 @@
     <MESSAGE value="tuning ngrams" />
     <MESSAGE value="aggiunti 2 features con ngrams 4 e 5" />
     <MESSAGE value="aggiunte features" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiunte features" />
+    <MESSAGE value="test model" />
+    <MESSAGE value="corrette functions dataset" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrette functions dataset" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="21" />
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DGA-master/00.json" />
-    <entry file="file:///usr/lib/python2.7/site-packages/sklearn/pipeline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="625" column="8" lean-forward="false" selection-start-line="625" selection-start-column="8" selection-end-line="625" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DGA-master/all_dga.txt" />
-    <entry file="file://$PROJECT_DIR$/DGA-master/NX.txt" />
     <entry file="file://$PROJECT_DIR$/get_top_million.sh" />
     <entry file="file://$PROJECT_DIR$/datasets/NX.txt" />
     <entry file="file://$PROJECT_DIR$/get_dga_sets.sh" />
@@ -1059,7 +1081,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datas/dataframe_1000.pkl" />
     <entry file="file://$PROJECT_DIR$/models/graph/graphic_datas_300.pkl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1070,68 +1091,6 @@
     <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_300.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#73#1" expanded="false" />
-            <element signature="e#741#2684#0" expanded="false" />
-            <element signature="e#741#1239#1" expanded="false" />
-            <element signature="e#1281#1297#0" expanded="false" />
-            <element signature="e#1345#2349#0" expanded="false" />
-            <element signature="e#1399#1431#0" expanded="false" />
-            <element signature="e#1565#2300#0" expanded="false" />
-            <element signature="e#1733#1963#0" expanded="false" />
-            <element signature="e#1895#1962#0" expanded="false" />
-            <element signature="e#2102#2239#0" expanded="false" />
-            <element signature="e#2145#2239#0" expanded="false" />
-            <element signature="e#2184#2239#0" expanded="false" />
-            <element signature="e#2396#2449#0" expanded="false" />
-            <element signature="e#2489#2516#0" expanded="false" />
-            <element signature="e#2554#2620#0" expanded="false" />
-            <element signature="e#2661#2684#0" expanded="false" />
-            <element signature="e#2755#4363#0" expanded="false" />
-            <element signature="e#2755#3408#1" expanded="false" />
-            <element signature="e#3445#3455#0" expanded="false" />
-            <element signature="e#3502#3975#0" expanded="false" />
-            <element signature="e#3770#3912#0" expanded="false" />
-            <element signature="e#3833#3880#0" expanded="false" />
-            <element signature="e#4022#4128#0" expanded="false" />
-            <element signature="e#4168#4195#0" expanded="false" />
-            <element signature="e#4233#4299#0" expanded="false" />
-            <element signature="e#4340#4363#0" expanded="false" />
-            <element signature="e#4423#5192#0" expanded="false" />
-            <element signature="e#4423#4472#1" expanded="false" />
-            <element signature="e#4506#4510#0" expanded="false" />
-            <element signature="e#4558#4803#0" expanded="false" />
-            <element signature="e#4718#4764#0" expanded="false" />
-            <element signature="e#4850#4957#0" expanded="false" />
-            <element signature="e#4997#5024#0" expanded="false" />
-            <element signature="e#5062#5128#0" expanded="false" />
-            <element signature="e#5169#5192#0" expanded="false" />
-            <element signature="e#5256#5756#0" expanded="false" />
-            <element signature="e#5823#6480#0" expanded="false" />
-            <element signature="e#6540#8036#0" expanded="false" />
-            <element signature="e#6540#7630#1" expanded="false" />
-            <element signature="e#7669#7683#0" expanded="false" />
-            <element signature="e#7723#7734#0" expanded="false" />
-            <element signature="e#7780#7868#0" expanded="false" />
-            <element signature="e#7906#7972#0" expanded="false" />
-            <element signature="e#8013#8036#0" expanded="false" />
-            <element signature="e#8099#8888#0" expanded="false" />
-            <element signature="e#8099#8152#1" expanded="false" />
-            <element signature="e#8186#8190#0" expanded="false" />
-            <element signature="e#8230#8241#0" expanded="false" />
-            <element signature="e#8287#8627#0" expanded="false" />
-            <element signature="e#8359#8627#0" expanded="false" />
-            <element signature="e#8665#8720#0" expanded="false" />
-            <element signature="e#8758#8824#0" expanded="false" />
-            <element signature="e#8865#8888#0" expanded="false" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/reports/report_RandomForest_500.pkl">
@@ -1171,26 +1130,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/legit-dga_domains.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="104" column="29" lean-forward="false" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datas/features_dataset.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1203,41 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="214" column="31" lean-forward="false" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/data_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="139" column="32" lean-forward="false" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
-          <folding>
-            <element signature="e#15#46#0" expanded="true" />
-            <element signature="e#1355#1597#0" expanded="false" />
-            <element signature="e#1368#1505#0" expanded="false" />
-            <element signature="e#1539#1597#0" expanded="false" />
-            <element signature="e#1630#2637#0" expanded="false" />
-            <element signature="e#1630#1721#1" expanded="false" />
-            <element signature="e#1739#1892#0" expanded="false" />
-            <element signature="e#1784#1812#0" expanded="false" />
-            <element signature="e#1953#2091#0" expanded="false" />
-            <element signature="e#2241#2326#0" expanded="false" />
-            <element signature="e#2671#4072#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1246,13 +1154,174 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/datas/dataframe_1000.pkl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/top10000en.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8568">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/suppobox/suppodict.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="383" column="6" lean-forward="false" selection-start-line="383" selection-start-column="6" selection-end-line="383" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/legit-dga_domains.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/site-packages/sklearn/model_selection/_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1628">
+          <caret line="915" column="27" lean-forward="true" selection-start-line="915" selection-start-column="27" selection-end-line="915" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="95" column="16" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
+          <folding>
+            <element signature="e#15#73#1" expanded="false" />
+            <element signature="e#74#105#0" expanded="true" />
+            <element signature="e#741#2684#0" expanded="false" />
+            <element signature="e#741#1239#1" expanded="false" />
+            <element signature="e#1281#1297#0" expanded="false" />
+            <element signature="e#1345#2349#0" expanded="false" />
+            <element signature="e#1399#1431#0" expanded="false" />
+            <element signature="e#1565#2300#0" expanded="false" />
+            <element signature="e#1733#1963#0" expanded="false" />
+            <element signature="e#1895#1962#0" expanded="false" />
+            <element signature="e#2102#2239#0" expanded="false" />
+            <element signature="e#2145#2239#0" expanded="false" />
+            <element signature="e#2184#2239#0" expanded="false" />
+            <element signature="e#2396#2449#0" expanded="false" />
+            <element signature="e#2489#2516#0" expanded="false" />
+            <element signature="e#2554#2620#0" expanded="false" />
+            <element signature="e#2661#2684#0" expanded="false" />
+            <element signature="e#2755#3408#1" expanded="false" />
+            <element signature="e#3445#3455#0" expanded="false" />
+            <element signature="e#4022#4128#0" expanded="false" />
+            <element signature="e#4168#4195#0" expanded="false" />
+            <element signature="e#4233#4299#0" expanded="false" />
+            <element signature="e#4340#4363#0" expanded="false" />
+            <element signature="e#4423#5192#0" expanded="false" />
+            <element signature="e#4423#4472#1" expanded="false" />
+            <element signature="e#4506#4510#0" expanded="false" />
+            <element signature="e#4558#4803#0" expanded="false" />
+            <element signature="e#4718#4764#0" expanded="false" />
+            <element signature="e#4850#4957#0" expanded="false" />
+            <element signature="e#4997#5024#0" expanded="false" />
+            <element signature="e#5062#5128#0" expanded="false" />
+            <element signature="e#5169#5192#0" expanded="false" />
+            <element signature="e#5256#5756#0" expanded="false" />
+            <element signature="e#5823#6480#0" expanded="false" />
+            <element signature="e#6540#8036#0" expanded="false" />
+            <element signature="e#6540#7630#1" expanded="false" />
+            <element signature="e#7669#7683#0" expanded="false" />
+            <element signature="e#7723#7734#0" expanded="false" />
+            <element signature="e#7780#7868#0" expanded="false" />
+            <element signature="e#7906#7972#0" expanded="false" />
+            <element signature="e#8013#8036#0" expanded="false" />
+            <element signature="e#8099#8888#0" expanded="false" />
+            <element signature="e#8099#8152#1" expanded="false" />
+            <element signature="e#8186#8190#0" expanded="false" />
+            <element signature="e#8230#8241#0" expanded="false" />
+            <element signature="e#8287#8627#0" expanded="false" />
+            <element signature="e#8359#8627#0" expanded="false" />
+            <element signature="e#8665#8720#0" expanded="false" />
+            <element signature="e#8758#8824#0" expanded="false" />
+            <element signature="e#8865#8888#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datas/features_dataset.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1067698">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="247" column="38" lean-forward="true" selection-start-line="247" selection-start-column="38" selection-end-line="247" selection-end-column="38" />
+          <folding>
+            <element signature="e#320#874#0" expanded="false" />
+            <element signature="e#320#459#1" expanded="false" />
+            <element signature="e#639#874#0" expanded="false" />
+            <element signature="e#903#1187#0" expanded="false" />
+            <element signature="e#903#1037#1" expanded="false" />
+            <element signature="e#1352#2928#0" expanded="false" />
+            <element signature="e#1352#1480#1" expanded="false" />
+            <element signature="e#1909#1926#0" expanded="false" />
+            <element signature="e#2353#2396#0" expanded="false" />
+            <element signature="e#2446#2489#0" expanded="false" />
+            <element signature="e#2691#2754#0" expanded="false" />
+            <element signature="e#2779#2817#0" expanded="false" />
+            <element signature="e#3048#4347#0" expanded="false" />
+            <element signature="e#3048#3171#1" expanded="false" />
+            <element signature="e#3343#3595#0" expanded="false" />
+            <element signature="e#4406#5830#0" expanded="false" />
+            <element signature="e#4406#4788#1" expanded="false" />
+            <element signature="e#4940#5430#0" expanded="false" />
+            <element signature="e#5941#7512#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="182" column="0" lean-forward="false" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datas/suppobox_dataset.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/detect_DGA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="48" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+        <state relative-caret-position="116">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <marker date="1504617274174" expanded="false" signature="5672:7597" ph="..." />
-            <marker date="1504617274174" expanded="false" signature="8351:8548" ph="..." />
+            <element signature="e#15#40#0" expanded="true" />
+            <element signature="e#2461#3504#0" expanded="false" />
+            <element signature="e#3542#5261#0" expanded="false" />
+            <element signature="e#5296#7236#0" expanded="false" />
+            <element signature="e#7271#8005#0" expanded="false" />
           </folding>
         </state>
       </provider>
