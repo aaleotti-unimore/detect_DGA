@@ -20,7 +20,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 n_samples = 500
-kula = False
+kula = True
 
 if kula:
     n_jobs_pipeline = 8
@@ -242,13 +242,15 @@ def model_training():
     #
     logger.info("scores")
     pprint(scores)
-    title = "Learning Curves Random Forest"
+    # title = "Learning Curves Random Forest"
     # # Cross validation with 100 iterations to get smoother mean test and train
     # # score curves, each time with 20% data randomly selected as a validation set.
     cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
-    plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
+    # logger.info("plotting learning curve")
+    # plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=RandomState())
     y_pred = clf.predict(X_test)
+    logger.info("plotting classification report")
     plot_classification_report(classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
                                n_samples=n_samples)
 
