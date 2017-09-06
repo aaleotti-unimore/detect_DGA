@@ -19,8 +19,8 @@ basedir = os.path.dirname(__file__)
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-n_samples = 32400
-kula = True
+n_samples = 500
+kula = False
 
 if kula:
     n_jobs_pipeline = 8
@@ -221,27 +221,36 @@ def detect(domain):
 def model_training():
     logger.info("Training")
     cv = KFold(n_splits=10)
-    X, y = load_features_dataset(n_samples=n_samples)
+
+    X1, y1 = load_features_dataset()
+    X2, y2 = load_features_dataset(
+        dataset="/home/archeffect/PycharmProjects/detect_DGA/datas/suppobox_dataset.csv")
+    X = np.concatenate((X1, X2), axis=0)
+    y = np.concatenate((y1, y2), axis=0)
+
+    logger.debug(X)
+    logger.debug(y)
+
     scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
     clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
                                  min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
     clf.fit(X, y)
     logger.info("clf fitted")
     scores = cross_validate(clf, X, y, scoring=scoring,
-                            cv=cv, return_train_score=False, n_jobs=-1, verbose=1)
-    joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest.pkl"), compress=3)
+                            cv=10, return_train_score=False, n_jobs=-1, verbose=1)
+    joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest_2.pkl"), compress=3)
+    #
     logger.info("scores")
     pprint(scores)
-
     title = "Learning Curves Random Forest"
-    # Cross validation with 100 iterations to get smoother mean test and train
-    # score curves, each time with 20% data randomly selected as a validation set.
+    # # Cross validation with 100 iterations to get smoother mean test and train
+    # # score curves, each time with 20% data randomly selected as a validation set.
     cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
     plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
-    if kula:
-        plt.savefig(os.path.join(basedir, "models/graph/learning_curve.png"), format="png")
-    else:
-        plt.show()
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=RandomState())
+    y_pred = clf.predict(X_test)
+    plot_classification_report(classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
+                               n_samples=n_samples)
 
 
 def keras():
@@ -258,6 +267,7 @@ def main():
 
 
 if __name__ == "__main__":
-    save_suppobox_dataset(n_samples)
+    # save_suppobox_dataset(n_samples)
+    model_training()
     logger.info("Exiting...")
     rmtree(cachedir)  # clearing pipeline cache

@@ -123,8 +123,8 @@ def save_features_dataset(n_samples=None):
     return True
 
 
-def load_features_dataset(n_samples=None):
-    df = pd.DataFrame(pd.read_csv(features_dataset, sep=","))
+def load_features_dataset(n_samples=None, dataset=os.path.join(basedir, features_dataset)):
+    df = pd.DataFrame(pd.read_csv(dataset, sep=","))
     if n_samples:
         df = df.sample(n=n_samples, random_state=RandomState())
     X = df[['mcr', 'ns1', 'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr']].values
@@ -195,3 +195,4 @@ def save_suppobox_dataset(n_samples=None):
     df.to_csv(os.path.join(basedir, "../datas/suppobox_dataset.csv"), index=False)
     logger.info("features_dataset.csv saved to disk")
     return True
+

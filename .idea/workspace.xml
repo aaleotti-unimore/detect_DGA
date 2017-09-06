@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/datas/suppobox_dataset.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/datasets/suppobox/suppodict.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/datas/dataframe_1000.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/datas/dataframe_200.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_GaussianNB_50000.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_RandomForest_50000.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_SVC_50000.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/auc_plot_datas_200.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/plot_comparison_2000.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/plot_comparison_20000.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/report_DecisionTree.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/report_GaussianNB.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/report_RandomForest.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/report_SVC.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/graph/learning_curve.png" afterPath="$PROJECT_DIR$/models/graph/learning_curve.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/detect_DGA.py" afterPath="$PROJECT_DIR$/detect_DGA.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/data_generator.py" afterPath="$PROJECT_DIR$/features/data_generator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_module.py" afterPath="$PROJECT_DIR$/plot_module.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,7 +22,7 @@
     <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504708369090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1504710083740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
   </component>
   <component name="FileEditorManager">
@@ -44,14 +30,58 @@
       <file leaf-file-name="detect_DGA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/detect_DGA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="805">
+              <caret line="270" column="19" lean-forward="false" selection-start-line="270" selection-start-column="19" selection-end-line="270" selection-end-column="19" />
               <folding>
                 <element signature="e#15#40#0" expanded="true" />
-                <element signature="e#2461#3504#0" expanded="false" />
-                <element signature="e#3542#5261#0" expanded="false" />
-                <element signature="e#5296#7236#0" expanded="false" />
-                <element signature="e#7271#8005#0" expanded="false" />
+                <element signature="e#2460#3503#0" expanded="false" />
+                <element signature="e#3541#5260#0" expanded="false" />
+                <element signature="e#5295#7235#0" expanded="false" />
+                <element signature="e#7270#8004#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="learning_curve.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="report_Classification report _500.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/reports/report_Classification report _500.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plot_module.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plot_module.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="729">
+              <caret line="247" column="38" lean-forward="true" selection-start-line="247" selection-start-column="38" selection-end-line="247" selection-end-column="38" />
+              <folding>
+                <element signature="e#320#874#0" expanded="false" />
+                <element signature="e#320#459#1" expanded="false" />
+                <element signature="e#639#874#0" expanded="false" />
+                <element signature="e#903#1187#0" expanded="false" />
+                <element signature="e#903#1037#1" expanded="false" />
+                <element signature="e#1352#2928#0" expanded="false" />
+                <element signature="e#1352#1480#1" expanded="false" />
+                <element signature="e#1909#1926#0" expanded="false" />
+                <element signature="e#2353#2396#0" expanded="false" />
+                <element signature="e#2446#2489#0" expanded="false" />
+                <element signature="e#2691#2754#0" expanded="false" />
+                <element signature="e#2779#2817#0" expanded="false" />
+                <element signature="e#3048#4347#0" expanded="false" />
+                <element signature="e#3048#3171#1" expanded="false" />
+                <element signature="e#3343#3595#0" expanded="false" />
+                <element signature="e#4406#5830#0" expanded="false" />
+                <element signature="e#4406#4788#1" expanded="false" />
+                <element signature="e#4940#5430#0" expanded="false" />
+                <element signature="e#5941#7512#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -60,10 +90,28 @@
       <file leaf-file-name="data_generator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/features/data_generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="182" column="0" lean-forward="false" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+            <state relative-caret-position="68">
+              <caret line="125" column="90" lean-forward="false" selection-start-line="125" selection-start-column="90" selection-end-line="125" selection-end-column="90" />
               <folding>
-                <element signature="e#15#46#0" expanded="true" />
+                <element signature="e#940#1207#0" expanded="false" />
+                <element signature="e#1248#2279#0" expanded="false" />
+                <element signature="e#1248#1339#1" expanded="false" />
+                <element signature="e#1357#1510#0" expanded="false" />
+                <element signature="e#1402#1430#0" expanded="false" />
+                <element signature="e#1571#1709#0" expanded="false" />
+                <element signature="e#1883#1968#0" expanded="false" />
+                <element signature="e#2329#3642#0" expanded="false" />
+                <element signature="e#2372#2467#0" expanded="false" />
+                <element signature="e#2517#2932#0" expanded="false" />
+                <element signature="e#3138#3244#0" expanded="false" />
+                <element signature="e#4058#4222#0" expanded="false" />
+                <element signature="e#4058#4146#1" expanded="false" />
+                <element signature="e#4276#4622#0" expanded="false" />
+                <element signature="e#4406#4504#0" expanded="false" />
+                <element signature="e#4672#5916#0" expanded="false" />
+                <element signature="e#4715#4810#0" expanded="false" />
+                <element signature="e#4860#5275#0" expanded="false" />
+                <element signature="e#5435#5539#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -236,6 +284,12 @@
               <item name="models" type="462c0819:PsiDirectoryNode" />
               <item name="graph" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="reports" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -282,7 +336,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/model_RandomForest.pkl</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/datas/suppobox_dataset.csv</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -902,7 +956,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504702135430</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="aggiunto suppobox al training set">
+      <created>1504708470485</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1504708470485</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1009,7 +1070,8 @@
     <MESSAGE value="aggiunte features" />
     <MESSAGE value="test model" />
     <MESSAGE value="corrette functions dataset" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrette functions dataset" />
+    <MESSAGE value="aggiunto suppobox al training set" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunto suppobox al training set" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1018,7 +1080,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/get_top_million.sh" />
     <entry file="file://$PROJECT_DIR$/datasets/NX.txt" />
     <entry file="file://$PROJECT_DIR$/get_dga_sets.sh" />
     <entry file="file://$PROJECT_DIR$/plot.png" />
@@ -1186,11 +1247,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python2.7/site-packages/sklearn/model_selection/_validation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1628">
@@ -1266,9 +1322,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/datas/suppobox_dataset.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-550693">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/plot_module.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
+        <state relative-caret-position="729">
           <caret line="247" column="38" lean-forward="true" selection-start-line="247" selection-start-column="38" selection-end-line="247" selection-end-column="38" />
           <folding>
             <element signature="e#320#874#0" expanded="false" />
@@ -1296,32 +1360,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/features/data_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="182" column="0" lean-forward="false" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="125" column="90" lean-forward="false" selection-start-line="125" selection-start-column="90" selection-end-line="125" selection-end-column="90" />
           <folding>
-            <element signature="e#15#46#0" expanded="true" />
+            <element signature="e#940#1207#0" expanded="false" />
+            <element signature="e#1248#2279#0" expanded="false" />
+            <element signature="e#1248#1339#1" expanded="false" />
+            <element signature="e#1357#1510#0" expanded="false" />
+            <element signature="e#1402#1430#0" expanded="false" />
+            <element signature="e#1571#1709#0" expanded="false" />
+            <element signature="e#1883#1968#0" expanded="false" />
+            <element signature="e#2329#3642#0" expanded="false" />
+            <element signature="e#2372#2467#0" expanded="false" />
+            <element signature="e#2517#2932#0" expanded="false" />
+            <element signature="e#3138#3244#0" expanded="false" />
+            <element signature="e#4058#4222#0" expanded="false" />
+            <element signature="e#4058#4146#1" expanded="false" />
+            <element signature="e#4276#4622#0" expanded="false" />
+            <element signature="e#4406#4504#0" expanded="false" />
+            <element signature="e#4672#5916#0" expanded="false" />
+            <element signature="e#4715#4810#0" expanded="false" />
+            <element signature="e#4860#5275#0" expanded="false" />
+            <element signature="e#5435#5539#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datas/suppobox_dataset.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/reports/report_Classification report _500.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/detect_DGA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="805">
+          <caret line="270" column="19" lean-forward="false" selection-start-line="270" selection-start-column="19" selection-end-line="270" selection-end-column="19" />
           <folding>
             <element signature="e#15#40#0" expanded="true" />
-            <element signature="e#2461#3504#0" expanded="false" />
-            <element signature="e#3542#5261#0" expanded="false" />
-            <element signature="e#5296#7236#0" expanded="false" />
-            <element signature="e#7271#8005#0" expanded="false" />
+            <element signature="e#2460#3503#0" expanded="false" />
+            <element signature="e#3541#5260#0" expanded="false" />
+            <element signature="e#5295#7235#0" expanded="false" />
+            <element signature="e#7270#8004#0" expanded="false" />
           </folding>
         </state>
       </provider>
