@@ -101,11 +101,11 @@ def roc_comparison(clfs=clfs, n_samples=n_samples):
     train and calculates the mean ROC curve of all the classifier in the clfs dictionary
     :return: dictionary of plot datas needed by plot_module.plot_AUC()
     """
-    X1, y1 = load_features_dataset()
-    X2, y2 = load_features_dataset(
-        dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
-    X = np.concatenate((X1, X2), axis=0)
-    y = np.concatenate((y1, y2), axis=0)
+    X, y = load_features_dataset()
+    # X2, y2 = load_features_dataset(
+    #     dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
+    # X = np.concatenate((X1, X2), axis=0)
+    # y = np.concatenate((y1, y2), axis=0)
 
     tprs = []
     aucs = []
