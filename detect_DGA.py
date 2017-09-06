@@ -19,7 +19,7 @@ basedir = os.path.dirname(__file__)
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-n_samples = 500
+n_samples = 50000
 kula = True
 
 if kula:
@@ -68,10 +68,9 @@ clfs = {
     # "DecisionTree": DecisionTreeClassifier(),
 }
 
+
 ##already trained CLFS
-trained_clfs = {
-    "RandomForest": joblib.load(os.path.join(basedir, "models/model_RandomForest.pkl")),
-}
+
 
 
 def pipeline_training():
@@ -97,24 +96,30 @@ def pipeline_training():
         joblib.dump(model, os.path.join(basedir, "models/model_%s_%s.pkl" % (clf_name, n_samples)), compress=5)
 
 
-def pipeline_roc_comparison():
+def roc_comparison(clfs=clfs, n_samples=n_samples):
     """
     train and calculates the mean ROC curve of all the classifier in the clfs dictionary
     :return: dictionary of plot datas needed by plot_module.plot_AUC()
     """
-    X, y = generate_domain_dataset(n_samples)
+    X1, y1 = load_features_dataset()
+    X2, y2 = load_features_dataset(
+        dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
+    X = np.concatenate((X1, X2), axis=0)
+    y = np.concatenate((y1, y2), axis=0)
+
     tprs = []
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)
 
     cv = KFold(n_splits=10)
-
+    plot_datas={}
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
         # for each clf in the pipepline
-        pipeline.set_params(**{'clf': clf_value})
+        # pipeline.set_params(**{'clf': clf_value})
         logger.info("testing: %s" % clf_name)
         for train, test in cv.split(X, y):
-            model = pipeline.fit(X[train], y[train])
+            model = clf_value.fit(X[train], y[train])
+            # model = clf_value
             probas_ = model.predict_proba(X[test])
             # Compute ROC curve and area the curve
             fpr, tpr, thresholds = roc_curve(y[test], probas_[:, 1])
@@ -134,15 +139,14 @@ def pipeline_roc_comparison():
         tprs_upper = np.minimum(mean_tpr + std_tpr, 1)
         tprs_lower = np.maximum(mean_tpr - std_tpr, 0)
 
-        plot_AUC([mean_tpr, mean_fpr, tprs_lower, tprs_upper, mean_auc, std_auc], n_samples=n_samples)
+        plot_datas[clf_name] = [mean_tpr, mean_fpr, tprs_lower, tprs_upper, mean_auc, std_auc]
         joblib.dump(pipeline,
                     os.path.join(basedir, "models/10Fold/model_%s_%s.pkl" % (clf_name, n_samples)),
                     compress=5)
-
         logger.info("models/10Fold/model_%s_%s.pkl saved to disk" % (clf_name, n_samples))
 
-    logger.info("models/graph/graphic_datas_%s.pkl saved to disk" % (n_samples))
-
+    plot_AUC(plot_datas,
+             n_samples=n_samples)
 
 def pipeline_grid_search():
     X, y = generate_domain_dataset(n_samples)
@@ -251,8 +255,10 @@ def model_training():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=RandomState())
     y_pred = clf.predict(X_test)
     logger.info("plotting classification report")
-    plot_classification_report(classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
-                               n_samples=n_samples)
+    plot_classification_report(
+        classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
+        n_samples=n_samples
+    )
 
 
 def keras():
@@ -270,6 +276,11 @@ def main():
 
 if __name__ == "__main__":
     # save_suppobox_dataset(n_samples)
-    model_training()
+    # model_training()
+    trained_clfs = {
+        "RandomForest": joblib.load(os.path.join(basedir, "models/model_RandomForest.pkl")),
+        "RandomForest_suppo": joblib.load(os.path.join(basedir, "models/model_RandomForest_suppo.pkl")),
+    }
+    roc_comparison(clfs=trained_clfs)
     logger.info("Exiting...")
     rmtree(cachedir)  # clearing pipeline cache
