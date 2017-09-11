@@ -1,5 +1,4 @@
 # coding=utf-8
-from pprint import pprint
 from shutil import rmtree
 from tempfile import mkdtemp
 
@@ -7,7 +6,7 @@ from scipy import interp
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.externals import joblib
 from sklearn.metrics import auc, roc_curve, classification_report
-from sklearn.model_selection import GridSearchCV, ShuffleSplit, KFold, cross_validate, train_test_split
+from sklearn.model_selection import GridSearchCV, KFold, train_test_split
 from sklearn.pipeline import Pipeline
 
 from features.data_generator import *
@@ -20,7 +19,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 n_samples = 50000
-kula = True
+kula = False
 
 if kula:
     n_jobs_pipeline = 8
@@ -68,9 +67,11 @@ clfs = {
     # "DecisionTree": DecisionTreeClassifier(),
 }
 
-
 ##already trained CLFS
-
+trained_clfs = {
+    "RandomForest": joblib.load(os.path.join(basedir, "models/model_RandomForest.pkl")),
+    "RandomForest_suppo": joblib.load(os.path.join(basedir, "models/model_RandomForest_suppo.pkl")),
+}
 
 
 def pipeline_training():
@@ -79,7 +80,7 @@ def pipeline_training():
     :return:
     """
     X, y = generate_domain_dataset(n_samples)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=RandomState())
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=RandomState())
 
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
         logger.info("testing: %s" % clf_name)
@@ -90,10 +91,8 @@ def pipeline_training():
         report = classification_report(y_test, y_pred, target_names=['Benign', 'DGA'])
         plot_classification_report(report,
                                    title=clf_name)
-        logger.info("\n%s" % report)
-        joblib.dump(report, os.path.join(basedir, "models/reports/report_%s_%s.pkl" % (clf_name, n_samples)),
-                    compress=5)
         joblib.dump(model, os.path.join(basedir, "models/model_%s_%s.pkl" % (clf_name, n_samples)), compress=5)
+        logger.info("model %s saved to models/model_%s_%s.pkl" % (clf_name, clf_name, n_samples))
 
 
 def roc_comparison(clfs=clfs, n_samples=n_samples):
@@ -101,19 +100,11 @@ def roc_comparison(clfs=clfs, n_samples=n_samples):
     train and calculates the mean ROC curve of all the classifier in the clfs dictionary
     :return: dictionary of plot datas needed by plot_module.plot_AUC()
     """
-    X1, y1 = load_features_dataset(n_samples=int(n_samples * 0.8))
-    X2, y2 = load_features_dataset(
-        dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"),
-        n_samples=int(n_samples * 0.2))
-
-    X = np.concatenate((X1, X2), axis=0)
-    y = np.concatenate((y1, y2), axis=0)
-
-    from sklearn.utils import shuffle
-    X, y = shuffle(X, y, random_state=RandomState())
+    X, y = load_features_dataset(n_samples=n_samples)
 
     logger.debug("X: %s" % str(X.shape))
     logger.debug("y: %s" % str(y.shape))
+
     tprs = []
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)
@@ -122,11 +113,10 @@ def roc_comparison(clfs=clfs, n_samples=n_samples):
     plot_datas = {}
     for index, (clf_name, clf_value) in enumerate(clfs.iteritems()):
         # for each clf in the pipepline
-        # pipeline.set_params(**{'clf': clf_value})
+        pipeline.set_params(**{'clf': clf_value})
         logger.info("testing: %s" % clf_name)
         for train, test in cv.split(X, y):
             model = clf_value.fit(X[train], y[train])
-            # model = clf_value
             probas_ = model.predict_proba(X[test])
             # Compute ROC curve and area the curve
             fpr, tpr, thresholds = roc_curve(y[test], probas_[:, 1])
@@ -157,11 +147,11 @@ def roc_comparison(clfs=clfs, n_samples=n_samples):
 
 
 def pipeline_grid_search():
-    X, y = generate_domain_dataset(n_samples)
+    X, y = generate_domain_dataset(n_samples=n_samples)
 
     # Split the dataset in two equal parts
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.5, random_state=RandomState())
+        X, y, test_size=0.33, random_state=RandomState())
 
     # Set the parameters by cross-validation
     # tuned_parameters = [{'clf__kernel': ['rbf'], 'clf__gamma': [1e-3, 1e-4],
@@ -230,47 +220,47 @@ def detect(domain):
     return pipeline.predict(pd.DataFrame(domain).values.reshape(-1, 1))
 
 
-def model_training():
-    logger.info("Training")
-    cv = KFold(n_splits=10)
+# def model_training():
+#     logger.info("Training")
+#     cv = KFold(n_splits=10)
+#
+#     X1, y1 = load_features_dataset()
+#     X2, y2 = load_features_dataset(
+#         dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
+#     X = np.concatenate((X1, X2), axis=0)
+#     y = np.concatenate((y1, y2), axis=0)
+#
+#     logger.debug("X: %s" % str(X.shape))
+#     logger.debug("y: %s" % str(y.shape))
+#
+#     scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
+#     clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
+#                                  min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
+#     clf.fit(X, y)
+#     logger.info("clf fitted")
+#     scores = cross_validate(clf, X, y, scoring=scoring,
+#                             cv=10, return_train_score=False, n_jobs=-1, verbose=1)
+#     joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest_2.pkl"), compress=3)
+#     #
+#     logger.info("scores")
+#     pprint(scores)
+#     # title = "Learning Curves Random Forest"
+#     # # Cross validation with 100 iterations to get smoother mean test and train
+#     # # score curves, each time with 20% data randomly selected as a validation set.
+#     cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
+#     # logger.info("plotting learning curve")
+#     # plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
+#     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=RandomState())
+#     y_pred = clf.predict(X_test)
+#     logger.info("plotting classification report")
+#     plot_classification_report(
+#         classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
+#         n_samples=n_samples
+#     )
 
-    X1, y1 = load_features_dataset()
-    X2, y2 = load_features_dataset(
-        dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
-    X = np.concatenate((X1, X2), axis=0)
-    y = np.concatenate((y1, y2), axis=0)
 
-    logger.debug("X: %s" % str(X.shape))
-    logger.debug("y: %s" % str(y.shape))
-
-    scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
-    clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
-                                 min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
-    clf.fit(X, y)
-    logger.info("clf fitted")
-    scores = cross_validate(clf, X, y, scoring=scoring,
-                            cv=10, return_train_score=False, n_jobs=-1, verbose=1)
-    joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest_2.pkl"), compress=3)
-    #
-    logger.info("scores")
-    pprint(scores)
-    # title = "Learning Curves Random Forest"
-    # # Cross validation with 100 iterations to get smoother mean test and train
-    # # score curves, each time with 20% data randomly selected as a validation set.
-    cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
-    # logger.info("plotting learning curve")
-    # plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=RandomState())
-    y_pred = clf.predict(X_test)
-    logger.info("plotting classification report")
-    plot_classification_report(
-        classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
-        n_samples=n_samples
-    )
-
-
-def keras():
-    pass
+# def keras():
+#     pass
 
 
 def main():
@@ -283,12 +273,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # save_suppobox_dataset(n_samples)
     # model_training()
-    trained_clfs = {
-        "RandomForest": joblib.load(os.path.join(basedir, "models/model_RandomForest.pkl")),
-        "RandomForest_suppo": joblib.load(os.path.join(basedir, "models/model_RandomForest_suppo.pkl")),
-    }
-    roc_comparison(clfs=trained_clfs, n_samples=50000)
     logger.info("Exiting...")
     rmtree(cachedir)  # clearing pipeline cache

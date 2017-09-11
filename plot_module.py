@@ -1,5 +1,6 @@
 import logging
 import os
+
 import matplotlib as mpl
 
 mpl.use('Agg')
@@ -139,6 +140,7 @@ def plot_classification_report(classification_report, title='Classification repo
                 dpi=200,
                 format='png',
                 bbox_inches='tight')
+    logger.info("classificaton report heatmap saved to models/reports/report_%s_%s.png" % (title, n_samples))
     return plt
 
 
@@ -174,6 +176,7 @@ def plot_AUC(plot_datas, figure=1, n_samples=None):
     plt.legend(loc="lower right")
     plt.savefig(os.path.join(basedir, "models/graph/plot_comparison_%s.png" % n_samples),
                 format="png")
+    logger.info("ROC comparison plot saved to models/graph/plot_comparison_%s.png" % n_samples)
     return plt
 
 
@@ -246,4 +249,5 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
     plt.legend(loc="best")
 
     plt.savefig(os.path.join(basedir, "models/graph/learning_curve.png"), format="png")
+    logger.info("Learning curve plot saved to models/graph/learning_curve.png")
     return plt
