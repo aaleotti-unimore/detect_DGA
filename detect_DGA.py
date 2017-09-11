@@ -16,7 +16,7 @@ basedir = os.path.dirname(__file__)
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-n_samples=-1
+n_samples = -1
 kula = True
 
 if kula:
@@ -103,8 +103,6 @@ def model_training():
         classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
         n_samples=n_samples
     )
-
-
 
 
 def main():
