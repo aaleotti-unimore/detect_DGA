@@ -83,7 +83,7 @@ def load_balboni(n_samples=None):
 
 def save_features_dataset(n_samples=None):
     n_jobs = 1
-    if detect_DGA.kula:
+    if detect_DGA.isKULA:
         logger.debug("detected kula settings")
         logger.setLevel(logging.INFO)
         n_jobs = 9
@@ -163,7 +163,7 @@ def generate_suppobox_dataset(n_samples=None):
 
 def save_suppobox_dataset(n_samples=None):
     n_jobs = 1
-    if detect_DGA.kula:
+    if detect_DGA.isKULA:
         logger.debug("detected kula settings")
         logger.setLevel(logging.INFO)
         n_jobs = 9

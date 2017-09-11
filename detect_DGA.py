@@ -1,14 +1,11 @@
 # coding=utf-8
+import socket
 from shutil import rmtree
 
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.externals import joblib
-from sklearn.metrics import classification_report
-from sklearn.model_selection import KFold, train_test_split, cross_validate, ShuffleSplit
+from sklearn.model_selection import cross_validate, ShuffleSplit
 
 from features.data_generator import *
 from features.features_testing import *
-from features.features_extractors import *
 from plot_module import *
 
 basedir = os.path.dirname(__file__)
@@ -16,10 +13,9 @@ basedir = os.path.dirname(__file__)
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-n_samples = -1
-kula = True
-
-if kula:
+if socket == "classificatoredga":
+    n_samples = -1
+    isKULA = True
     n_jobs_pipeline = 8
     clf_n_jobs = -1
     hdlr = logging.FileHandler('results.log')
@@ -27,6 +23,8 @@ if kula:
     hdlr.setFormatter(formatter)
     logger.addHandler(hdlr)
 else:
+    n_samples = 1000
+    isKULA = False
     clf_n_jobs = 1
     n_jobs_pipeline = 2
 
@@ -58,9 +56,14 @@ def test_balboni_dataset():
 
 
 def detect(domain):
-    # model = joblib.load(os.path.join(basedir, "models/model_RandomForest_1000.pkl"))
-    pipeline.set_params(**{'clf': joblib.load(os.path.join(basedir, "models/model_RandomForest_2.pkl"))})
-    return pipeline.predict(pd.DataFrame(domain).values.reshape(-1, 1))
+    """
+    metodo esterno
+    :param domain:
+    :return:
+    """
+    model = joblib.load(os.path.join(basedir, "models/model_RandomForest_2.pkl"))
+    # pipeline.set_params(**{'clf': joblib.load(os.path.join(basedir, "models/model_RandomForest_2.pkl"))})
+    return model.predict(pd.DataFrame(domain).values.reshape(-1, 1))
 
 
 def model_training():
