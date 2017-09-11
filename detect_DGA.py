@@ -1,4 +1,5 @@
 # coding=utf-8
+from pprint import pprint
 from shutil import rmtree
 from tempfile import mkdtemp
 
@@ -6,7 +7,7 @@ from scipy import interp
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.externals import joblib
 from sklearn.metrics import auc, roc_curve, classification_report
-from sklearn.model_selection import GridSearchCV, KFold, train_test_split
+from sklearn.model_selection import GridSearchCV, KFold, train_test_split, cross_validate, ShuffleSplit
 from sklearn.pipeline import Pipeline
 
 from features.data_generator import *
@@ -220,47 +221,47 @@ def detect(domain):
     return pipeline.predict(pd.DataFrame(domain).values.reshape(-1, 1))
 
 
-# def model_training():
-#     logger.info("Training")
-#     cv = KFold(n_splits=10)
-#
-#     X1, y1 = load_features_dataset()
-#     X2, y2 = load_features_dataset(
-#         dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
-#     X = np.concatenate((X1, X2), axis=0)
-#     y = np.concatenate((y1, y2), axis=0)
-#
-#     logger.debug("X: %s" % str(X.shape))
-#     logger.debug("y: %s" % str(y.shape))
-#
-#     scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
-#     clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
-#                                  min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
-#     clf.fit(X, y)
-#     logger.info("clf fitted")
-#     scores = cross_validate(clf, X, y, scoring=scoring,
-#                             cv=10, return_train_score=False, n_jobs=-1, verbose=1)
-#     joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest_2.pkl"), compress=3)
-#     #
-#     logger.info("scores")
-#     pprint(scores)
-#     # title = "Learning Curves Random Forest"
-#     # # Cross validation with 100 iterations to get smoother mean test and train
-#     # # score curves, each time with 20% data randomly selected as a validation set.
-#     cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
-#     # logger.info("plotting learning curve")
-#     # plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
-#     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=RandomState())
-#     y_pred = clf.predict(X_test)
-#     logger.info("plotting classification report")
-#     plot_classification_report(
-#         classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
-#         n_samples=n_samples
-#     )
+def model_training():
+    logger.info("Training")
+    cv = KFold(n_splits=10)
+
+    X1, y1 = load_features_dataset()
+    X2, y2 = load_features_dataset(
+        dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
+    X = np.concatenate((X1, X2), axis=0)
+    y = np.concatenate((y1, y2), axis=0)
+
+    logger.debug("X: %s" % str(X.shape))
+    logger.debug("y: %s" % str(y.shape))
+
+    scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
+    clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
+                                 min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
+    clf.fit(X, y)
+    logger.info("clf fitted")
+    scores = cross_validate(clf, X, y, scoring=scoring,
+                            cv=10, return_train_score=False, n_jobs=-1, verbose=1)
+    joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest_2.pkl"), compress=3)
+    #
+    logger.info("scores")
+    pprint(scores)
+    # title = "Learning Curves Random Forest"
+    # # Cross validation with 100 iterations to get smoother mean test and train
+    # # score curves, each time with 20% data randomly selected as a validation set.
+    cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
+    # logger.info("plotting learning curve")
+    # plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=RandomState())
+    y_pred = clf.predict(X_test)
+    logger.info("plotting classification report")
+    plot_classification_report(
+        classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
+        n_samples=n_samples
+    )
 
 
-# def keras():
-#     pass
+def keras():
+    pass
 
 
 def main():
@@ -273,6 +274,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # model_training()
+    model_training()
     logger.info("Exiting...")
     rmtree(cachedir)  # clearing pipeline cache
