@@ -102,7 +102,7 @@ def __heatmap(AUC, title, xlabel, ylabel, xticklabels, yticklabels, figure_width
     fig.set_size_inches(__cm2inch(figure_width, figure_height))
 
 
-def plot_classification_report(classification_report, title='Classification report ', cmap='RdBu', n_samples=0):
+def plot_classification_report(classification_report, title='Classification_report', cmap='RdBu', n_samples=0):
     '''
     Plot scikit-learn classification report.
     Extension based on https://stackoverflow.com/a/31689645/395857
@@ -136,11 +136,11 @@ def plot_classification_report(classification_report, title='Classification repo
     __heatmap(np.array(plotMat), title, xlabel, ylabel, xticklabels, yticklabels, figure_width, figure_height,
               correct_orientation, cmap=cmap)
 
-    plt.savefig(os.path.join(basedir, 'models/reports/report_%s_%s.png' % (title, n_samples)),
+    plt.savefig(os.path.join(basedir, 'models/reports/%s_%s.png' % (title, n_samples)),
                 dpi=200,
                 format='png',
                 bbox_inches='tight')
-    logger.info("classificaton report heatmap saved to models/reports/report_%s_%s.png" % (title, n_samples))
+    logger.info("classificaton report heatmap saved to models/reports/%s_%s.png" % (title, n_samples))
     return plt
 
 

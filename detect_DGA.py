@@ -9,7 +9,7 @@ from sklearn.externals import joblib
 from sklearn.metrics import auc, roc_curve, classification_report
 from sklearn.model_selection import GridSearchCV, KFold, train_test_split, cross_validate, ShuffleSplit
 from sklearn.pipeline import Pipeline
-
+from numpy.random import RandomState
 from features.data_generator import *
 from features.features_extractors import *
 from plot_module import *
@@ -19,8 +19,8 @@ basedir = os.path.dirname(__file__)
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-n_samples = 50000
-kula = False
+n_samples = -1
+kula = True
 
 if kula:
     n_jobs_pipeline = 8
@@ -231,6 +231,9 @@ def model_training():
     X = np.concatenate((X1, X2), axis=0)
     y = np.concatenate((y1, y2), axis=0)
 
+    from sklearn.utils import shuffle
+    X, y = shuffle(X, y, random_state=RandomState())
+
     logger.debug("X: %s" % str(X.shape))
     logger.debug("y: %s" % str(y.shape))
 
@@ -244,7 +247,7 @@ def model_training():
     joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest_2.pkl"), compress=3)
     #
     logger.info("scores")
-    pprint(scores)
+    logger.info(scores)
     # title = "Learning Curves Random Forest"
     # # Cross validation with 100 iterations to get smoother mean test and train
     # # score curves, each time with 20% data randomly selected as a validation set.
