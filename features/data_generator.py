@@ -30,8 +30,10 @@ path_good = ('../datasets/majestic_million.csv')
 path_bad = ('../datasets/all_dga.txt')
 
 # nuovo dataset
-domains_dataset = "../datasets/legit-dga_domains.csv"  # max lines = 133929
-features_dataset = "../datas/features_dataset.csv"
+domains_dataset = os.path.join(basedir, "../datasets/legit-dga_domains.csv")  # max lines = 133929
+features_dataset = os.path.join(basedir, "../datas/features_dataset.csv")
+
+suppobox = os.path.join(basedir, "../datas/suppobox_dataset.csv")
 
 
 def generate_domain_dataset(n_samples=None):
@@ -123,7 +125,9 @@ def save_features_dataset(n_samples=None):
     return True
 
 
-def load_features_dataset(n_samples=None, dataset=os.path.join(basedir, features_dataset)):
+def load_features_dataset(n_samples=None, dataset=features_dataset):
+    if dataset == "suppobox":
+        dataset = suppobox
     df = pd.DataFrame(pd.read_csv(dataset, sep=","))
     if n_samples:
         df = df.sample(n=n_samples, random_state=RandomState())
@@ -151,7 +155,7 @@ def generate_suppobox_dataset(n_samples=None):
         li.append(w1)
 
     X = pd.DataFrame(li)
-    y = np.chararray([len(li), 1],itemsize=3)
+    y = np.chararray([len(li), 1], itemsize=3)
     y[:] = "dga"
     print(y)
     return X, y
@@ -195,4 +199,3 @@ def save_suppobox_dataset(n_samples=None):
     df.to_csv(os.path.join(basedir, "../datas/suppobox_dataset.csv"), index=False)
     logger.info("features_dataset.csv saved to disk")
     return True
-
