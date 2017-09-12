@@ -4,7 +4,8 @@
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/detect_DGA.py" afterPath="$PROJECT_DIR$/detect_DGA.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/data_generator.py" afterPath="$PROJECT_DIR$/features/data_generator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/features_extractors.py" afterPath="$PROJECT_DIR$/features/features_extractors.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/features_testing.py" afterPath="$PROJECT_DIR$/features/features_testing.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,8 +30,8 @@
       <file leaf-file-name="detect_DGA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/detect_DGA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+            <state relative-caret-position="1192">
+              <caret line="96" column="25" lean-forward="false" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
               <folding>
                 <element signature="e#15#28#0" expanded="true" />
               </folding>
@@ -138,13 +139,13 @@
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/results.log" />
-        <option value="$PROJECT_DIR$/features/features_extractors.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/datasets/suppobox/suppodict.txt" />
         <option value="$PROJECT_DIR$/plot_module.py" />
         <option value="$PROJECT_DIR$/features/data_generator.py" />
         <option value="$PROJECT_DIR$/feature_testing.py" />
         <option value="$PROJECT_DIR$/features/feature_testing.py" />
+        <option value="$PROJECT_DIR$/features/features_extractors.py" />
         <option value="$PROJECT_DIR$/features/features_testing.py" />
         <option value="$PROJECT_DIR$/detect_DGA.py" />
       </list>
@@ -180,7 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -198,6 +198,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,7 +206,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/features/feature_testing.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -453,13 +454,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1501250934349</updated>
-    </task>
-    <task id="LOCAL-00006" summary="modifiche al 10fold">
-      <created>1502229671308</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1502229671308</updated>
     </task>
     <task id="LOCAL-00007" summary="creata pipline con features extractor e caricamento dataset con pandas">
       <created>1502452767093</created>
@@ -797,7 +791,14 @@
       <option name="project" value="LOCAL" />
       <updated>1505132337679</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="impostato socket per cambiare parametri su kula">
+      <created>1505156033798</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1505156033798</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -821,12 +822,13 @@
     <frame x="-1" y="1" width="1362" height="740" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5978091" sideWeight="0.5147059" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45292208" sideWeight="0.4852941" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28246754" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10546282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23596358" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -834,7 +836,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31838235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -889,7 +890,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="modifiche al 10fold" />
     <MESSAGE value="creata pipline con features extractor e caricamento dataset con pandas" />
     <MESSAGE value="Pipeline working" />
     <MESSAGE value="10fold working, multiproc working" />
@@ -914,7 +914,8 @@
     <MESSAGE value="modifiche finali per testina. branching per Tesi Alessandro" />
     <MESSAGE value="branched" />
     <MESSAGE value="spostate funzioni pipeline in features_testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="spostate funzioni pipeline in features_testing" />
+    <MESSAGE value="impostato socket per cambiare parametri su kula" />
+    <option name="LAST_COMMIT_MESSAGE" value="impostato socket per cambiare parametri su kula" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1008,65 +1009,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255">
           <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="95" column="16" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
-          <folding>
-            <element signature="e#15#73#1" expanded="false" />
-            <element signature="e#74#105#0" expanded="false" />
-            <element signature="e#741#2684#0" expanded="false" />
-            <element signature="e#741#1239#1" expanded="false" />
-            <element signature="e#1281#1297#0" expanded="false" />
-            <element signature="e#1345#2349#0" expanded="false" />
-            <element signature="e#1399#1431#0" expanded="false" />
-            <element signature="e#1565#2300#0" expanded="false" />
-            <element signature="e#1733#1963#0" expanded="false" />
-            <element signature="e#1895#1962#0" expanded="false" />
-            <element signature="e#2102#2239#0" expanded="false" />
-            <element signature="e#2145#2239#0" expanded="false" />
-            <element signature="e#2184#2239#0" expanded="false" />
-            <element signature="e#2396#2449#0" expanded="false" />
-            <element signature="e#2489#2516#0" expanded="false" />
-            <element signature="e#2554#2620#0" expanded="false" />
-            <element signature="e#2661#2684#0" expanded="false" />
-            <element signature="e#2755#3408#1" expanded="false" />
-            <element signature="e#3445#3455#0" expanded="false" />
-            <element signature="e#4022#4128#0" expanded="false" />
-            <element signature="e#4168#4195#0" expanded="false" />
-            <element signature="e#4233#4299#0" expanded="false" />
-            <element signature="e#4340#4363#0" expanded="false" />
-            <element signature="e#4423#5192#0" expanded="false" />
-            <element signature="e#4423#4472#1" expanded="false" />
-            <element signature="e#4506#4510#0" expanded="false" />
-            <element signature="e#4558#4803#0" expanded="false" />
-            <element signature="e#4718#4764#0" expanded="false" />
-            <element signature="e#4850#4957#0" expanded="false" />
-            <element signature="e#4997#5024#0" expanded="false" />
-            <element signature="e#5062#5128#0" expanded="false" />
-            <element signature="e#5169#5192#0" expanded="false" />
-            <element signature="e#5256#5756#0" expanded="false" />
-            <element signature="e#5823#6480#0" expanded="false" />
-            <element signature="e#6540#8036#0" expanded="false" />
-            <element signature="e#6540#7630#1" expanded="false" />
-            <element signature="e#7669#7683#0" expanded="false" />
-            <element signature="e#7723#7734#0" expanded="false" />
-            <element signature="e#7780#7868#0" expanded="false" />
-            <element signature="e#7906#7972#0" expanded="false" />
-            <element signature="e#8013#8036#0" expanded="false" />
-            <element signature="e#8099#8888#0" expanded="false" />
-            <element signature="e#8099#8152#1" expanded="false" />
-            <element signature="e#8186#8190#0" expanded="false" />
-            <element signature="e#8230#8241#0" expanded="false" />
-            <element signature="e#8287#8627#0" expanded="false" />
-            <element signature="e#8359#8627#0" expanded="false" />
-            <element signature="e#8665#8720#0" expanded="false" />
-            <element signature="e#8758#8824#0" expanded="false" />
-            <element signature="e#8865#8888#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1176,35 +1118,43 @@
     <entry file="file://$PROJECT_DIR$/features/features_testing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <element signature="e#885#1686#0" expanded="false" />
-            <element signature="e#896#1485#0" expanded="false" />
-            <element signature="e#972#1437#0" expanded="false" />
-            <element signature="e#1497#1679#0" expanded="false" />
-            <element signature="e#1696#2073#0" expanded="false" />
-            <element signature="e#1903#1989#0" expanded="false" />
-            <element signature="e#2117#3079#0" expanded="false" />
-            <element signature="e#2117#2221#1" expanded="false" />
-            <element signature="e#2452#3079#0" expanded="false" />
-            <element signature="e#3131#4931#0" expanded="false" />
-            <element signature="e#3131#3302#1" expanded="false" />
-            <element signature="e#3633#4871#0" expanded="false" />
-            <element signature="e#3816#4179#0" expanded="false" />
-            <element signature="e#4978#6929#0" expanded="false" />
-            <element signature="e#5194#5234#0" expanded="false" />
-            <element signature="e#5480#5632#0" expanded="false" />
-            <element signature="e#5490#5625#0" expanded="false" />
-            <element signature="e#5704#6929#0" expanded="false" />
-            <element signature="e#6378#6469#0" expanded="false" />
+            <element signature="e#806#1075#0" expanded="false" />
+            <element signature="e#886#1068#0" expanded="false" />
+            <element signature="e#1085#1462#0" expanded="false" />
+            <element signature="e#1292#1378#0" expanded="false" />
+            <element signature="e#1506#2468#0" expanded="false" />
+            <element signature="e#1506#1610#1" expanded="false" />
+            <element signature="e#1841#2468#0" expanded="false" />
+            <element signature="e#2520#4320#0" expanded="false" />
+            <element signature="e#2520#2691#1" expanded="false" />
+            <element signature="e#3022#4260#0" expanded="false" />
+            <element signature="e#3205#3568#0" expanded="false" />
+            <element signature="e#4367#6318#0" expanded="false" />
+            <element signature="e#4583#4623#0" expanded="false" />
+            <element signature="e#4869#5021#0" expanded="false" />
+            <element signature="e#4879#5014#0" expanded="false" />
+            <element signature="e#5093#6318#0" expanded="false" />
+            <element signature="e#5767#5858#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="971">
+          <caret line="298" column="32" lean-forward="true" selection-start-line="298" selection-start-column="32" selection-end-line="298" selection-end-column="32" />
+          <folding>
+            <element signature="e#74#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/detect_DGA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        <state relative-caret-position="1192">
+          <caret line="96" column="25" lean-forward="false" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
           <folding>
             <element signature="e#15#28#0" expanded="true" />
           </folding>

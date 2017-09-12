@@ -9,6 +9,7 @@ import tldextract
 import numpy as np
 from nltk import ngrams
 from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.pipeline import FeatureUnion
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -293,3 +294,20 @@ class DomainExtractor(BaseEstimator, TransformerMixin):
 
     def __setstate__(self, d):
         self.__dict__.update(d)
+
+
+def get_feature_union(n_jobs=1):
+    return FeatureUnion(
+        transformer_list=[
+            ('mcr', MCRExtractor()),
+            ('ns1', NormalityScoreExtractor(1)),
+            ('ns2', NormalityScoreExtractor(2)),
+            ('ns3', NormalityScoreExtractor(3)),
+            ('ns4', NormalityScoreExtractor(4)),
+            ('ns5', NormalityScoreExtractor(5)),
+            ('len', DomainNameLength()),
+            ('vcr', VowelConsonantRatio()),
+            ('ncr', NumCharRatio()),
+        ],
+        n_jobs=n_jobs
+    )

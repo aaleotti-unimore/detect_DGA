@@ -3,6 +3,7 @@ import socket
 from shutil import rmtree
 
 from sklearn.model_selection import cross_validate, ShuffleSplit
+from sklearn.utils import shuffle
 
 from features.data_generator import *
 from features.features_testing import *
@@ -13,16 +14,19 @@ basedir = os.path.dirname(__file__)
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+# Impostazioni per KULA
 if socket == "classificatoredga":
-    n_samples = -1
+    n_samples = -1  # tutto il dataset
     isKULA = True
     n_jobs_pipeline = 8
     clf_n_jobs = -1
+    # impostazioni per stampare gli output del logger su results.log
     hdlr = logging.FileHandler('results.log')
     formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
     hdlr.setFormatter(formatter)
     logger.addHandler(hdlr)
 else:
+    # impostazioni di testing sulla propria macchina
     n_samples = 1000
     isKULA = False
     clf_n_jobs = 1
@@ -57,7 +61,7 @@ def test_balboni_dataset():
 
 def detect(domain):
     """
-    metodo esterno
+    metodo per testare il dataset da fuori
     :param domain:
     :return:
     """
@@ -70,17 +74,16 @@ def model_training():
     logger.info("Training")
     cv = KFold(n_splits=10)
 
+    # dataset con suppobox aggiunto
     X1, y1 = load_features_dataset()
     X2, y2 = load_features_dataset(
         dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
     X = np.concatenate((X1, X2), axis=0)
     y = np.concatenate((y1, y2), axis=0)
-
-    from sklearn.utils import shuffle
     X, y = shuffle(X, y, random_state=RandomState())
-
     logger.debug("X: %s" % str(X.shape))
     logger.debug("y: %s" % str(y.shape))
+    #####
 
     scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
     clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
@@ -113,7 +116,7 @@ def main():
 
     # TODO testare i classificatori con i json di balboni, prendendo dalla colonna rrname solo quelli ripuliti. fare riferimento alla funzione data_generator.load_balboni già implementata a metà. I paper che ho letto finora usano solo i pachetti NXDOMAIN per fare detection, meglio filtrare quella colonna e usare solo quelli.
 
-    # TODO NB: la pipeline prende in pasto un vettore di stringhe. i vari features_extractors generano le features a partire da questo dataset.
+    # TODO NB: la pipeline prende in pasto un vettore di stringhe. la funzione get_feature_union ritorna i vari features_extractors generano le features in parallelo a partire da questo dataset.
     pass
 
 

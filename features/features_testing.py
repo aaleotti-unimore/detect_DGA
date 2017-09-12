@@ -12,8 +12,7 @@ from sklearn.pipeline import Pipeline, FeatureUnion
 
 from detect_DGA import logger, basedir, clf_n_jobs, n_jobs_pipeline
 from features.data_generator import generate_domain_dataset, load_features_dataset
-from features.features_extractors import MCRExtractor, NormalityScoreExtractor, DomainNameLength, VowelConsonantRatio, \
-    NumCharRatio
+from features.features_extractors import get_feature_union
 from plot_module import plot_classification_report, plot_AUC
 
 cachedir = mkdtemp()
@@ -21,21 +20,7 @@ memory = joblib.Memory(cachedir=cachedir, verbose=0)
 pipeline = Pipeline(
     memory=memory,
     steps=[
-        ('features_extractors',
-         FeatureUnion(
-             transformer_list=[
-                 ('mcr', MCRExtractor()),
-                 ('ns1', NormalityScoreExtractor(1)),
-                 ('ns2', NormalityScoreExtractor(2)),
-                 ('ns3', NormalityScoreExtractor(3)),
-                 ('ns4', NormalityScoreExtractor(4)),
-                 ('ns5', NormalityScoreExtractor(5)),
-                 ('len', DomainNameLength()),
-                 ('vcr', VowelConsonantRatio()),
-                 ('ncr', NumCharRatio()),
-             ],
-             n_jobs=n_jobs_pipeline
-         )),
+        ('features_extractors', get_feature_union(n_jobs_pipeline)),
         ('clf', RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
                                        min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True))
     ])
