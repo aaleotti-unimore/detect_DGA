@@ -2,7 +2,7 @@
 from __future__ import division
 
 import random
-
+from sklearn.utils import shuffle
 import pandas as pd
 from numpy.random import RandomState
 from pandas import read_json
@@ -199,3 +199,26 @@ def save_suppobox_dataset(n_samples=None):
     df.to_csv(os.path.join(basedir, "../datas/suppobox_dataset.csv"), index=False)
     logger.info("features_dataset.csv saved to disk")
     return True
+
+
+def load_both_datasets(n_samples=None, verbose=False):
+    X1, y1 = load_features_dataset()
+    X2, y2 = load_features_dataset(
+        dataset="suppobox")
+    X = np.concatenate((X1, X2), axis=0).astype(float)
+    y = np.concatenate((y1, y2), axis=0).astype(int)
+    if verbose:
+        logger.debug("X shape %s" % np.shape(X))
+        logger.debug("y shape %s" % np.shape(y))
+        get_balance(y)
+    if n_samples:
+        return shuffle(X, y, random_state=RandomState(), n_samples=n_samples)
+    return shuffle(X, y, random_state=RandomState())
+
+
+def get_balance(y):
+    unique, counts = np.unique(y, return_counts=True)
+    di = dict(zip(unique, counts))
+    logger.debug("Dataset balance")
+    for key, value in di.iteritems():
+        logger.debug("%s %s" % (key, value / np.shape(y)[0] * 100))
