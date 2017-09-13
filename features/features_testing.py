@@ -10,10 +10,31 @@ from sklearn.metrics import classification_report, roc_curve, auc
 from sklearn.model_selection import train_test_split, KFold, GridSearchCV
 from sklearn.pipeline import Pipeline, FeatureUnion
 
-from detect_DGA import logger, basedir, clf_n_jobs, n_jobs_pipeline
 from features.data_generator import generate_domain_dataset, load_features_dataset
 from features.features_extractors import get_feature_union
 from plot_module import plot_classification_report, plot_AUC
+import socket
+import logging
+basedir = os.path.dirname(__file__)
+
+logger = logging.getLogger(__name__)
+# Impostazioni per KULA
+if socket == "classificatoredga":
+    n_samples = -1  # tutto il dataset
+    isKULA = True
+    n_jobs_pipeline = 8
+    clf_n_jobs = -1
+    # impostazioni per stampare gli output del logger su results.log
+    hdlr = logging.FileHandler('results.log')
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
+else:
+    # impostazioni di testing sulla propria macchina
+    n_samples = 1000
+    isKULA = False
+    clf_n_jobs = 1
+    n_jobs_pipeline = 2
 
 cachedir = mkdtemp()
 memory = joblib.Memory(cachedir=cachedir, verbose=0)

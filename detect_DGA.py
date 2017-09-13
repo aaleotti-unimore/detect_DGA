@@ -13,6 +13,7 @@ basedir = os.path.dirname(__file__)
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+clf_n_jobs = 1
 
 # Impostazioni per KULA
 if socket == "classificatoredga":
@@ -59,15 +60,11 @@ def test_balboni_dataset():
     # print(data_generator.load_balboni(20))
 
 
-def detect(domain):
-    """
-    metodo per testare il dataset da fuori
-    :param domain:
-    :return:
-    """
+def detect(X, y):
     model = joblib.load(os.path.join(basedir, "models/model_RandomForest_2.pkl"))
     # pipeline.set_params(**{'clf': joblib.load(os.path.join(basedir, "models/model_RandomForest_2.pkl"))})
-    return model.predict(pd.DataFrame(domain).values.reshape(-1, 1))
+    y_pred = model.predict(X)
+    print(classification_report(y_pred=y_pred, y_true=y, target_names=['DGA', 'Legit']))
 
 
 def model_training():

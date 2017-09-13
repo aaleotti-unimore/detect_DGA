@@ -208,8 +208,8 @@ def load_both_datasets(n_samples=None, verbose=False):
     X = np.concatenate((X1, X2), axis=0).astype(float)
     y = np.concatenate((y1, y2), axis=0).astype(int)
     if verbose:
-        logger.debug("X shape %s" % np.shape(X))
-        logger.debug("y shape %s" % np.shape(y))
+        # logger.debug("X shape %s" % (X.shape))
+        # logger.debug("y shape %s" % (y.shape))
         get_balance(y)
     if n_samples:
         return shuffle(X, y, random_state=RandomState(), n_samples=n_samples)
