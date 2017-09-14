@@ -9,7 +9,7 @@ from pandas import read_json
 from sklearn import preprocessing
 from sklearn.pipeline import FeatureUnion
 
-import detect_DGA
+#import detect_DGA
 from features_extractors import *
 
 pd.set_option('display.max_rows', 500)
@@ -81,12 +81,81 @@ def load_balboni(n_samples=None):
     return df
 
 
-def save_features_dataset(n_samples=None):
+# def save_features_dataset(n_samples=None):
+#     n_jobs = 1
+#     if detect_DGA.isKULA:
+#         logger.debug("detected kula settings")
+#         logger.setLevel(logging.INFO)
+#         n_jobs = 9
+#
+#     ft = FeatureUnion(
+#         transformer_list=[
+#             ('mcr', MCRExtractor()),
+#             ('ns1', NormalityScoreExtractor(1)),
+#             ('ns2', NormalityScoreExtractor(2)),
+#             ('ns3', NormalityScoreExtractor(3)),
+#             ('ns4', NormalityScoreExtractor(4)),
+#             ('ns5', NormalityScoreExtractor(5)),
+#             ('len', DomainNameLength()),
+#             ('vcr', VowelConsonantRatio()),
+#             ('ncr', NumCharRatio()),
+#         ],
+#         n_jobs=n_jobs
+#     )
+#
+#     logger.debug("\n%s" % ft.get_params())
+#
+#     xy = pd.DataFrame(
+#         pd.read_csv(domains_dataset, sep=",", usecols=['domain', 'class'])
+#     )
+#
+#     if n_samples:
+#         logger.info("sample size: %s" % n_samples)
+#         xy = xy.sample(n=n_samples, random_state=RandomState())
+#     else:
+#         logger.info("Converting all domains")
+#
+#     X = xy['domain'].values.reshape(-1, 1)
+#
+#     df = pd.DataFrame(np.c_[xy, ft.transform(X)],
+#                       columns=['domain', 'class', 'mcr', 'ns1',
+#                                'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
+#
+#     df.to_csv(("../datas/features_dataset.csv"), index=False)
+#     logger.info("features_dataset.csv saved to disk")
+#     return True
+
+def delete_column(df,column_name):
+    # TODO debug
+    columns=list(df.columns)
+    columns.remove(column_name)
+    return df[columns]
+    pass
+
+
+#TODO debug
+def load_and_concat_dataset(df_filenames,usecols=None):
+    if type(df_filenames) == type(''):
+        result=pd.read_csv(df_filenames,usecols=usecols)
+        pass
+    elif type(df_filenames) == type([]):
+        result=None
+        for filename in df_filenames:
+            partial_df = pd.read_csv(filename, usecols=usecols)
+            if result is not None:
+                result=pd.concat([result,partial_df])
+            else:
+                result=partial_df
+            pass
+        pass
+    # else:
+    #     raise TypeError('df_filenames must be a string or a list of strings')
+    return result
+    pass
+
+#TODO debug
+def extract_features(df):
     n_jobs = 1
-    if detect_DGA.isKULA:
-        logger.debug("detected kula settings")
-        logger.setLevel(logging.INFO)
-        n_jobs = 9
 
     ft = FeatureUnion(
         transformer_list=[
@@ -105,24 +174,25 @@ def save_features_dataset(n_samples=None):
 
     logger.debug("\n%s" % ft.get_params())
 
-    xy = pd.DataFrame(
-        pd.read_csv(domains_dataset, sep=",", usecols=['domain', 'class'])
-    )
+    # xy = pd.DataFrame(
+    #     pd.read_csv(domains_dataset, sep=",", usecols=['domain', 'class'])
+    # )
 
-    if n_samples:
-        logger.info("sample size: %s" % n_samples)
-        xy = xy.sample(n=n_samples, random_state=RandomState())
-    else:
-        logger.info("Converting all domains")
+    # if n_samples:
+    #     logger.info("sample size: %s" % n_samples)
+    #     xy = xy.sample(n=n_samples, random_state=RandomState())
+    # else:
+    #     logger.info("Converting all domains")
 
-    X = xy['domain'].values.reshape(-1, 1)
+    X = df['domain'].values.reshape(-1, 1)
 
-    df = pd.DataFrame(np.c_[xy, ft.transform(X)],
-                      columns=['domain', 'class', 'mcr', 'ns1', 'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
+    out_df = pd.DataFrame(np.c_[df, ft.transform(X)],
+                      columns=['domain', 'class', 'mcr', 'ns1',
+                               'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
 
-    df.to_csv(("../datas/features_dataset.csv"), index=False)
+    #out_df.to_csv((out_file), index=False)
     logger.info("features_dataset.csv saved to disk")
-    return True
+    return out_df
 
 
 def load_features_dataset(n_samples=None, dataset=features_dataset):
@@ -222,3 +292,20 @@ def get_balance(y):
     logger.debug("Dataset balance")
     for key, value in di.iteritems():
         logger.debug("%s %s" % (key, value / np.shape(y)[0] * 100))
+
+
+if __name__=='__main__':
+    dom=load_and_concat_dataset('../datasets/legit_dga_domains.csv',usecols=['host','domain','class'])
+    no_dom=load_and_concat_dataset('../datasets/all_samples_DGA.csv',usecols=['host','class'])
+    feat_1=load_and_concat_dataset('../datas/features_dataset.csv',usecols=['domain', 'class',
+                                                                           'mcr', 'ns1', 'ns2',
+                                                                           'ns3', 'ns4', 'ns5',
+                                                                           'len', 'vcr', 'ncr'])
+
+    dom_extractor=DomainExtractor()
+    df=pd.DataFrame(dom_extractor.transform(no_dom))
+    dom=pd.concat([dom,df])
+
+    feat_2=extract_features(dom)
+    feat=pd.concat([feat_1,feat_2])
+    feat.to_csv((out_file), index=False)
