@@ -9,7 +9,7 @@ from pandas import read_json
 from sklearn import preprocessing
 from sklearn.pipeline import FeatureUnion
 
-#import detect_DGA
+from detect_DGA import isKULA
 from features_extractors import *
 
 pd.set_option('display.max_rows', 500)
@@ -125,27 +125,27 @@ def load_balboni(n_samples=None):
 #     logger.info("features_dataset.csv saved to disk")
 #     return True
 
-def delete_column(df,column_name):
+def delete_column(df, column_name):
     # TODO debug
-    columns=list(df.columns)
+    columns = list(df.columns)
     columns.remove(column_name)
     return df[columns]
     pass
 
 
-#TODO debug
-def load_and_concat_dataset(df_filenames,usecols=None):
+# TODO debug
+def load_and_concat_dataset(df_filenames, usecols=None):
     if type(df_filenames) == type(''):
-        result=pd.read_csv(df_filenames,usecols=usecols)
+        result = pd.read_csv(df_filenames, usecols=usecols)
         pass
     elif type(df_filenames) == type([]):
-        result=None
+        result = None
         for filename in df_filenames:
             partial_df = pd.read_csv(filename, usecols=usecols)
             if result is not None:
-                result=pd.concat([result,partial_df])
+                result = pd.concat([result, partial_df])
             else:
-                result=partial_df
+                result = partial_df
             pass
         pass
     # else:
@@ -153,7 +153,8 @@ def load_and_concat_dataset(df_filenames,usecols=None):
     return result
     pass
 
-#TODO debug
+
+# TODO debug
 def extract_features(df):
     n_jobs = 1
 
@@ -175,10 +176,10 @@ def extract_features(df):
     X = df['domain'].values.reshape(-1, 1)
 
     out_df = pd.DataFrame(np.c_[df, ft.transform(X)],
-                      columns=['domain', 'class', 'mcr', 'ns1',
-                               'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
+                          columns=['domain', 'class', 'mcr', 'ns1',
+                                   'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
 
-    #out_df.to_csv((out_file), index=False)
+    # out_df.to_csv((out_file), index=False)
     logger.info("features_dataset.csv saved to disk")
     return out_df
 
@@ -221,7 +222,7 @@ def __generate_suppobox_dataset(n_samples=None):
 
 def __save_suppobox_dataset(n_samples=None):
     n_jobs = 1
-    if detect_DGA.isKULA:
+    if isKULA:
         logger.debug("detected kula settings")
         logger.setLevel(logging.INFO)
         n_jobs = 9
@@ -269,18 +270,18 @@ def get_balance(y):
         logger.debug("%s %s" % (key, value / np.shape(y)[0] * 100))
 
 
-if __name__=='__main__':
-    dom=load_and_concat_dataset('../datasets/legit_dga_domains.csv',usecols=['host','domain','class'])
-    no_dom=load_and_concat_dataset('../datasets/all_samples_DGA.csv',usecols=['host','class'])
-    feat_1=load_and_concat_dataset('../datas/features_dataset.csv',usecols=['domain', 'class',
-                                                                           'mcr', 'ns1', 'ns2',
-                                                                           'ns3', 'ns4', 'ns5',
-                                                                           'len', 'vcr', 'ncr'])
+if __name__ == '__main__':
+    dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
+    no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
+    feat_1 = load_and_concat_dataset('../datas/features_dataset.csv', usecols=['domain', 'class',
+                                                                               'mcr', 'ns1', 'ns2',
+                                                                               'ns3', 'ns4', 'ns5',
+                                                                               'len', 'vcr', 'ncr'])
 
-    dom_extractor=DomainExtractor()
-    df=pd.DataFrame(dom_extractor.transform(no_dom))
-    dom=pd.concat([dom,df])
+    dom_extractor = DomainExtractor()
+    df = pd.DataFrame(dom_extractor.transform(no_dom))
+    dom = pd.concat([dom, df])
 
-    feat_2=extract_features(dom)
-    feat=pd.concat([feat_1,feat_2])
+    feat_2 = extract_features(dom)
+    feat = pd.concat([feat_1, feat_2])
     feat.to_csv((out_file), index=False)
