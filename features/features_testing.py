@@ -10,11 +10,12 @@ from sklearn.metrics import classification_report, roc_curve, auc
 from sklearn.model_selection import train_test_split, KFold, GridSearchCV
 from sklearn.pipeline import Pipeline, FeatureUnion
 
-from features.data_generator import generate_domain_dataset, load_features_dataset
+from features.data_generator import *
 from features.features_extractors import get_feature_union
 from plot_module import plot_classification_report, plot_AUC
 import socket
 import logging
+
 basedir = os.path.dirname(__file__)
 
 logger = logging.getLogger(__name__)

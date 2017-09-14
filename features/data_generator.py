@@ -157,20 +157,8 @@ def load_and_concat_dataset(df_filenames,usecols=None):
 def extract_features(df):
     n_jobs = 1
 
-    ft = FeatureUnion(
-        transformer_list=[
-            ('mcr', MCRExtractor()),
-            ('ns1', NormalityScoreExtractor(1)),
-            ('ns2', NormalityScoreExtractor(2)),
-            ('ns3', NormalityScoreExtractor(3)),
-            ('ns4', NormalityScoreExtractor(4)),
-            ('ns5', NormalityScoreExtractor(5)),
-            ('len', DomainNameLength()),
-            ('vcr', VowelConsonantRatio()),
-            ('ncr', NumCharRatio()),
-        ],
-        n_jobs=n_jobs
-    )
+    # FEATURES EXTRACTOR
+    ft = get_feature_union()
 
     logger.debug("\n%s" % ft.get_params())
 
@@ -216,7 +204,7 @@ def __random_line(afile):
     return random.choice(lines)
 
 
-def generate_suppobox_dataset(n_samples=None):
+def __generate_suppobox_dataset(n_samples=None):
     suppodictdict = os.path.join(basedir, "../datasets/suppobox/suppodict.txt")
     li = []
     for i in range(0, n_samples):
@@ -231,31 +219,18 @@ def generate_suppobox_dataset(n_samples=None):
     return X, y
 
 
-def save_suppobox_dataset(n_samples=None):
+def __save_suppobox_dataset(n_samples=None):
     n_jobs = 1
     if detect_DGA.isKULA:
         logger.debug("detected kula settings")
         logger.setLevel(logging.INFO)
         n_jobs = 9
 
-    ft = FeatureUnion(
-        transformer_list=[
-            ('mcr', MCRExtractor()),
-            ('ns1', NormalityScoreExtractor(1)),
-            ('ns2', NormalityScoreExtractor(2)),
-            ('ns3', NormalityScoreExtractor(3)),
-            ('ns4', NormalityScoreExtractor(4)),
-            ('ns5', NormalityScoreExtractor(5)),
-            ('len', DomainNameLength()),
-            ('vcr', VowelConsonantRatio()),
-            ('ncr', NumCharRatio()),
-        ],
-        n_jobs=n_jobs
-    )
+    ft = get_feature_union()
 
     logger.debug("\n%s" % ft.get_params())
 
-    X, y = generate_suppobox_dataset(n_samples=n_samples)
+    X, y = __generate_suppobox_dataset(n_samples=n_samples)
 
     if n_samples:
         logger.info("sample size: %s" % n_samples)
