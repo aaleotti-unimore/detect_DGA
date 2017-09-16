@@ -9,7 +9,7 @@ from pandas import read_json
 from sklearn import preprocessing
 from sklearn.pipeline import FeatureUnion
 
-from detect_DGA import isKULA
+#from detect_DGA import isKULA
 from features_extractors import *
 
 pd.set_option('display.max_rows', 500)
@@ -175,7 +175,7 @@ def extract_features(df):
 
     X = df['domain'].values.reshape(-1, 1)
 
-    out_df = pd.DataFrame(np.c_[df, ft.transform(X)],
+    out_df = pd.DataFrame(np.c_[df[['domain', 'class']], ft.transform(X)],
                           columns=['domain', 'class', 'mcr', 'ns1',
                                    'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
 
@@ -271,17 +271,14 @@ def get_balance(y):
 
 
 if __name__ == '__main__':
-    dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
-    no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
-    feat_1 = load_and_concat_dataset('../datas/features_dataset.csv', usecols=['domain', 'class',
-                                                                               'mcr', 'ns1', 'ns2',
-                                                                               'ns3', 'ns4', 'ns5',
-                                                                               'len', 'vcr', 'ncr'])
+    out_file='total_dataset.csv'
+    dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv.prova', usecols=['host', 'domain', 'class'])
+    no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv.prova', usecols=['host', 'class'])
 
     dom_extractor = DomainExtractor()
-    df = pd.DataFrame(dom_extractor.transform(no_dom))
+    df=no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
+    #df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
     dom = pd.concat([dom, df])
 
-    feat_2 = extract_features(dom)
-    feat = pd.concat([feat_1, feat_2])
+    feat = extract_features(dom)
     feat.to_csv((out_file), index=False)
