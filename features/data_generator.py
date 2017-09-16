@@ -271,9 +271,10 @@ def get_balance(y):
 
 
 if __name__ == '__main__':
+    logging.basicConfig()
     out_file='total_dataset.csv'
-    dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv.prova', usecols=['host', 'domain', 'class'])
-    no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv.prova', usecols=['host', 'class'])
+    dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
+    no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
 
     dom_extractor = DomainExtractor()
     df=no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
