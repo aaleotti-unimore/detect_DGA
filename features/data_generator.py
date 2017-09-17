@@ -271,15 +271,20 @@ def get_balance(y):
 
 
 if __name__ == '__main__':
-    logging.basicConfig()
-    out_file='total_dataset.csv'
-    dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
-    no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
+    try:
+        logging.basicConfig()
+        out_file='total_dataset.csv'
+        dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
+        no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
 
-    dom_extractor = DomainExtractor()
-    df=no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
-    #df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
-    dom = pd.concat([dom, df])
+        dom_extractor = DomainExtractor()
+        df=no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
+        #df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
+        dom = pd.concat([dom, df])
 
-    feat = extract_features(dom)
-    feat.to_csv((out_file), index=False)
+        feat = extract_features(dom)
+        feat.to_csv((out_file), index=False)
+    except Exception as e:
+        f_err=open('error.txt','w')
+        f_err.write(e)
+        f_err.close()
