@@ -9,7 +9,7 @@ from pandas import read_json
 from sklearn import preprocessing
 from sklearn.pipeline import FeatureUnion
 
-#from detect_DGA import isKULA
+# from detect_DGA import isKULA
 from features_extractors import *
 
 pd.set_option('display.max_rows', 500)
@@ -222,7 +222,8 @@ def __generate_suppobox_dataset(n_samples=None):
 
 def __save_suppobox_dataset(n_samples=None):
     n_jobs = 1
-    if isKULA:
+    import socket
+    if socket == "classificatoredga":
         logger.debug("detected kula settings")
         logger.setLevel(logging.INFO)
         n_jobs = 9
@@ -273,18 +274,18 @@ def get_balance(y):
 if __name__ == '__main__':
     try:
         logging.basicConfig()
-        out_file='total_dataset.csv'
+        out_file = 'total_dataset.csv'
         dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
         no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
 
         dom_extractor = DomainExtractor()
-        df=no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
-        #df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
+        df = no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
+        # df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
         dom = pd.concat([dom, df])
 
         feat = extract_features(dom)
         feat.to_csv((out_file), index=False)
     except Exception as e:
-        f_err=open('error.txt','w')
+        f_err = open('error.txt', 'w')
         f_err.write(e)
         f_err.close()

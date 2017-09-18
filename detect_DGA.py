@@ -1,13 +1,13 @@
 # coding=utf-8
+import logging
+import os
 import socket
-from shutil import rmtree
 
-from sklearn.model_selection import cross_validate, ShuffleSplit
-from sklearn.utils import shuffle
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
-from features.data_generator import *
-from features.features_testing import *
-from plot_module import *
+from features.data_generator import load_both_datasets, load_features_dataset
+from myclassifier import MyClassifier
 
 basedir = os.path.dirname(__file__)
 
@@ -15,41 +15,16 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 clf_n_jobs = 1
 
-# Impostazioni per KULA
-if socket == "classificatoredga":
-    n_samples = -1  # tutto il dataset
-    isKULA = True
-    n_jobs_pipeline = 8
-    clf_n_jobs = -1
-    # impostazioni per stampare gli output del logger su results.log
-    hdlr = logging.FileHandler('results.log')
-    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-    hdlr.setFormatter(formatter)
-    logger.addHandler(hdlr)
-else:
-    # impostazioni di testing sulla propria macchina
-    n_samples = 1000
-    isKULA = False
-    clf_n_jobs = 1
-    n_jobs_pipeline = 2
-
-##already trained CLFS
-trained_clfs = {
-    "RandomForest": joblib.load(os.path.join(basedir, "models/model_RandomForest.pkl")),
-    "RandomForest_suppo": joblib.load(os.path.join(basedir, "models/model_RandomForest_suppo.pkl")),
-}
-
-
 def test_balboni_dataset():
-    X, y = load_balboni(n_samples=n_samples)
-    #### test del dataset
-    model = trained_clfs['RandomForest']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.90, random_state=RandomState())
-    # model.set_params(features_extractors__n_jobs=2)
-    logger.debug(model)
-    y_pred = model.predict(X_test)
-
-    logger.info("\n%s" % classification_report(y_true=y_test, y_pred=y_pred, target_names=['DGA', 'Legit']))
+    # X, y = load_balboni(n_samples=n_samples)
+    # #### test del dataset
+    # model = trained_clfs['RandomForest']
+    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.90, random_state=RandomState())
+    # # model.set_params(features_extractors__n_jobs=2)
+    # logger.debug(model)
+    # y_pred = model.predict(X_test)
+    #
+    # logger.info("\n%s" % classification_report(y_true=y_test, y_pred=y_pred, target_names=['DGA', 'Legit']))
 
     # y_pred = lb.inverse_transform(y_pred)
     # y_test = lb.inverse_transform(y_test)
@@ -58,54 +33,7 @@ def test_balboni_dataset():
     ########
 
     # print(data_generator.load_balboni(20))
-
-
-def detect(X, y):
-    model = joblib.load(os.path.join(basedir, "models/model_RandomForest_2.pkl"))
-    # pipeline.set_params(**{'clf': joblib.load(os.path.join(basedir, "models/model_RandomForest_2.pkl"))})
-    y_pred = model.predict(X)
-    print(classification_report(y_pred=y_pred, y_true=y, target_names=['DGA', 'Legit']))
-
-
-def model_training():
-    logger.info("Training")
-    cv = KFold(n_splits=10)
-
-    # dataset con suppobox aggiunto
-    X1, y1 = load_features_dataset()
-    X2, y2 = load_features_dataset(
-        dataset=os.path.join(basedir, "datas/suppobox_dataset.csv"))
-    X = np.concatenate((X1, X2), axis=0)
-    y = np.concatenate((y1, y2), axis=0)
-    X, y = shuffle(X, y, random_state=RandomState())
-    logger.debug("X: %s" % str(X.shape))
-    logger.debug("y: %s" % str(y.shape))
-    #####
-
-    scoring = ['f1', 'accuracy', 'precision', 'recall', 'roc_auc']
-    clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
-                                 min_samples_leaf=50, n_jobs=clf_n_jobs, oob_score=True)
-    clf.fit(X, y)
-    logger.info("clf fitted")
-    scores = cross_validate(clf, X, y, scoring=scoring,
-                            cv=10, return_train_score=False, n_jobs=-1, verbose=1)
-    joblib.dump(clf, os.path.join(basedir, "models/model_RandomForest_2.pkl"), compress=3)
-    #
-    logger.info("scores")
-    logger.info(scores)
-    # title = "Learning Curves Random Forest"
-    # # Cross validation with 100 iterations to get smoother mean test and train
-    # # score curves, each time with 20% data randomly selected as a validation set.
-    cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
-    # logger.info("plotting learning curve")
-    # plot_learning_curve(clf, title, X, y, ylim=(0.7, 1.01), cv=cv, n_jobs=-1)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.50, random_state=RandomState())
-    y_pred = clf.predict(X_test)
-    logger.info("plotting classification report")
-    plot_classification_report(
-        classification_report(y_true=y_test, y_pred=y_pred, target_names=['dga', 'legit']),
-        n_samples=n_samples
-    )
+    pass
 
 
 def main():
@@ -118,6 +46,15 @@ def main():
 
 
 if __name__ == "__main__":
-    model_training()
+    # model_training()
+    X, y = load_features_dataset()
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+    #
+    _clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
+                                  min_samples_leaf=50, n_jobs=-1, oob_score=True)
+    myc = MyClassifier(clf=_clf)
+    myc.fit(X_train, y_train)
+    myc.classification_report(X_test, y_test)
+    myc.cross_validate(X_train, y_train)
+    myc.plot_AUC(X_test, y_test)
     logger.info("Exiting...")
-    rmtree(cachedir)  # clearing pipeline cache

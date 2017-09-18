@@ -15,6 +15,7 @@ from features.features_extractors import get_feature_union
 from plot_module import plot_classification_report, plot_AUC
 import socket
 import logging
+from shutil import rmtree
 
 basedir = os.path.dirname(__file__)
 
@@ -75,6 +76,8 @@ def pipeline_training(n_samples=-1):
                                    title=clf_name)
         joblib.dump(model, os.path.join(basedir, "models/model_%s_%s.pkl" % (clf_name, n_samples)), compress=5)
         logger.info("model %s saved to models/model_%s_%s.pkl" % (clf_name, clf_name, n_samples))
+
+    rmtree(cachedir)  # clearing pipeline cache
 
 
 def roc_comparison(clfs=clfs, n_samples=-1):

@@ -22,7 +22,7 @@ def __show_values(pc, fmt="%.2f", **kw):
     '''
     from itertools import izip
     pc.update_scalarmappable()
-    ax = pc.get_axes()
+    ax = pc.axes
     for p, color, value in izip(pc.get_paths(), pc.get_facecolors(), pc.get_array()):
         x, y = p.vertices[:-2, :].mean(0)
         if np.all(color[:3] > 0.5):
@@ -102,7 +102,8 @@ def __heatmap(AUC, title, xlabel, ylabel, xticklabels, yticklabels, figure_width
     fig.set_size_inches(__cm2inch(figure_width, figure_height))
 
 
-def plot_classification_report(classification_report, title='Classification_report', cmap='RdBu', n_samples=0):
+def plot_classification_report(classification_report, directory=None, title='Classification_report', cmap='RdBu'
+                               ):
     '''
     Plot scikit-learn classification report.
     Extension based on https://stackoverflow.com/a/31689645/395857
@@ -136,11 +137,16 @@ def plot_classification_report(classification_report, title='Classification_repo
     __heatmap(np.array(plotMat), title, xlabel, ylabel, xticklabels, yticklabels, figure_width, figure_height,
               correct_orientation, cmap=cmap)
 
-    plt.savefig(os.path.join(basedir, 'models/reports/%s_%s.png' % (title, n_samples)),
+    if not directory:
+        directory = os.path.join(basedir, 'models/reports/%s.png' % title)
+    else:
+        directory += "/class_rep.png"
+
+    plt.savefig(directory,
                 dpi=200,
                 format='png',
                 bbox_inches='tight')
-    logger.info("classificaton report heatmap saved to models/reports/%s_%s.png" % (title, n_samples))
+    logger.info("classificaton report heatmap saved to %s" % directory)
     return plt
 
 
