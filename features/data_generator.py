@@ -133,7 +133,7 @@ def delete_column(df, column_name):
     pass
 
 
-# TODO debug
+# TODO debug : OK
 def load_and_concat_dataset(df_filenames, usecols=None):
     if type(df_filenames) == type(''):
         result = pd.read_csv(df_filenames, usecols=usecols)
@@ -154,12 +154,11 @@ def load_and_concat_dataset(df_filenames, usecols=None):
     pass
 
 
-# TODO debug
-def extract_features(df):
-    n_jobs = 1
+# TODO debug : OK
+def extract_features(df,n_jobs=1):
 
     # FEATURES EXTRACTOR
-    ft = get_feature_union()
+    ft = get_feature_union(n_jobs=n_jobs)
 
     logger.debug("\n%s" % ft.get_params())
 
@@ -278,12 +277,15 @@ if __name__ == '__main__':
         dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
         no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
 
+        no_dom['class']=no_dom['class'].map(lambda x: 'legit' if x == 0 else 'dga')
+
+
         dom_extractor = DomainExtractor()
         df = no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
         # df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
         dom = pd.concat([dom, df])
 
-        feat = extract_features(dom)
+        feat = extract_features(dom,n_jobs=8)
         feat.to_csv((out_file), index=False)
     except Exception as e:
         f_err = open('error.txt', 'w')
