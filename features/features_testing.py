@@ -12,7 +12,7 @@ from sklearn.pipeline import Pipeline, FeatureUnion
 
 from features.data_generator import *
 from features.features_extractors import get_feature_union
-from plot_module import plot_classification_report, plot_AUC
+from plot_module import plot_classification_report, plot_AUC_comparison
 import socket
 import logging
 from shutil import rmtree
@@ -127,8 +127,8 @@ def roc_comparison(clfs=clfs, n_samples=-1):
                     compress=5)
         logger.info("models/10Fold/model_%s_%s.pkl saved to disk" % (clf_name, n_samples))
 
-    plot_AUC(plot_datas,
-             n_samples=n_samples)
+    plot_AUC_comparison(plot_datas,
+                        n_samples=n_samples)
 
 
 def pipeline_grid_search(n_samples=-1):

@@ -2,9 +2,11 @@
 import logging
 import os
 import socket
-
+import numpy as np
+from sklearn.utils import shuffle
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_validate, cross_val_score
+from sklearn.metrics import classification_report
 
 from features.data_generator import load_both_datasets, load_features_dataset
 from myclassifier import MyClassifier
@@ -14,6 +16,7 @@ basedir = os.path.dirname(__file__)
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 clf_n_jobs = 1
+
 
 def test_balboni_dataset():
     # X, y = load_balboni(n_samples=n_samples)
@@ -48,13 +51,31 @@ def main():
 if __name__ == "__main__":
     # model_training()
     X, y = load_features_dataset()
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+    X_test2, y_test2 = load_features_dataset(dataset="suppobox")
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
+    X_test = np.concatenate((X_test, X_test2))
+    y_test = np.concatenate((y_test, y_test2))
+    X_test, y_test = shuffle(X_test, y_test, random_state=42)
+    print(X_test)
+    print(X_test.shape)
+    print(y_test)
+    print(y_test.shape)
+
+    print(X_train.shape)
+
     #
-    _clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
-                                  min_samples_leaf=50, n_jobs=-1, oob_score=True)
-    myc = MyClassifier(clf=_clf)
-    myc.fit(X_train, y_train)
-    myc.classification_report(X_test, y_test)
-    myc.cross_validate(X_train, y_train)
-    myc.plot_AUC(X_test, y_test)
+    # _clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
+    #                               min_samples_leaf=50, n_jobs=-1, oob_score=True)
+    # # myc = MyClassifier(clf=_clf)
+    # # myc.fit(X_train, y_train)
+    # # myc.classification_report(X_test, y_test)
+    # # myc.cross_validate(X_train, y_train)
+    # # myc.plot_AUC(X_test, y_test)
+    #
+    # nosup = MyClassifier(clf=_clf)
+    # nosup.fit(X_train, y_train)
+    # nosup.classification_report(X_test, y_test, plot=True)
+    # nosup.cross_validate(X_train, y_train)
+    # nosup.plot_AUC(X_test, y_test)
+
     logger.info("Exiting...")

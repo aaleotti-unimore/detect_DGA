@@ -1,10 +1,13 @@
+import matplotlib as mpl
+
+mpl.use('Agg')
+import matplotlib.pyplot as plt
 import logging
 import os
 import socket
 import time
-
 import numpy as np
-from matplotlib import pyplot as plt
+
 from sklearn.externals import joblib
 from sklearn.metrics import classification_report, roc_curve, auc
 from sklearn.model_selection import cross_validate
@@ -117,7 +120,16 @@ class MyClassifier():
         dirplt = os.path.join(self.directory, 'roc_plot.png')
         plt.savefig(dirplt, format="png")
 
-    def cross_validate(self, X_train, y_train, scoring=None):
+    def cross_validate(self, X_train, y_train, scoring=None, save=True):
         if scoring is None:
             scoring = ['f1', 'precision', 'recall', 'accuracy', 'roc_auc']
-        self.save_results(cross_validate(self.clf, X_train, y_train, scoring=scoring))
+        results = cross_validate(self.clf, X_train, y_train, cv=10, scoring=scoring)
+        if save:
+            self.save_results(results)
+        else:
+            for key, value in sorted(results.iteritems()):
+                if not "time" in key:
+                    self.logger.info("%s: %.2f%% (%.2f%%)" % (key, value.mean() * 100, value.std() * 100))
+                else:
+                    self.logger.info("%s: %.2fs (%.2f)s" % (key, value.mean(), value.std()))
+        return results

@@ -2,31 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/class_rep.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/roc_plot.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest senza suppobox/class_rep.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest senza suppobox/roc_plot.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/clf.pkl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/cv_results.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/params.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/results.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest senza suppobox/clf.pkl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest senza suppobox/cv_results.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest senza suppobox/params.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest senza suppobox/results.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myclassifier.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/10Fold/model_RandomForest_50000.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/learning_curve.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/graph/plot_comparison_50000.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/model_RandomForest.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/model_RandomForest_2.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/model_RandomForest_suppo.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/reports/Classification_report_RandomForest_conSuppo_Training.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/class_rep.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/roc_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/clf.pkl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/cv_results.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/params.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/results.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/results.log" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/results.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/RandomForest senza suppobox/results.log" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/class_rep.png" afterPath="$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/class_rep.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/clf.pkl" afterPath="$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/clf.pkl" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/cv_results.json" afterPath="$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/cv_results.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/params.json" afterPath="$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/params.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest con dataset e suppobox/roc_plot.png" afterPath="$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/roc_plot.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest senza suppobox/class_rep.png" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/class_rep.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest senza suppobox/clf.pkl" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/clf.pkl" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest senza suppobox/cv_results.json" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/cv_results.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest senza suppobox/params.json" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/params.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/models/RandomForest senza suppobox/roc_plot.png" afterPath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/roc_plot.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/detect_DGA.py" afterPath="$PROJECT_DIR$/detect_DGA.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/data_generator.py" afterPath="$PROJECT_DIR$/features/data_generator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/features_testing.py" afterPath="$PROJECT_DIR$/features/features_testing.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myclassifier.py" afterPath="$PROJECT_DIR$/myclassifier.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_module.py" afterPath="$PROJECT_DIR$/plot_module.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,34 +42,11 @@
     <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1505749505117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1505812249521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="detect_DGA.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/detect_DGA.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-              <folding>
-                <element signature="e#15#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_generator.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/features/data_generator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1283">
-              <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -180,16 +155,17 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/results.log" />
         <option value="$PROJECT_DIR$/datasets/suppobox/suppodict.txt" />
-        <option value="$PROJECT_DIR$/plot_module.py" />
         <option value="$PROJECT_DIR$/feature_testing.py" />
         <option value="$PROJECT_DIR$/features/feature_testing.py" />
         <option value="$PROJECT_DIR$/features/features_extractors.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/../adversarial_DGA/model.py" />
         <option value="$PROJECT_DIR$/features/features_testing.py" />
-        <option value="$PROJECT_DIR$/myclassifier.py" />
-        <option value="$PROJECT_DIR$/detect_DGA.py" />
         <option value="$PROJECT_DIR$/features/data_generator.py" />
+        <option value="$PROJECT_DIR$/plot_module.py" />
+        <option value="$PROJECT_DIR$/myclassifier.py" />
+        <option value="$PROJECT_DIR$/models/RandomForest con suppobox/results.log" />
+        <option value="$PROJECT_DIR$/detect_DGA.py" />
       </list>
     </option>
   </component>
@@ -223,6 +199,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -233,14 +211,22 @@
             <path>
               <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
               <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
+              <item name="datasets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
               <item name="features" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -496,13 +482,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1501250934349</updated>
-    </task>
-    <task id="LOCAL-00012" summary="new dataset active">
-      <created>1503426922950</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1503426922950</updated>
     </task>
     <task id="LOCAL-00013" summary="nuova feature">
       <created>1503577866051</created>
@@ -840,7 +819,14 @@
       <option name="project" value="LOCAL" />
       <updated>1505411795737</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="creata classe myclassifier per salvare in sottocartelle ogni experimento. eseguiti test per RandomForest con e senza Suppobox.">
+      <created>1505749771357</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1505749771358</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -864,18 +850,18 @@
     <frame x="-1" y="1" width="1362" height="740" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5978091" sideWeight="0.5147059" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5974026" sideWeight="0.5147059" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.78246754" sideWeight="0.4852941" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24350649" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8766234" sideWeight="0.4852941" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20333838" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21927163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262987" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42207792" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31838235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -955,7 +941,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="new dataset active" />
     <MESSAGE value="nuova feature" />
     <MESSAGE value="plot" />
     <MESSAGE value="modifiche ai metodi in main" />
@@ -980,7 +965,8 @@
     <MESSAGE value="modifiche datas generator" />
     <MESSAGE value="nessuna modifica rilevante" />
     <MESSAGE value="rimossi errori esecuzione da esterno" />
-    <option name="LAST_COMMIT_MESSAGE" value="rimossi errori esecuzione da esterno" />
+    <MESSAGE value="creata classe myclassifier per salvare in sottocartelle ogni experimento. eseguiti test per RandomForest con e senza Suppobox." />
+    <option name="LAST_COMMIT_MESSAGE" value="creata classe myclassifier per salvare in sottocartelle ogni experimento. eseguiti test per RandomForest con e senza Suppobox." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -989,28 +975,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/lib/python2.7/site-packages/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datas/dataframe_1000.pkl" />
-    <entry file="file://$PROJECT_DIR$/features/top10000en.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8568">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datasets/suppobox/suppodict.txt" />
     <entry file="file://$PROJECT_DIR$/models/reports/report_Classification report _500.png" />
     <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_100.png" />
@@ -1038,21 +1002,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/reports/Classification_report_RandomForest_conSuppo_Training.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_50000.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png" />
+    <entry file="file://$PROJECT_DIR$/models/reports/Classification_report_RandomForest_conSuppo_Training.png" />
+    <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_50000.png" />
     <entry file="file:///usr/lib/python2.7/site-packages/pandas/util/_decorators.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1071,7 +1023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2202">
           <caret line="625" column="8" lean-forward="false" selection-start-line="625" selection-start-column="8" selection-end-line="625" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1080,13 +1031,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/all_samples_DGA.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1171,7 +1115,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="113" column="4" lean-forward="false" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1183,32 +1126,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/2017-09-16 17:39/results.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/2017-09-16 17:39/class_rep.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/2017-09-16 17:40/results.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/2017-09-16 17:40/class_rep.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/models/2017-09-16 17:39/results.log" />
+    <entry file="file://$PROJECT_DIR$/models/2017-09-16 17:39/class_rep.png" />
+    <entry file="file://$PROJECT_DIR$/models/2017-09-16 17:40/results.log" />
+    <entry file="file://$PROJECT_DIR$/models/2017-09-16 17:40/class_rep.png" />
     <entry file="file:///usr/lib/python2.7/site-packages/sklearn/externals/joblib/numpy_pickle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1225,42 +1146,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:01/params.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:01/class_rep.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:01/params.json" />
+    <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:01/class_rep.png" />
     <entry file="file://$PROJECT_DIR$/../adversarial_DGA/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="63" column="77" lean-forward="false" selection-start-line="62" selection-start-column="4" selection-end-line="63" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:05/class_rep.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest con dataset e suppobox/class_rep.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest con dataset e suppobox/cv_results.json">
+    <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:05/class_rep.png" />
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/cv_results.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-576">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1268,15 +1167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1963">
           <caret line="162" column="45" lean-forward="false" selection-start-line="162" selection-start-column="36" selection-end-line="162" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest con dataset e suppobox/results.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1288,23 +1178,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="184" column="4" lean-forward="true" selection-start-line="182" selection-start-column="4" selection-end-line="184" selection-end-column="4" />
-          <folding>
-            <element signature="e#321#460#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/features/features_testing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2479">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1316,7 +1193,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest con dataset e suppobox/params.json">
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/params.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/2017-09-18 17:43/roc_plot.png" />
+    <entry file="file://$PROJECT_DIR$/results.log" />
+    <entry file="file://$PROJECT_DIR$/datasets/all_samples_DGA.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="-1007649">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-355">
+          <caret line="189" column="37" lean-forward="true" selection-start-line="189" selection-start-column="37" selection-end-line="189" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/site-packages/matplotlib/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2395">
+          <caret line="1402" column="36" lean-forward="false" selection-start-line="1402" selection-start-column="36" selection-end-line="1402" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/class_rep.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest senza suppobox/results.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1324,50 +1238,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myclassifier.py">
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/class_rep.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/roc_plot.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/roc_plot.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/results.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+        <state relative-caret-position="323">
+          <caret line="19" column="57" lean-forward="true" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/roc_plot.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="151" column="0" lean-forward="false" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#321#869#0" expanded="false" />
+            <element signature="e#321#460#1" expanded="false" />
+            <element signature="e#634#869#0" expanded="false" />
+            <element signature="e#898#1182#0" expanded="false" />
+            <element signature="e#898#1032#1" expanded="false" />
+            <element signature="e#1347#2923#0" expanded="false" />
+            <element signature="e#1347#1475#1" expanded="false" />
+            <element signature="e#1904#1921#0" expanded="false" />
+            <element signature="e#2348#2391#0" expanded="false" />
+            <element signature="e#2441#2484#0" expanded="false" />
+            <element signature="e#2686#2749#0" expanded="false" />
+            <element signature="e#2774#2812#0" expanded="false" />
+            <element signature="e#3077#4526#0" expanded="false" />
+            <element signature="e#3077#3200#1" expanded="false" />
+            <element signature="e#3372#3624#0" expanded="false" />
+            <element signature="e#4596#6116#0" expanded="false" />
+            <element signature="e#4596#4978#1" expanded="false" />
+            <element signature="e#5130#5620#0" expanded="false" />
+            <element signature="e#6227#9017#0" expanded="false" />
+            <element signature="e#6227#7798#1" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/2017-09-18 17:43/roc_plot.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest senza suppobox/roc_plot.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest con dataset e suppobox/roc_plot.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest senza suppobox/class_rep.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/detect_DGA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        <state relative-caret-position="699">
+          <caret line="63" column="23" lean-forward="false" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
           <folding>
             <element signature="e#15#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/data_generator.py">
+    <entry file="file://$PROJECT_DIR$/myclassifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1283">
-          <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
