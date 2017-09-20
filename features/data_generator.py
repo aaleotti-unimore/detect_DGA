@@ -289,5 +289,5 @@ if __name__ == '__main__':
         feat.to_csv((out_file), index=False)
     except Exception as e:
         f_err = open('error.txt', 'w')
-        f_err.write(e)
+        f_err.write(str(e))
         f_err.close()
