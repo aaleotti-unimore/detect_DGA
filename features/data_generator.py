@@ -286,7 +286,8 @@ if __name__ == '__main__':
         dom = pd.concat([dom, df])
 
         #feat = extract_features(dom,n_jobs=8)
-        feat.to_csv((out_file), index=False)
+        #feat.to_csv((out_file), index=False)
+        dom.to_csv((out_file), index=False)
     except Exception as e:
         f_err = open('error.txt', 'w')
         f_err.write(str(e))
