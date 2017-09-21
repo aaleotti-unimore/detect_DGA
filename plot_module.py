@@ -8,8 +8,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import learning_curve
 
+# logging.basicConfig()
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+# logger.setLevel(logging.INFO)
 
 basedir = os.path.dirname(__file__)
 
@@ -143,7 +144,6 @@ def plot_classification_report(classification_report, directory=None, title='Cla
         directory += "/class_rep.png"
 
     plt.savefig(directory,
-                dpi=200,
                 format='png',
                 bbox_inches='tight')
     logger.info("classificaton report heatmap saved to %s" % directory)

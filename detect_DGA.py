@@ -50,18 +50,18 @@ def main():
 
 if __name__ == "__main__":
     # model_training()
-    X, y = load_features_dataset()
-    X_test2, y_test2 = load_features_dataset(dataset="suppobox")
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
-    X_test = np.concatenate((X_test, X_test2))
-    y_test = np.concatenate((y_test, y_test2))
-    X_test, y_test = shuffle(X_test, y_test, random_state=42)
-    print(X_test)
-    print(X_test.shape)
-    print(y_test)
-    print(y_test.shape)
-
-    print(X_train.shape)
+    # X, y = load_features_dataset()
+    # X_test2, y_test2 = load_features_dataset(dataset="suppobox")
+    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
+    # X_test = np.concatenate((X_test, X_test2))
+    # y_test = np.concatenate((y_test, y_test2))
+    # X_test, y_test = shuffle(X_test, y_test, random_state=42)
+    # print(X_test)
+    # print(X_test.shape)
+    # print(y_test)
+    # print(y_test.shape)
+    #
+    # print(X_train.shape)
 
     #
     # _clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
@@ -77,5 +77,12 @@ if __name__ == "__main__":
     # nosup.classification_report(X_test, y_test, plot=True)
     # nosup.cross_validate(X_train, y_train)
     # nosup.plot_AUC(X_test, y_test)
+    # from numpy import reshape
+    rndf = MyClassifier(directory="models/RandomForest tra:sup tst:sup")
+    domains = np.array(["facebook"]).reshape(-1,1)
+    # .reshape(1, -1)
+    rndf.predict(domains)
+    # print("PREDICT: %s " % rndf.predict(domains))
+
 
     logger.info("Exiting...")

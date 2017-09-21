@@ -133,3 +133,20 @@ class MyClassifier():
                 else:
                     self.logger.info("%s: %.2fs (%.2f)s" % (key, value.mean(), value.std()))
         return results
+
+    def predict(self, domains):
+        from sklearn.pipeline import Pipeline
+        from features.features_extractors import get_feature_union
+        if len(domains) == 0:
+            raise ValueError("Empty array")
+        if len(domains) == 1:
+            domains = np.array(domains).reshape(1, -1)
+        else:
+            domains = np.array(domains).reshape(-1, 1)
+
+        pip = Pipeline(steps=[('feats', get_feature_union()), ('clf', self.clf)])
+
+        pred = pip.predict(domains)
+        for index, domain in enumerate(domains):
+            print("%s -> %s" % (domain, ("legit" if pred[index] == 1 else "DGA")))
+        return pred
