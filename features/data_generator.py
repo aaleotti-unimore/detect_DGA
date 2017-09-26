@@ -12,6 +12,8 @@ from sklearn.pipeline import FeatureUnion
 # from detect_DGA import isKULA
 from features_extractors import *
 
+import os
+
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', None)
@@ -133,7 +135,7 @@ def delete_column(df, column_name):
     pass
 
 
-# TODO debug : OK
+# TODO debug : OK (ricontrolla cosa succede quando passi una lista di filename)
 def load_and_concat_dataset(df_filenames, usecols=None):
     if type(df_filenames) == type(''):
         result = pd.read_csv(df_filenames, usecols=usecols)
@@ -179,7 +181,7 @@ def extract_features(df,n_jobs=1):
                                    'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
 
     # out_df.to_csv((out_file), index=False)
-    logger.info("features_dataset.csv saved to disk")
+    #logger.info("features_dataset.csv saved to disk")
     return out_df
 
 
@@ -272,22 +274,29 @@ def get_balance(y):
 
 if __name__ == '__main__':
     try:
-        logging.basicConfig()
-        out_file = 'total_dataset.csv'
-        dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
-        no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
 
-        no_dom['class']=no_dom['class'].map(lambda x: 'legit' if x == 0 else 'dga')
+        # logging.basicConfig()
+        # out_file = 'total_dataset.csv'
+        # dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
+        # no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
+        #
+        # no_dom['class']=no_dom['class'].map(lambda x: 'legit' if x == 0 else 'dga')
+        #
+        #
+        # dom_extractor = DomainExtractor()
+        # df = no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
+        # # df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
+        # dom = pd.concat([dom, df])
+        dir='../datasets/total/'
 
-
-        dom_extractor = DomainExtractor()
-        df = no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
-        # df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
-        dom = pd.concat([dom, df])
+        for dataset_filename in os.listdir(dir):
+            dataset=load_and_concat_dataset(dir+dataset_filename)
+            feat=extract_features(dataset,n_jobs=8)
+            feat.to_csv(dir+dataset_filename+'.feat',index=False)
 
         #feat = extract_features(dom,n_jobs=8)
         #feat.to_csv((out_file), index=False)
-        dom.to_csv((out_file), index=False)
+        #dom.to_csv((out_file), index=False)
     except Exception as e:
         f_err = open('error.txt', 'w')
         f_err.write(str(e))
