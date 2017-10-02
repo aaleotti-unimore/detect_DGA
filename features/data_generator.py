@@ -1,6 +1,6 @@
 # coding=utf-8
 from __future__ import division
-
+import sys
 import random
 from sklearn.utils import shuffle
 import pandas as pd
@@ -157,8 +157,7 @@ def load_and_concat_dataset(df_filenames, usecols=None):
 
 
 # TODO debug : OK
-def extract_features(df,n_jobs=1):
-
+def extract_features(df, n_jobs=1):
     # FEATURES EXTRACTOR
     ft = get_feature_union(n_jobs=n_jobs)
 
@@ -181,7 +180,7 @@ def extract_features(df,n_jobs=1):
                                    'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
 
     # out_df.to_csv((out_file), index=False)
-    #logger.info("features_dataset.csv saved to disk")
+    # logger.info("features_dataset.csv saved to disk")
     return out_df
 
 
@@ -287,17 +286,22 @@ if __name__ == '__main__':
         # df = no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
         # # df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
         # dom = pd.concat([dom, df])
-        dir='../datasets/total/'
+        dir = '../datasets/total/'
 
         for dataset_filename in os.listdir(dir):
-            dataset=load_and_concat_dataset(dir+dataset_filename)
-            feat=extract_features(dataset,n_jobs=8)
-            feat.to_csv(dir+dataset_filename+'.feat',index=False)
+            dataset = load_and_concat_dataset(dir + dataset_filename)
+            feat = extract_features(dataset, n_jobs=8)
+            feat.to_csv(dir + dataset_filename + '.feat', index=False)
 
-        #feat = extract_features(dom,n_jobs=8)
-        #feat.to_csv((out_file), index=False)
-        #dom.to_csv((out_file), index=False)
-    except Exception as e:
-        f_err = open('error.txt', 'w')
-        f_err.write(str(e))
-        f_err.close()
+            # feat = extract_features(dom,n_jobs=8)
+            # feat.to_csv((out_file), index=False)
+            # dom.to_csv((out_file), index=False)
+
+    # except Exception as e:
+    #     f_err = open('error.txt', 'w')
+    #     f_err.write(str(e))
+    #     f_err.close()
+
+    except:
+        with open("error.log", 'w') as logfile:
+            logfile.write("Unexpected error:", sys.exc_info()[0])
