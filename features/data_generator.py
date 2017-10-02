@@ -304,4 +304,4 @@ if __name__ == '__main__':
 
     except:
         with open("error.log", 'w') as logfile:
-            logfile.write("Unexpected error:", sys.exc_info()[0])
+            logfile.write("Unexpected error: %s" % sys.exc_info()[0])
