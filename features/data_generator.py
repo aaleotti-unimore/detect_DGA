@@ -163,15 +163,7 @@ def extract_features(df, n_jobs=1):
 
     logger.debug("\n%s" % ft.get_params())
 
-    # xy = pd.DataFrame(
-    #     pd.read_csv(domains_dataset, sep=",", usecols=['domain', 'class'])
-    # )
 
-    # if n_samples:
-    #     logger.info("sample size: %s" % n_samples)
-    #     xy = xy.sample(n=n_samples, random_state=RandomState())
-    # else:
-    #     logger.info("Converting all domains")
 
     X = df['domain'].values.reshape(-1, 1)
 
@@ -276,7 +268,7 @@ if __name__ == '__main__':
     dir = '../datasets/total/'
     for dataset_filename in os.listdir(dir):
         dataset = load_and_concat_dataset(dir + dataset_filename)
-        feat = extract_features(dataset, n_jobs=8)
+        feat = extract_features(dataset, n_jobs=6)
         feat.to_csv(dir+'../feat/' + dataset_filename + '.feat', index=False)
 
 
