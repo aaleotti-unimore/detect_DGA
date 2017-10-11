@@ -272,36 +272,11 @@ def get_balance(y):
 
 
 if __name__ == '__main__':
-    try:
 
-        # logging.basicConfig()
-        # out_file = 'total_dataset.csv'
-        # dom = load_and_concat_dataset('../datasets/legit_dga_domains.csv', usecols=['host', 'domain', 'class'])
-        # no_dom = load_and_concat_dataset('../datasets/all_samples_DGA.csv', usecols=['host', 'class'])
-        #
-        # no_dom['class']=no_dom['class'].map(lambda x: 'legit' if x == 0 else 'dga')
-        #
-        #
-        # dom_extractor = DomainExtractor()
-        # df = no_dom.assign(domain=dom_extractor.transform(no_dom['host']))
-        # # df = pd.DataFrame(dom_extractor.transform(no_dom['domain']))
-        # dom = pd.concat([dom, df])
-        dir = '../datasets/total/'
+    dir = '../datasets/total/'
 
-        for dataset_filename in os.listdir(dir):
-            dataset = load_and_concat_dataset(dir + dataset_filename)
-            feat = extract_features(dataset, n_jobs=8)
-            feat.to_csv(dir + dataset_filename + '.feat', index=False)
+    for dataset_filename in os.listdir(dir):
+        dataset = load_and_concat_dataset(dir + dataset_filename)
+        feat = extract_features(dataset, n_jobs=8)
+        feat.to_csv(dir + dataset_filename + '.feat', index=False)
 
-            # feat = extract_features(dom,n_jobs=8)
-            # feat.to_csv((out_file), index=False)
-            # dom.to_csv((out_file), index=False)
-
-    # except Exception as e:
-    #     f_err = open('error.txt', 'w')
-    #     f_err.write(str(e))
-    #     f_err.close()
-
-    except:
-        with open("error.log", 'w') as logfile:
-            logfile.write("Unexpected error: %s" % sys.exc_info()[0])
