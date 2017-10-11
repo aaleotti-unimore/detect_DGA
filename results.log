@@ -1,0 +1,44 @@
+2017-09-05 12:26:01,743 INFO Training
+2017-09-05 12:56:28,981 INFO Training
+2017-09-05 12:57:00,444 INFO scores
+2017-09-05 12:59:25,003 INFO Exiting...
+2017-09-05 13:08:57,392 INFO Training
+2017-09-05 13:09:29,254 INFO scores
+2017-09-05 13:09:29,265 INFO Exiting...
+2017-09-05 13:15:36,889 INFO Training
+2017-09-05 13:15:42,127 INFO clf fitted
+2017-09-05 13:16:12,953 INFO scores
+2017-09-05 13:16:12,961 INFO Exiting...
+2017-09-06 16:49:48,525 INFO Exiting...
+2017-09-06 17:27:11,121 INFO Training
+2017-09-06 17:27:12,109 DEBUG X: (166326, 9)
+2017-09-06 17:27:12,110 DEBUG y: (166326,)
+2017-09-06 17:27:23,403 INFO clf fitted
+2017-09-08 14:06:29,564 INFO testing: RandomForest
+2017-09-08 14:13:26,306 INFO testing: RandomForest
+2017-09-08 14:14:27,104 INFO models/10Fold/model_RandomForest_50000.pkl saved to disk
+2017-09-08 14:14:27,104 INFO testing: RandomForest_suppo
+2017-09-08 14:19:11,958 INFO models/10Fold/model_RandomForest_suppo_50000.pkl saved to disk
+2017-09-08 14:19:12,423 INFO Exiting...
+2017-09-08 14:37:51,302 DEBUG X: (50000, 9)
+2017-09-08 14:37:51,302 DEBUG y: (50000,)
+2017-09-08 14:37:51,303 INFO testing: RandomForest
+2017-09-08 14:38:10,204 INFO models/10Fold/model_RandomForest_50000.pkl saved to disk
+2017-09-08 14:38:10,205 INFO testing: RandomForest_suppo
+2017-09-08 14:39:21,052 INFO models/10Fold/model_RandomForest_suppo_50000.pkl saved to disk
+2017-09-08 14:39:21,510 INFO Exiting...
+2017-09-11 08:31:16,164 INFO Training
+2017-09-11 08:31:17,172 DEBUG X: (166326, 9)
+2017-09-11 08:31:17,172 DEBUG y: (166326,)
+2017-09-11 08:31:30,559 INFO clf fitted
+2017-09-11 08:33:15,885 INFO scores
+2017-09-11 08:33:15,885 INFO {'test_f1': array([ 0.896,  0.899,  0.894,  0.888,  0.892,  0.897,  0.895,  0.896,
+        0.9  ,  0.892]), 'test_recall': array([ 0.88 ,  0.881,  0.875,  0.868,  0.872,  0.88 ,  0.874,  0.881,
+        0.886,  0.875]), 'score_time': array([ 2.144,  2.811,  2.927,  2.632,  3.038,  2.808,  2.328,  3.014,
+        2.018,  2.054]), 'fit_time': array([ 76.682,  78.892,  78.248,  76.977,  77.176,  80.331,  77.184,
+        77.893,  23.145,  22.515]), 'test_roc_auc': array([ 0.971,  0.972,  0.971,  0.969,  0.971,  0.971,  0.971,  0.97 ,
+        0.971,  0.969]), 'test_accuracy': array([ 0.9  ,  0.903,  0.899,  0.894,  0.897,  0.901,  0.9  ,  0.9  ,
+        0.903,  0.897]), 'test_precision': array([ 0.913,  0.917,  0.914,  0.91 ,  0.913,  0.914,  0.918,  0.911,
+        0.914,  0.91 ])}
+2017-09-11 08:33:16,777 INFO plotting classification report
+2017-09-11 08:33:17,377 INFO Exiting...

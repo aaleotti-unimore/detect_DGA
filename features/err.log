@@ -1,0 +1,220 @@
+No handlers could be found for logger "__main__"
+Traceback (most recent call last):
+  File "data_generator.py", line 280, in <module>
+    feat = extract_features(dataset, n_jobs=8)
+  File "data_generator.py", line 178, in extract_features
+    out_df = pd.DataFrame(np.c_[df[['domain', 'class']], ft.transform(X)],
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/pipeline.py", line 775, in transform
+    for name, trans, weight in self._iter())
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/externals/joblib/parallel.py", line 789, in __call__
+    self.retrieve()
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/externals/joblib/parallel.py", line 740, in retrieve
+    raise exception
+sklearn.externals.joblib.my_exceptions.JoblibTypeError: JoblibTypeError
+___________________________________________________________________________
+Multiprocessing exception:
+...........................................................................
+/root/detect_DGA/features/data_generator.py in <module>()
+    275 
+    276     dir = '../datasets/total/'
+    277 
+    278     for dataset_filename in os.listdir(dir):
+    279         dataset = load_and_concat_dataset(dir + dataset_filename)
+--> 280         feat = extract_features(dataset, n_jobs=8)
+    281         feat.to_csv(dir + dataset_filename + '.feat', index=False)
+    282 
+
+...........................................................................
+/root/detect_DGA/features/data_generator.py in extract_features(df=        class                      domain       ...       terraristik.com
+
+[200000 rows x 3 columns], n_jobs=8)
+    173     # else:
+    174     #     logger.info("Converting all domains")
+    175 
+    176     X = df['domain'].values.reshape(-1, 1)
+    177 
+--> 178     out_df = pd.DataFrame(np.c_[df[['domain', 'class']], ft.transform(X)],
+        out_df = undefined
+        df =         class                      domain       ...       terraristik.com
+
+[200000 rows x 3 columns]
+        ft.transform = <bound method FeatureUnion.transform of FeatureU...mCharRatio())],
+       transformer_weights=None)>
+        X = array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object)
+    179                           columns=['domain', 'class', 'mcr', 'ns1',
+    180                                    'ns2', 'ns3', 'ns4', 'ns5', 'len', 'vcr', 'ncr'])
+    181 
+    182     # out_df.to_csv((out_file), index=False)
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/pipeline.py in transform(self=FeatureUnion(n_jobs=8,
+       transformer_list=[...umCharRatio())],
+       transformer_weights=None), X=array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object))
+    770             hstack of results of transformers. sum_n_components is the
+    771             sum of n_components (output dimension) over transformers.
+    772         """
+    773         Xs = Parallel(n_jobs=self.n_jobs)(
+    774             delayed(_transform_one)(trans, weight, X)
+--> 775             for name, trans, weight in self._iter())
+        self._iter = <bound method FeatureUnion._iter of FeatureUnion...mCharRatio())],
+       transformer_weights=None)>
+    776         if not Xs:
+    777             # All transformers are None
+    778             return np.zeros((X.shape[0], 0))
+    779         if any(sparse.issparse(f) for f in Xs):
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/externals/joblib/parallel.py in __call__(self=Parallel(n_jobs=8), iterable=<generator object <genexpr>>)
+    784             if pre_dispatch == "all" or n_jobs == 1:
+    785                 # The iterable was consumed all at once by the above for loop.
+    786                 # No need to wait for async callbacks to trigger to
+    787                 # consumption.
+    788                 self._iterating = False
+--> 789             self.retrieve()
+        self.retrieve = <bound method Parallel.retrieve of Parallel(n_jobs=8)>
+    790             # Make sure that we get a last message telling us we are done
+    791             elapsed_time = time.time() - self._start_time
+    792             self._print('Done %3i out of %3i | elapsed: %s finished',
+    793                         (len(self._output), len(self._output),
+
+---------------------------------------------------------------------------
+Sub-process traceback:
+---------------------------------------------------------------------------
+TypeError                                          Wed Oct 11 14:58:47 2017
+PID: 12224                                   Python 2.7.13: /usr/bin/python
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/externals/joblib/parallel.py in __call__(self=<sklearn.externals.joblib.parallel.BatchedCalls object>)
+    126     def __init__(self, iterator_slice):
+    127         self.items = list(iterator_slice)
+    128         self._size = len(self.items)
+    129 
+    130     def __call__(self):
+--> 131         return [func(*args, **kwargs) for func, args, kwargs in self.items]
+        func = <function _transform_one>
+        args = (DomainNameLength(), None, array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object))
+        kwargs = {}
+        self.items = [(<function _transform_one>, (DomainNameLength(), None, array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object)), {})]
+    132 
+    133     def __len__(self):
+    134         return self._size
+    135 
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/pipeline.py in _transform_one(transformer=DomainNameLength(), weight=None, X=array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object))
+    574 def _fit_one_transformer(transformer, X, y):
+    575     return transformer.fit(X, y)
+    576 
+    577 
+    578 def _transform_one(transformer, weight, X):
+--> 579     res = transformer.transform(X)
+        res = undefined
+        transformer.transform = <bound method DomainNameLength.transform of DomainNameLength()>
+        X = array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object)
+    580     # if we have a weight for this transformer, multiply output
+    581     if weight is None:
+    582         return res
+    583     return res * weight
+
+...........................................................................
+/root/detect_DGA/features/features_extractors.py in transform(self=DomainNameLength(), df=array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object), y=None)
+    165         return (len(domain_name))
+    166 
+    167     def transform(self, df, y=None):
+    168         """The workhorse of this feature extractor"""
+    169         f = np.vectorize(self.__get_length)
+--> 170         return f(df)
+        f = <numpy.lib.function_base.vectorize object>
+        df = array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object)
+    171 
+    172     def fit(self, X, y=None):
+    173         return self  # does nothing
+    174 
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/numpy/lib/function_base.py in __call__(self=<numpy.lib.function_base.vectorize object>, *args=(array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object),), **kwargs={})
+   2729                 return self.pyfunc(*the_args, **kwargs)
+   2730 
+   2731             vargs = [args[_i] for _i in inds]
+   2732             vargs.extend([kwargs[_n] for _n in names])
+   2733 
+-> 2734         return self._vectorize_call(func=func, args=vargs)
+        self._vectorize_call = <bound method vectorize._vectorize_call of <numpy.lib.function_base.vectorize object>>
+        func = <bound method DomainNameLength.__get_length of DomainNameLength()>
+        args = (array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object),)
+        vargs = (array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object),)
+   2735 
+   2736     def _get_ufunc_and_otypes(self, func, args):
+   2737         """Return (ufunc, otypes)."""
+   2738         # frompyfunc will fail if args is empty
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/numpy/lib/function_base.py in _vectorize_call(self=<numpy.lib.function_base.vectorize object>, func=<bound method DomainNameLength.__get_length of DomainNameLength()>, args=(array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object),))
+   2805 
+   2806             # Convert args to object arrays first
+   2807             inputs = [array(a, copy=False, subok=True, dtype=object)
+   2808                       for a in args]
+   2809 
+-> 2810             outputs = ufunc(*inputs)
+        outputs = undefined
+        ufunc = <ufunc '__get_length (vectorized)'>
+        inputs = [array([['audioteka'],
+       ['lhxh'],
+       ['...1006mp3'],
+       ['terraristik']], dtype=object)]
+   2811 
+   2812             if ufunc.nout == 1:
+   2813                 res = array(outputs, copy=False, subok=True, dtype=otypes[0])
+   2814             else:
+
+...........................................................................
+/root/detect_DGA/features/features_extractors.py in __get_length(self=DomainNameLength(), domain_name=nan)
+    160 class DomainNameLength(BaseEstimator, TransformerMixin):
+    161     def __init__(self):
+    162         pass
+    163 
+    164     def __get_length(self, domain_name):
+--> 165         return (len(domain_name))
+        domain_name = nan
+    166 
+    167     def transform(self, df, y=None):
+    168         """The workhorse of this feature extractor"""
+    169         f = np.vectorize(self.__get_length)
+
+TypeError: object of type 'float' has no len()
+___________________________________________________________________________
