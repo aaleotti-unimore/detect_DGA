@@ -268,7 +268,7 @@ if __name__ == '__main__':
     dir = '../datasets/total/'
     for dataset_filename in os.listdir(dir):
         dataset = load_and_concat_dataset(dir + dataset_filename)
-        feat = extract_features(dataset, n_jobs=6)
+        feat = extract_features(dataset, n_jobs=1)
         feat.to_csv(dir+'../feat/' + dataset_filename + '.feat', index=False)
 
 
