@@ -264,7 +264,6 @@ def get_balance(y):
 
 
 if __name__ == '__main__':
-
     dir = '../datasets/total/'
     for dataset_filename in os.listdir(dir):
         dataset = load_and_concat_dataset(dir + dataset_filename)

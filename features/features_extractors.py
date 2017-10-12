@@ -162,7 +162,12 @@ class DomainNameLength(BaseEstimator, TransformerMixin):
         pass
 
     def __get_length(self, domain_name):
-        return (len(domain_name))
+        print type(domain_name)
+        if type(domain_name) == str:
+            return (len(domain_name))
+        else:
+            return 0
+            pass
 
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
