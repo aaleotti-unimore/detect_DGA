@@ -162,7 +162,7 @@ class DomainNameLength(BaseEstimator, TransformerMixin):
         pass
 
     def __get_length(self, domain_name):
-        print type(domain_name)
+        print str(domain_name)+' '+str(type(domain_name))
         if type(domain_name) == str:
             return (len(domain_name))
         else:
