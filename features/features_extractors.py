@@ -132,13 +132,18 @@ class NumCharRatio(BaseEstimator, TransformerMixin):
 
     def __get_ncr(self, domain_name):
         logger.debug("domain name: %s" % domain_name)
-        counter = Counter(domain_name)
-        ncr = 0
-        for key, value in counter.iteritems():
-            if key.isdigit():
-                ncr += value
+        if type(domain_name) == type(str):
+            counter = Counter(domain_name)
+            ncr = 0
+            for key, value in counter.iteritems():
+                if key.isdigit():
+                    ncr += value
 
-        return ncr / len(domain_name)
+            return ncr / len(domain_name)
+        f=open('err_domains','a')
+        f.write('NumCharRatio: '+str(domain_name))
+        f.close()
+        return 0
 
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
