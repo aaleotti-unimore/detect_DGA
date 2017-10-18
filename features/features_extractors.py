@@ -193,15 +193,21 @@ class VowelConsonantRatio(BaseEstimator, TransformerMixin):
         pass
 
     def __get_ratio(self, domain_name):
-        c_vows = 0
-        vowels = set("aeiou")
-        for letter in domain_name:
-            if letter in vowels:
-                c_vows += 1
-        c_cons = (len(domain_name) - c_vows)
-        if c_cons == 0:
-            return c_vows
-        return c_vows / c_cons
+        if type(domain_name) == type(''):
+            c_vows = 0
+            vowels = set("aeiou")
+            for letter in domain_name:
+                if letter in vowels:
+                    c_vows += 1
+            c_cons = (len(domain_name) - c_vows)
+            if c_cons == 0:
+                return c_vows
+            return c_vows / c_cons
+        f=open('err_domains.txt','a')
+        f.write('VowelConsonantRatio: '+str(domain_name))
+        f.close()
+        return 0
+
 
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""
