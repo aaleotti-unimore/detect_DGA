@@ -135,25 +135,25 @@ def delete_column(df, column_name):
     pass
 
 
-# TODO debug : OK (ricontrolla cosa succede quando passi una lista di filename)
-def load_and_concat_dataset(df_filenames, usecols=None):
-    if type(df_filenames) == type(''):
-        result = pd.read_csv(df_filenames, usecols=usecols)
-        pass
-    elif type(df_filenames) == type([]):
-        result = None
-        for filename in df_filenames:
-            partial_df = pd.read_csv(filename, usecols=usecols)
-            if result is not None:
-                result = pd.concat([result, partial_df])
-            else:
-                result = partial_df
-            pass
-        pass
-    # else:
-    #     raise TypeError('df_filenames must be a string or a list of strings')
-    return result
-    pass
+# # TODO debug : OK (ricontrolla cosa succede quando passi una lista di filename)
+# def load_and_concat_dataset(df_filenames, usecols=None):
+#     if type(df_filenames) == type(''):
+#         result = pd.read_csv(df_filenames, usecols=usecols)
+#         pass
+#     elif type(df_filenames) == type([]):
+#         result = None
+#         for filename in df_filenames:
+#             partial_df = pd.read_csv(filename, usecols=usecols)
+#             if result is not None:
+#                 result = pd.concat([result, partial_df])
+#             else:
+#                 result = partial_df
+#             pass
+#         pass
+#     # else:
+#     #     raise TypeError('df_filenames must be a string or a list of strings')
+#     return result
+#     pass
 
 
 # TODO debug : OK

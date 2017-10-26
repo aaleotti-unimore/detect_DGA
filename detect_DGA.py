@@ -5,11 +5,13 @@ import socket
 import numpy as np
 from sklearn.utils import shuffle
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split, cross_validate, cross_val_score
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import classification_report
 
 from features.data_generator import load_both_datasets, load_features_dataset
 from myclassifier import MyClassifier
+
+from utils import *
 
 basedir = os.path.dirname(__file__)
 
@@ -39,8 +41,29 @@ def test_balboni_dataset():
     pass
 
 
+# TODO debug : OK (ricontrolla cosa succede quando passi una lista di filename)
+def load_and_concat_dataset(df_filenames, usecols=None):
+    if type(df_filenames) == type(''):
+        result = pd.read_csv(df_filenames, usecols=usecols)
+        pass
+    elif type(df_filenames) == type([]):
+        result = None
+        for filename in df_filenames:
+            partial_df = pd.read_csv(filename, usecols=usecols)
+            if result is not None:
+                result = pd.concat([result, partial_df])
+            else:
+                result = partial_df
+            pass
+        pass
+    return result
+    pass
+
 def main():
-    # TODO unificare i database per il training: sia legit-dga_domains.csv che i due all_legit.txt e all_dga.txt presenti su https://github.com/andrewaeva/DGA . questi due file txt vanno prima pre-processati con features_extractor.DomainExtractor in modo da ottenre solo il dominio di secondo livello.
+    # TODO unificare i database per il training: sia legit-dga_domains.csv che i due all_legit.txt e
+    # all_dga.txt presenti su https://github.com/andrewaeva/DGA .
+    # questi due file txt vanno prima pre-processati con features_extractor.DomainExtractor
+    #  in modo da ottenre solo il dominio di secondo livello.
 
     # TODO testare i classificatori con i json di balboni, prendendo dalla colonna rrname solo quelli ripuliti. fare riferimento alla funzione data_generator.load_balboni già implementata a metà. I paper che ho letto finora usano solo i pachetti NXDOMAIN per fare detection, meglio filtrare quella colonna e usare solo quelli.
 
@@ -78,10 +101,27 @@ if __name__ == "__main__":
     # nosup.cross_validate(X_train, y_train)
     # nosup.plot_AUC(X_test, y_test)
     # from numpy import reshape
-    rndf = MyClassifier(directory="models/RandomForest tra:sup tst:sup")
-    domains = np.array(["facebook"]).reshape(-1,1)
+    # rndf = MyClassifier(directory="models/RandomForest tra:sup tst:sup")
+
+    #load dataset
+    df = load_and_concat_dataset('datasets/feat/*')
+    x,y = get_x_y(df, 'class')
+
+    x = delete_column(x,'domain')
+    x = x.values
+
+    y = y.map(lambda label: 0 if label == 'legit' else 1)
+    y = y.values
+
+    #init Random Forest
+    rf = MyClassifier(clf=RandomForestClassifier())
+
+    print rf.cross_validate(x,y)
+
+
+    #domains = np.array(["facebook"]).reshape(-1,1)
     # .reshape(1, -1)
-    rndf.predict(domains)
+    #rndf.predict(domains)
     # print("PREDICT: %s " % rndf.predict(domains))
 
 
