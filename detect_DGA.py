@@ -3,13 +3,16 @@ import logging
 import os
 import socket
 import numpy as np
+
+import pandas as pd
+
 from sklearn.utils import shuffle
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import classification_report
 
 from features.data_generator import load_both_datasets, load_features_dataset
-from myclassifier import MyClassifier
+#from myclassifier import MyClassifier
 
 from utils import *
 
@@ -56,6 +59,8 @@ def load_and_concat_dataset(df_filenames, usecols=None):
                 result = partial_df
             pass
         pass
+    else:
+        return None
     return result
     pass
 
@@ -65,11 +70,39 @@ def main():
     # questi due file txt vanno prima pre-processati con features_extractor.DomainExtractor
     #  in modo da ottenre solo il dominio di secondo livello.
 
-    # TODO testare i classificatori con i json di balboni, prendendo dalla colonna rrname solo quelli ripuliti. fare riferimento alla funzione data_generator.load_balboni già implementata a metà. I paper che ho letto finora usano solo i pachetti NXDOMAIN per fare detection, meglio filtrare quella colonna e usare solo quelli.
+    # TODO testare i classificatori con i json di balboni,
+    #  prendendo dalla colonna rrname solo quelli ripuliti.
+    #  fare riferimento alla funzione data_generator.load_balboni
+    #  già implementata a metà. I paper che ho letto finora usano solo
+    #  i pachetti NXDOMAIN per fare detection, meglio filtrare quella colonna e usare solo quelli.
 
-    # TODO NB: la pipeline prende in pasto un vettore di stringhe. la funzione get_feature_union ritorna i vari features_extractors generano le features in parallelo a partire da questo dataset.
+    # TODO NB: la pipeline prende in pasto un vettore di stringhe.
+    # la funzione get_feature_union ritorna i vari features_extractors
+    # generano le features in parallelo a partire da questo dataset.
     pass
 
+def test_all_dataset():
+    dir = 'datasets/feat/'
+    filenames = os.listdir(dir)
+    paths = []
+
+    for filename in filenames:
+        paths.append(dir + filename)
+        pass
+
+    df = load_and_concat_dataset(paths)
+    x, y = get_x_y(df, 'class')
+
+    x = delete_column(x, 'domain')
+    x = x.values
+
+    y = y.map(lambda label: 0 if label == 'legit' else 1)
+    y = y.values
+
+    rf = RandomForestClassifier()
+
+    print cross_val_score(rf, x, y, scoring='f1', cv=20)
+    pass
 
 if __name__ == "__main__":
     # model_training()
@@ -102,22 +135,6 @@ if __name__ == "__main__":
     # nosup.plot_AUC(X_test, y_test)
     # from numpy import reshape
     # rndf = MyClassifier(directory="models/RandomForest tra:sup tst:sup")
-
-    #load dataset
-    df = load_and_concat_dataset('datasets/feat/*')
-    x,y = get_x_y(df, 'class')
-
-    x = delete_column(x,'domain')
-    x = x.values
-
-    y = y.map(lambda label: 0 if label == 'legit' else 1)
-    y = y.values
-
-    #init Random Forest
-    rf = MyClassifier(clf=RandomForestClassifier())
-
-    print rf.cross_validate(x,y)
-
 
     #domains = np.array(["facebook"]).reshape(-1,1)
     # .reshape(1, -1)
