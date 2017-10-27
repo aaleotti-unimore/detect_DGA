@@ -141,5 +141,6 @@ if __name__ == "__main__":
     #rndf.predict(domains)
     # print("PREDICT: %s " % rndf.predict(domains))
 
+    test_all_dataset()
 
     logger.info("Exiting...")
