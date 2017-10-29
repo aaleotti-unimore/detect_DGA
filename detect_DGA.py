@@ -92,7 +92,7 @@ def predict(estimator, domains):
 
 # TODO debug
 def test_on_balboni_set(estimator, in_file):
-    dataset = db.read_text(in_file, compression='gz').map(json.loads)
+    dataset = db.read_text(in_file, compression='gzip').map(json.loads)
     dataset = dataset.filter(lambda record: True if record['dns'].has_key('rrname') else False)
     dataset = dataset.filter(lambda record: True if record['dns']['rrname'] != '' else False)
     dataset = dataset.filter(lambda record: True if '.' in record['dns']['rrname'] else False)
