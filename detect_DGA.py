@@ -139,47 +139,18 @@ def train_all_dataset():
     pass
 
 if __name__ == "__main__":
-    # model_training()
-    # X, y = load_features_dataset()
-    # X_test2, y_test2 = load_features_dataset(dataset="suppobox")
-    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
-    # X_test = np.concatenate((X_test, X_test2))
-    # y_test = np.concatenate((y_test, y_test2))
-    # X_test, y_test = shuffle(X_test, y_test, random_state=42)
-    # print(X_test)
-    # print(X_test.shape)
-    # print(y_test)
-    # print(y_test.shape)
-    #
-    # print(X_train.shape)
 
-    #
-    # _clf = RandomForestClassifier(random_state=True, max_features="auto", n_estimators=100,
-    #                               min_samples_leaf=50, n_jobs=-1, oob_score=True)
-    # # myc = MyClassifier(clf=_clf)
-    # # myc.fit(X_train, y_train)
-    # # myc.classification_report(X_test, y_test)
-    # # myc.cross_validate(X_train, y_train)
-    # # myc.plot_AUC(X_test, y_test)
-    #
-    # nosup = MyClassifier(clf=_clf)
-    # nosup.fit(X_train, y_train)
-    # nosup.classification_report(X_test, y_test, plot=True)
-    # nosup.cross_validate(X_train, y_train)
-    # nosup.plot_AUC(X_test, y_test)
-    # from numpy import reshape
-    # rndf = MyClassifier(directory="models/RandomForest tra:sup tst:sup")
+    try:
+        dask.set_options(get=dask.multiprocessing.get)
+        dask.set_options(optimize_graph=True)
+        dask.set_options(num_workers=8)
 
-    #domains = np.array(["facebook"]).reshape(-1,1)
-    # .reshape(1, -1)
-    #rndf.predict(domains)
-    # print("PREDICT: %s " % rndf.predict(domains))
+        clf = train_all_dataset()
+        test_on_balboni_set(clf, '../06/*/*/*')
 
-    dask.set_options(get=dask.multiprocessing.get)
-    dask.set_options(optimize_graph=True)
-    dask.set_options(num_workers=8)
-
-    clf = train_all_dataset()
-    test_on_balboni_set(clf, '../06/*/*/*')
-
-    logger.info("Exiting...")
+        logger.info("Exiting...")
+    except Exception as e:
+        f_err = open('error.txt', 'w')
+        f_err.write(str(e) + ' ' + str(e.args))
+        f_err.close()
+        pass
