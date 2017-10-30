@@ -23,8 +23,6 @@ eng_dict = open(dictfile).readlines()
 from collections import Counter
 
 
-# TODO possibili features trovate sul paper di DeepDGA di Anderson Woodbridge Filar: entropia della distrubuzione dei caratteri, contare la frequenza degli n-grammi 3,4,5 all'interno del dataset Alexa 1Million.
-
 class MCRExtractor(BaseEstimator, TransformerMixin):
     """
     Meaningful Characters Ratio. Models the ratio of characters of the string p that comprise a meaningful word.
@@ -296,12 +294,16 @@ class DomainExtractor(BaseEstimator, TransformerMixin):
         if domain is u'':
             return "string"
         else:
-            extractor = tldextract.TLDExtract(suffix_list_urls=None)
-            ext = extractor(domain)
-            logger.debug("%s domain: %s" % (domain, ext.domain))
-            if ext.domain:
-                return ext.domain
-            else:
+            try:
+                extractor = tldextract.TLDExtract(suffix_list_urls=None)
+                ext = extractor(domain)
+                logger.debug("%s domain: %s" % (domain, ext.domain))
+                if ext.domain:
+                    return ext.domain
+                else:
+                    return "string"
+                pass
+            except Exception as e:
                 return "string"
 
     def transform(self, X):
