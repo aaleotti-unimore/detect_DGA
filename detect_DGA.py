@@ -129,7 +129,7 @@ if __name__ == "__main__":
         dask.set_options(num_workers=8)
 
         clf = train_all_dataset()
-        test_on_balboni_set(clf, '../06/*/*/*')
+        test_on_balboni_set(clf, '06/*/*/*')
 
         logger.info("Exiting...")
     except Exception as e:
