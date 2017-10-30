@@ -16,6 +16,8 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import classification_report
 
 from features.data_generator import load_both_datasets, load_features_dataset
+from features.features_extractors import *
+
 from myclassifier import MyClassifier
 
 from utils import *
@@ -25,27 +27,6 @@ basedir = os.path.dirname(__file__)
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 clf_n_jobs = 8
-
-
-def test_balboni_dataset():
-    # X, y = load_balboni(n_samples=n_samples)
-    # #### test del dataset
-    # model = trained_clfs['RandomForest']
-    # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.90, random_state=RandomState())
-    # # model.set_params(features_extractors__n_jobs=2)
-    # logger.debug(model)
-    # y_pred = model.predict(X_test)
-    #
-    # logger.info("\n%s" % classification_report(y_true=y_test, y_pred=y_pred, target_names=['DGA', 'Legit']))
-
-    # y_pred = lb.inverse_transform(y_pred)
-    # y_test = lb.inverse_transform(y_test)
-    # pd.options.display.max_rows = 99999999
-    # logger.info(pd.DataFrame(np.c_[X_test, y_test, y_pred], columns=['DOMAIN', 'TEST', 'PREDICTION']))
-    ########
-
-    # print(data_generator.load_balboni(20))
-    pass
 
 
 # TODO debug : OK (ricontrolla cosa succede quando passi una lista di filename)
@@ -83,7 +64,9 @@ def predict(estimator, domains):
     else:
         domains = np.array(domains).reshape(-1, 1)
 
-    pip = Pipeline(steps=[('feats', get_feature_union()), ('clf', estimator)])
+    dom_ext = DomainExtractor()
+
+    pip = Pipeline(steps=[('domain extractor', dom_ext), ('feats', get_feature_union()), ('clf', estimator)])
 
     pred = pip.predict(domains)
     # for index, domain in enumerate(domains):
