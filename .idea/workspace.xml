@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/detect_DGA.py" afterPath="$PROJECT_DIR$/detect_DGA.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myclassifier.py" afterPath="$PROJECT_DIR$/myclassifier.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_module.py" afterPath="$PROJECT_DIR$/plot_module.py" />
+    <list default="true" id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="aggiunti diagrammi UML">
+      <change beforePath="" afterPath="$PROJECT_DIR$/UML/classifier.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/UML/py.uml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/06/20/00/00.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/all_legit.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/datasets/all_dga.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/datasets/all_legit.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/datasets/total/total_dataset00.feat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/detect_DGA.py" afterPath="$PROJECT_DIR$/detect_DGA.py" />
+      <change beforePath="$PROJECT_DIR$/err_domains" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/err_domains.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/features/err.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/features/features_extractors.py" afterPath="$PROJECT_DIR$/features/features_extractors.py" />
+      <change beforePath="$PROJECT_DIR$/features/out.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-28 23:50/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-28 23:55/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 00:28/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 00:41/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:20/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:27/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:28/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:29/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:40/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:41/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:43/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:44/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:45/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:47/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 01:53/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 02:10/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 02:11/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 02:12/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 10:31/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 10:40/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 10:41/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 10:42/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 10:43/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 10:45/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 10:46/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 10:50/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 11:03/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 11:05/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 11:14/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 11:21/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 11:23/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 11:26/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 11:35/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/2017-10-29 11:36/results.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/params.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/myclassifier.py" afterPath="$PROJECT_DIR$/myclassifier.py" />
+      <change beforePath="$PROJECT_DIR$/utils.py" afterPath="$PROJECT_DIR$/utils.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,54 +63,36 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/detect_DGA$Doctests_in_metrics_example.coverage" NAME="Doctests in metrics_example Coverage Results" MODIFIED="1502227322170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/detect_DGA$test_model.coverage" NAME="test_model Coverage Results" MODIFIED="1502117729782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1501257964002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DGA-master/dga_wordlists" />
     <SUITE FILE_PATH="coverage/detect_DGA$mcr.coverage" NAME="mcr Coverage Results" MODIFIED="1501753818147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
+    <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
     <SUITE FILE_PATH="coverage/detect_DGA$plot_module.coverage" NAME="plot_module Coverage Results" MODIFIED="1503954010267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$example.coverage" NAME="example Coverage Results" MODIFIED="1502797746623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/detect_DGA$convert_rda.coverage" NAME="convert_rda Coverage Results" MODIFIED="1503931574012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets" />
-    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1506032564176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$test_model.coverage" NAME="test_model Coverage Results" MODIFIED="1502117729782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/detect_DGA$came.coverage" NAME="came Coverage Results" MODIFIED="1501773208497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/features" />
+    <SUITE FILE_PATH="coverage/detect_DGA$Doctests_in_metrics_example.coverage" NAME="Doctests in metrics_example Coverage Results" MODIFIED="1502227322170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1501257964002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DGA-master/dga_wordlists" />
+    <SUITE FILE_PATH="coverage/detect_DGA$main.coverage" NAME="main Coverage Results" MODIFIED="1506960038024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="detect_DGA.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/detect_DGA.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="81" column="24" lean-forward="false" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myclassifier.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myclassifier.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="137" column="7" lean-forward="false" selection-start-line="137" selection-start-column="7" selection-end-line="137" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_generator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/data_generator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="174" column="30" lean-forward="true" selection-start-line="174" selection-start-column="30" selection-end-line="174" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="features_extractors.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="298" column="14" lean-forward="true" selection-start-line="298" selection-start-column="14" selection-end-line="298" selection-end-column="14" />
-              <folding />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Python/#/home/archeffect/PycharmProjects/detect_DGA/detect_DGA.py" pinned="false" current-in-tab="true">
+        <entry file="uml://Python/#/home/archeffect/PycharmProjects/detect_DGA/detect_DGA.py">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>Python</ID>
+              <OriginalElement>#/home/archeffect/PycharmProjects/detect_DGA/detect_DGA.py</OriginalElement>
+              <nodes>
+                <node x="0.0" y="0.0">myclassifier.MyClassifier</node>
+              </nodes>
+              <notes />
+              <edges />
+              <settings layout="Hierarchic Group" zoom="1.0" x="235.0" y="222.5" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Methods</Category>
+                <Category>Fields</Category>
+                <Category>Inner Classes</Category>
+              </Categories>
             </state>
           </provider>
         </entry>
@@ -78,7 +108,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>debug</find>
       <find>info</find>
       <find>y_pred</find>
       <find>.mean()</find>
@@ -108,6 +137,7 @@
       <find>[i]</find>
       <find>[:,i]</find>
       <find>RandomForestClass</find>
+      <find>n_jobs</find>
     </findStrings>
     <replaceStrings>
       <replace>info</replace>
@@ -178,15 +208,15 @@
         <option value="$PROJECT_DIR$/datasets/suppobox/suppodict.txt" />
         <option value="$PROJECT_DIR$/feature_testing.py" />
         <option value="$PROJECT_DIR$/features/feature_testing.py" />
-        <option value="$PROJECT_DIR$/features/features_extractors.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/../adversarial_DGA/model.py" />
         <option value="$PROJECT_DIR$/features/features_testing.py" />
-        <option value="$PROJECT_DIR$/features/data_generator.py" />
         <option value="$PROJECT_DIR$/models/RandomForest con suppobox/results.log" />
         <option value="$PROJECT_DIR$/plot_module.py" />
-        <option value="$PROJECT_DIR$/detect_DGA.py" />
+        <option value="$PROJECT_DIR$/features/features_extractors.py" />
+        <option value="$PROJECT_DIR$/features/data_generator.py" />
         <option value="$PROJECT_DIR$/myclassifier.py" />
+        <option value="$PROJECT_DIR$/detect_DGA.py" />
       </list>
     </option>
   </component>
@@ -199,8 +229,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="421" />
     <option name="y" value="24" />
-    <option name="width" value="624" />
-    <option name="height" value="686" />
+    <option name="width" value="1352" />
+    <option name="height" value="740" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -221,6 +251,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -231,32 +262,20 @@
             <path>
               <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
               <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="detect_DGA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="detect_DGA" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="RandomForest tra:sup tst:sup" type="462c0819:PsiDirectoryNode" />
+              <item name="UML" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="GrepConsole" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../adversarial_DGA/model.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/UML" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -268,11 +287,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/UML" />
       <recent name="$PROJECT_DIR$/features" />
       <recent name="$PROJECT_DIR$/models/reports" />
       <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/models/graph" />
-      <recent name="$PROJECT_DIR$/DGA-master" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -288,10 +307,12 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main">
-    <configuration name="Doctests in metrics_example" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -299,21 +320,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="detect_DGA" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/metrics_example.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/detect_DGA.py" />
+      <option name="PARAMETERS" value="-W ignore" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -465,12 +476,18 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+    <configuration name="Doctests in metrics_example" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -478,10 +495,13 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="detect_DGA" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/detect_DGA.py" />
-      <option name="PARAMETERS" value="-W ignore" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/metrics_example.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
     </configuration>
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
@@ -497,6 +517,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="51a65ae8-6858-4e17-8c61-ee0051f46ad6" name="Default" comment="" />
@@ -504,27 +527,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1501250934349</updated>
-    </task>
-    <task id="LOCAL-00014" summary="nuova feature">
-      <created>1503583473684</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1503583473684</updated>
-    </task>
-    <task id="LOCAL-00015" summary="nuova feature">
-      <created>1503583712480</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1503583712480</updated>
-    </task>
-    <task id="LOCAL-00016" summary="nuova feature">
-      <created>1503584091816</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1503584091816</updated>
     </task>
     <task id="LOCAL-00017" summary="nuova feature">
       <created>1503584333282</created>
@@ -848,7 +850,28 @@
       <option name="project" value="LOCAL" />
       <updated>1505813378040</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="aggiunta funzione predict al myclassifier">
+      <created>1506032614886</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1506032614887</updated>
+    </task>
+    <task id="LOCAL-00064" summary="risolto bug in VowelConsonantRatio">
+      <created>1506510944040</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1506510944041</updated>
+    </task>
+    <task id="LOCAL-00065" summary="modifica a try-catch">
+      <created>1506941688559</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1506941688560</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -869,21 +892,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="1" width="1362" height="740" extended-state="6" />
+    <frame x="0" y="1" width="1360" height="761" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5974026" sideWeight="0.5147059" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.78246754" sideWeight="0.4852941" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13469827" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7548701" sideWeight="0.4852941" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13311689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286638" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21168438" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22610015" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42207792" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31838235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -892,6 +916,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262987" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31838235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -963,9 +988,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="plot" />
-    <MESSAGE value="modifiche ai metodi in main" />
-    <MESSAGE value="modifiche  metodi in main" />
     <MESSAGE value="added logger to file" />
     <MESSAGE value="set n_jobs" />
     <MESSAGE value="aggiunti commenti" />
@@ -988,7 +1010,10 @@
     <MESSAGE value="rimossi errori esecuzione da esterno" />
     <MESSAGE value="creata classe myclassifier per salvare in sottocartelle ogni experimento. eseguiti test per RandomForest con e senza Suppobox." />
     <MESSAGE value="testing randomforest con diversi set." />
-    <option name="LAST_COMMIT_MESSAGE" value="testing randomforest con diversi set." />
+    <MESSAGE value="aggiunta funzione predict al myclassifier" />
+    <MESSAGE value="risolto bug in VowelConsonantRatio" />
+    <MESSAGE value="modifica a try-catch" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifica a try-catch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -997,47 +1022,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/reports/Classification_report_-1.png" />
-    <entry file="file://$PROJECT_DIR$/models/reports/report_Classification report _20000.png" />
-    <entry file="file://$PROJECT_DIR$/datas/suppobox_dataset.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1020">
-          <caret line="6" column="129" lean-forward="false" selection-start-line="6" selection-start-column="129" selection-end-line="6" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/graph/learning_curve.png" />
-    <entry file="file://$PROJECT_DIR$/models/reports/Classification_report_RandomForest_conSuppo_Training.png" />
-    <entry file="file://$PROJECT_DIR$/models/graph/plot_comparison_50000.png" />
-    <entry file="file:///usr/lib/python2.7/site-packages/pandas/util/_decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="175" column="8" lean-forward="false" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/pandas/io/parsers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
-          <caret line="662" column="16" lean-forward="false" selection-start-line="662" selection-start-column="16" selection-end-line="662" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/sklearn/pipeline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2202">
-          <caret line="625" column="8" lean-forward="false" selection-start-line="625" selection-start-column="8" selection-end-line="625" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/legit-dga_domains.csv" />
-    <entry file="file://$PROJECT_DIR$/datas/features_dataset.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python2.7/site-packages/keras/utils/vis_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1072,13 +1056,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:01/params.json" />
     <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:01/class_rep.png" />
-    <entry file="file://$PROJECT_DIR$/../adversarial_DGA/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="63" column="77" lean-forward="false" selection-start-line="62" selection-start-column="4" selection-end-line="63" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../adversarial_DGA/main.py" />
     <entry file="file://$PROJECT_DIR$/models/2017-09-16 18:05/class_rep.png" />
     <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/cv_results.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -1087,13 +1065,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../adversarial_DGA/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1963">
-          <caret line="162" column="45" lean-forward="false" selection-start-line="162" selection-start-column="36" selection-end-line="162" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../adversarial_DGA/model.py" />
     <entry file="file:///usr/lib/python2.7/site-packages/sklearn/metrics/ranking.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1115,15 +1087,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/params.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/2017-09-18 17:43/roc_plot.png" />
-    <entry file="file://$PROJECT_DIR$/results.log" />
     <entry file="file://$PROJECT_DIR$/datasets/all_samples_DGA.csv">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="-1007649">
@@ -1139,14 +1103,124 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/RandomForest senza suppobox/results.log" />
-    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/results.log">
+    <entry file="file://$PROJECT_DIR$/features/total_dataset.csv" />
+    <entry file="file://$PROJECT_DIR$/all_legit.txt" />
+    <entry file="file://$PROJECT_DIR$/all_dga.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="57" lean-forward="true" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/total_dataset.csv">
+    <entry file="file:///usr/lib/python2.7/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="693" column="33" lean-forward="true" selection-start-line="693" selection-start-column="33" selection-end-line="693" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/site-packages/matplotlib/figure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="1538" column="0" lean-forward="true" selection-start-line="1538" selection-start-column="0" selection-end-line="1538" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="303" column="0" lean-forward="false" selection-start-line="303" selection-start-column="0" selection-end-line="303" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/site-packages/sklearn/pipeline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="298" column="8" lean-forward="false" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/2017-10-28 23:50/results.log" />
+    <entry file="file://$PROJECT_DIR$/models/2017-10-28 23:55/results.log" />
+    <entry file="file://$PROJECT_DIR$/features/out.log" />
+    <entry file="file://$PROJECT_DIR$/features/err.log" />
+    <entry file="file://$PROJECT_DIR$/results.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-280">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/err_domains.txt" />
+    <entry file="file://$PROJECT_DIR$/err_domains" />
+    <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+          <folding>
+            <element signature="e#15#73#1" expanded="false" />
+            <element signature="e#571#2514#0" expanded="false" />
+            <element signature="e#571#1069#1" expanded="false" />
+            <element signature="e#1111#1127#0" expanded="false" />
+            <element signature="e#1175#2179#0" expanded="false" />
+            <element signature="e#1229#1261#0" expanded="false" />
+            <element signature="e#1395#2130#0" expanded="false" />
+            <element signature="e#1563#1793#0" expanded="false" />
+            <element signature="e#1725#1792#0" expanded="false" />
+            <element signature="e#1932#2069#0" expanded="false" />
+            <element signature="e#1975#2069#0" expanded="false" />
+            <element signature="e#2014#2069#0" expanded="false" />
+            <element signature="e#2226#2279#0" expanded="false" />
+            <element signature="e#2319#2346#0" expanded="false" />
+            <element signature="e#2384#2450#0" expanded="false" />
+            <element signature="e#2491#2514#0" expanded="false" />
+            <element signature="e#2585#4193#0" expanded="false" />
+            <element signature="e#2585#3238#1" expanded="false" />
+            <element signature="e#3275#3285#0" expanded="false" />
+            <element signature="e#3332#3805#0" expanded="false" />
+            <element signature="e#3600#3742#0" expanded="false" />
+            <element signature="e#3663#3710#0" expanded="false" />
+            <element signature="e#3852#3958#0" expanded="false" />
+            <element signature="e#3998#4025#0" expanded="false" />
+            <element signature="e#4063#4129#0" expanded="false" />
+            <element signature="e#4170#4193#0" expanded="false" />
+            <element signature="e#4253#4302#1" expanded="false" />
+            <element signature="e#4336#4340#0" expanded="false" />
+            <element signature="e#4489#4700#0" expanded="false" />
+            <element signature="e#4607#4657#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datas/suppobox_dataset.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/class_rep.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/class_rep.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/roc_plot.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/roc_plot.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/params.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1158,98 +1232,84 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/all_legit.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1173">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all_dga.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/class_rep.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="693" column="33" lean-forward="true" selection-start-line="693" selection-start-column="33" selection-end-line="693" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/matplotlib/figure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="1538" column="0" lean-forward="true" selection-start-line="1538" selection-start-column="0" selection-end-line="1538" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1402">
-          <caret line="145" column="26" lean-forward="false" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/class_rep.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/roc_plot.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:sup/roc_plot.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:nosup tst:nosup/roc_plot.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/features_extractors.py">
+    <entry file="file://$PROJECT_DIR$/models/RandomForest tra:sup tst:sup/results.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="298" column="14" lean-forward="true" selection-start-line="298" selection-start-column="14" selection-end-line="298" selection-end-column="14" />
+        <state relative-caret-position="342">
+          <caret line="19" column="57" lean-forward="true" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/data_generator.py">
+    <entry file="uml://JavaScript-modules-diagram//home/archeffect/PycharmProjects/detect_DGA">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JavaScript-modules-diagram</ID>
+          <OriginalElement>$PROJECT_DIR$</OriginalElement>
+          <nodes />
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="510.0" y="300.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>All</Category>
+          </Categories>
+          <VISIBILITY>Details</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myclassifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="174" column="30" lean-forward="true" selection-start-line="174" selection-start-column="30" selection-end-line="174" selection-end-column="30" />
+        <state relative-caret-position="1216">
+          <caret line="138" column="16" lean-forward="false" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/detect_DGA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="81" column="24" lean-forward="false" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
+        <state relative-caret-position="-738">
+          <caret line="68" column="15" lean-forward="true" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
+          <folding>
+            <element signature="e#15#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="145" column="26" lean-forward="false" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myclassifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="137" column="7" lean-forward="false" selection-start-line="137" selection-start-column="7" selection-end-line="137" selection-end-column="7" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/UML/classifier.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="uml://Python/#/home/archeffect/PycharmProjects/detect_DGA/detect_DGA.py">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/archeffect/PycharmProjects/detect_DGA/detect_DGA.py</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">myclassifier.MyClassifier</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="235.0" y="222.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
         </state>
       </provider>
     </entry>

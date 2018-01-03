@@ -49,10 +49,12 @@ def load_and_concat_dataset(df_filenames, usecols=None):
     return result
     pass
 
+
 # TODO debug
 def has_rrname_filter(record):
     return record['dns'].has_key('rrname')
     pass
+
 
 def predict(estimator, domains):
     from sklearn.pipeline import Pipeline
@@ -73,6 +75,7 @@ def predict(estimator, domains):
     #     print("%s -> %s" % (domain, ("legit" if pred[index] == 0 else "DGA")))
     return pred
 
+
 # TODO debug
 def test_on_balboni_set(estimator, in_file):
     dataset = db.read_text(in_file, compression='gzip').map(json.loads)
@@ -89,8 +92,6 @@ def test_on_balboni_set(estimator, in_file):
     dataset = dataset.map(json.dumps)
     dataset.to_textfiles('dns_requests_dataset_with_labels/*.json')
     pass
-
-
 
 
 def train_all_dataset():
@@ -114,12 +115,13 @@ def train_all_dataset():
     rf = RandomForestClassifier(n_jobs=8)
     clf = MyClassifier(rf)
 
-    results = clf.cross_validate(x,y)
+    results = clf.cross_validate(x, y)
     clf.save_results(results)
     clf.save_clf()
 
-    return rf.fit(X=x,y=y)
+    return rf.fit(X=x, y=y)
     pass
+
 
 if __name__ == "__main__":
 

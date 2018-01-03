@@ -58,7 +58,7 @@ class MyClassifier():
         return self.clf
 
     def classification_report(self, X_test, y_test, plot=True):
-        y_pred = self.clf.predict(X_test)
+        y_pred = self.clf.predict_(X_test)
         repo = classification_report(y_true=y_test,
                                      y_pred=y_pred,
                                      target_names=['dga', 'legit'])
@@ -134,9 +134,10 @@ class MyClassifier():
                     self.logger.info("%s: %.2fs (%.2f)s" % (key, value.mean(), value.std()))
         return results
 
-    def predict(self, domains):
+    def predict(self, domains, true, verbose=True, report=True):
         from sklearn.pipeline import Pipeline
         from features.features_extractors import get_feature_union
+        from sklearn.metrics import accuracy_score
         if len(domains) == 0:
             raise ValueError("Empty array")
         if len(domains) == 1:
@@ -147,6 +148,11 @@ class MyClassifier():
         pip = Pipeline(steps=[('feats', get_feature_union()), ('clf', self.clf)])
 
         pred = pip.predict(domains)
-        for index, domain in enumerate(domains):
-            print("%s -> %s" % (domain, ("legit" if pred[index] == 1 else "DGA")))
+        if verbose:
+            for index, domain in enumerate(domains):
+                print("%s -> %s" % (domain, ("legit" if pred[index] == 1 else "DGA")))
+
+        if report:
+            print(classification_report(y_true=true, y_pred=pred, target_names=['DGA', 'legit']))
+
         return pred

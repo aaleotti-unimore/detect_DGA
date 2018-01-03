@@ -138,9 +138,9 @@ class NumCharRatio(BaseEstimator, TransformerMixin):
                     ncr += value
 
             return ncr / len(domain_name)
-        f=open('err_domains','a')
-        f.write('NumCharRatio: '+str(domain_name))
-        f.close()
+        # f=open('err_domains','a')
+        # f.write('NumCharRatio: '+str(domain_name))
+        # f.close()
         return 0
 
     def transform(self, df, y=None):
@@ -168,9 +168,9 @@ class DomainNameLength(BaseEstimator, TransformerMixin):
         if type(domain_name) == str:
             return (len(domain_name))
         else:
-            f=open('err_domains.txt','w')
-            f.write(str(domain_name)+' '+str(type(domain_name)))
-            f.close()
+            # f=open('err_domains.txt','w')
+            # f.write(str(domain_name)+' '+str(type(domain_name)))
+            # f.close()
             return 0
             pass
 
@@ -206,11 +206,10 @@ class VowelConsonantRatio(BaseEstimator, TransformerMixin):
             if c_cons == 0:
                 return c_vows
             return c_vows / c_cons
-        f=open('err_domains.txt','a')
-        f.write('VowelConsonantRatio: '+str(domain_name))
-        f.close()
+        # f=open('err_domains.txt','a')
+        # f.write('VowelConsonantRatio: '+str(domain_name))
+        # f.close()
         return 0
-
 
     def transform(self, df, y=None):
         """The workhorse of this feature extractor"""

@@ -1,1 +1,0 @@
-relay-1.ncsa.uiuc.edu <type 'unicode'>VowelConsonantRatio: relay-1.ncsa.uiuc.eduVowelConsonantRatio: relay-1.ncsa.uiuc.edu
